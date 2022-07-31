@@ -1,7 +1,11 @@
 # Active la réécriture d'URL
 RewriteEngine on
 
+# Lorsqu'un fichier n'existe pas
 RewriteCond %{REQUEST_FILENAME} !-f
+
+# Lorsqu'un dossier n'existe pas
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.*)$ /pa_rattrapage/index.php?route=$1 [L,QSA]
+RewriteRule ^(.*)$ /PA/index.php?route=$1 [L,QSA]
+

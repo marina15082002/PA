@@ -7,12 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Framework;
+namespace PA;
 
-class IndexController extends Controllers
+class IndexController
 {
     public function get()
     {
-        parent::render("index.html");
+        $title = "Accueil";
+        include __DIR__ . "\..\src\accueil.php";
     }
 }

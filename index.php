@@ -1,21 +1,18 @@
 <?php
 
-require_once('Autoloader.php');
-
-use Framework\Autoloader as Autoloader;
-Autoloader::register();
-
-$route = $_REQUEST["route"] ?? "";
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+$route = $_REQUEST["route"] ?? "undefined";
 $method = $_SERVER["REQUEST_METHOD"];
 
-if ($route == "") {
-    $controller = new IndexController();
+use PA\IndexController;
 
+if ($route === "index") {
+    include __DIR__ . "/controllers/IndexController.php";
+    $controller = new IndexController();
     if ($method == "GET") {
         $controller->get();
         die();
     }
+    die();
 }
-
-header("Location: /error");
-die();
