@@ -11,6 +11,15 @@
             $GLOBALS["site_lang"] = new PA\Lang\En();
             $lang = $GLOBALS["site_lang"]->getArray();
             $language = "en";
+        } else if (preg_match("/^it/", $route)) {
+            $GLOBALS["site_lang"] = new PA\Lang\It();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^pt/", $route)) {
+            $GLOBALS["site_lang"] = new PA\Lang\Pt();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^ie/", $route)) {
+            $GLOBALS["site_lang"] = new PA\Lang\Ie();
+            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             header("Location: /" . $GLOBALS["default_lang"] . "/" . $route);
         }

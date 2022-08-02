@@ -13,6 +13,18 @@ if (preg_match("/^fr/", $route)) {
     include __DIR__ . "\library\lang\English.php";
     $GLOBALS["site_lang"] = new PA\Lang\En();
     $lang = $GLOBALS["site_lang"]->getArray();
+} else if (preg_match("/^it/", $route)) {
+    include __DIR__ . "\library\lang\Italian.php";
+    $GLOBALS["site_lang"] = new PA\Lang\It();
+    $lang = $GLOBALS["site_lang"]->getArray();
+} else if (preg_match("/^pt/", $route)) {
+    include __DIR__ . "\library\lang\Portuguese.php";
+    $GLOBALS["site_lang"] = new PA\Lang\Pt();
+    $lang = $GLOBALS["site_lang"]->getArray();
+} else if (preg_match("/^ie/", $route)) {
+    include __DIR__ . "\library\lang\Irish.php";
+    $GLOBALS["site_lang"] = new PA\Lang\Ie();
+    $lang = $GLOBALS["site_lang"]->getArray();
 } else {
     header("Location: /" . $GLOBALS["default_lang"] . "/" . $route);
 }
