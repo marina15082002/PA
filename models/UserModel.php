@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace PA\Models;
 
 include __DIR__ . "\..\library\get-database-connection.php";
-include __DIR__ . "\Model.php";
 
 class UserModel
 {
