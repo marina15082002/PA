@@ -1,11 +1,12 @@
 <?php
 
-function getDatabaseConnection() {
+function getDatabaseConnection(): PDO
+{
     $driver = "mysql";
 
     $databaseName = "pa-rattrapage";
 
-    $hostName = "localhost;port=81";
+    $hostName = "localhost;port=3307";
 
     $dataSourceName = "$driver:dbname=$databaseName;host=$hostName";
 
@@ -21,7 +22,5 @@ function getDatabaseConnection() {
      * Récupérer une connection à une base de données
      * @see https://www.php.net/manual/en/pdo.construct.php
      */
-    $connection = new PDO($dataSourceName, $userName, $password, $options);
-
-    return $connection;
+    return new PDO($dataSourceName, $userName, $password, $options);
 }

@@ -4,5 +4,15 @@ CREATE DATABASE `pa-rattrapage` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci
 
 CREATE TABLE IF NOT EXISTS USERS(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(50) NOT NULL
+    type VARCHAR(25) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    siren CHAR(9) NOT NULL,
+    phone VARCHAR(12) NOT NULL,
+    country VARCHAR(25) NOT NULL,
+    city VARCHAR(25) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    pref_lang VARCHAR(5) DEFAULT 'fr',
+    role VARCHAR(25) DEFAULT 'user'
 ) ENGINE = InnoDB;
