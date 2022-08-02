@@ -13,6 +13,5 @@ CREATE TABLE IF NOT EXISTS USERS(
     city VARCHAR(25) NOT NULL,
     address VARCHAR(255) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    pref_lang VARCHAR(5) DEFAULT 'fr',
     role VARCHAR(25) DEFAULT 'user'
 ) ENGINE = InnoDB;
