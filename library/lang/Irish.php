@@ -7,10 +7,11 @@ class Ie
     public function getArray()
     {
         $lang = array(
-            /* ==== FORM ==== */
             "FIELD_EMPTY" => "Réimse riachtanach",
+            "FIELDS_EMPTY" => "Tá gach réimse éigeantach",
             "BTN_CONFIRM" => "A dheimhniú",
-            /* ==== SIGNUP ==== */
+            "BTN_MODIFY" => "Cuir in eagar",
+            "BTN_DELETE" => "A scriosadh",
             "TITLE_SIGNUP" => "Clárú",
             "FIELD_COMPANY" => "Cuideachta",
             "FIELD_ASSOCIATION" => "Comhlachas",
@@ -35,9 +36,9 @@ class Ie
             "FIELD_CGU_LINK" => "téarmaí agus coinníollacha",
             "FIELD_CGU_EMPTY" => "Caithfidh tú glacadh leis na coinníollacha ginearálta",
             "LINK_CONNECTION" => "Tá mé i mo bhall cheana féin",
-            /* ==== ERROR ==== */
             "LABEL_ERROR" => "Tharla earráid !",
-            "LINK_ERROR" => "Ar ais go leathanach baile"
+            "LINK_ERROR" => "Ar ais go leathanach baile",
+            "FIELD_TYPE" => "Cineál"
         );
         return $lang;
     }

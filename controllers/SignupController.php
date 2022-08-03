@@ -25,6 +25,12 @@ class SignupController
 
         if (preg_match("/^en/", $route)) {
             $language = "en";
+        } else if (preg_match("/^it/", $route)) {
+            $language = "it";
+        } else if (preg_match("/^pt/", $route)) {
+            $language = "pt";
+        } else if (preg_match("/^ie/", $route)) {
+            $language = "ie";
         } else {
             $language = "fr";
         }
