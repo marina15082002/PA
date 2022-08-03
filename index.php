@@ -40,7 +40,6 @@ if ($route == "") {
     }
 }
 if (preg_match("/^signup/", $route)) {
-//if ($route == "signup") {
     include __DIR__ . "\controllers\SignupController.php";
     $controller = new PA\SignupController();
 
@@ -56,12 +55,37 @@ if (preg_match("/^signup/", $route)) {
     }
 }
 
-if ($route == "error") {
+if (preg_match("/^error/", $route)) {
     include __DIR__ . "\controllers\ErrorController.php";
     $controller = new PA\ErrorController();
 
     if ($method == "GET") {
         $controller->get();
+        die();
+    }
+}
+
+if (preg_match("/^modifyUsers/", $route)) {
+    include __DIR__ . "\controllers\ModifyController.php";
+    $controller = new PA\ModifyController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->modify();
+        die();
+    }
+}
+
+if (preg_match("/^deleteUsers/", $route)) {
+    include __DIR__ . "\controllers\ModifyController.php";
+    $controller = new PA\ModifyController();
+
+    if ($method == "POST") {
+        $controller->delete();
         die();
     }
 }

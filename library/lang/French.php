@@ -7,10 +7,11 @@ class Fr
     public function getArray()
     {
         $lang = array(
-            /* ==== FORM ==== */
             "FIELD_EMPTY" => "Champ obligatoire",
+            "FIELDS_EMPTY" => "Tous les champs sont obligatoires",
             "BTN_CONFIRM" => "Confirmer",
-            /* ==== SIGNUP ==== */
+            "BTN_MODIFY" => "Modifier",
+            "BTN_DELETE" => "Supprimer",
             "TITLE_SIGNUP" => "Inscription",
             "FIELD_COMPANY" => "Entreprise",
             "FIELD_ASSOCIATION" => "Association",
@@ -35,9 +36,9 @@ class Fr
             "FIELD_CGU_LINK" => "conditions générales",
             "FIELD_CGU_EMPTY" => "Il faut accepter les conditions générales",
             "LINK_CONNECTION" => "Je suis déjà membre",
-            /* ==== ERROR ==== */
             "LABEL_ERROR" => "Une erreur est survenue !",
-            "LINK_ERROR" => "Revenir à la page d'accueil"
+            "LINK_ERROR" => "Revenir à la page d'accueil",
+            "FIELD_TYPE" => "Type"
         );
         return $lang;
     }

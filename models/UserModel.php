@@ -17,7 +17,6 @@ class UserModel
 
     public function __construct()
     {
-        echo "test";
         $this->table = "USERS";
     }
 
