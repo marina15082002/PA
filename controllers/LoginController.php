@@ -2,14 +2,14 @@
 
 /**
  * @file
- * IndexController class file.
+ * LoginController class file.
  */
 
 declare(strict_types=1);
 
 namespace PA;
 
-class IndexController
+class LoginController
 {
     public function get()
     {
@@ -32,7 +32,7 @@ class IndexController
             $lang = $GLOBALS["site_lang"]->getArray();
         }
 
-        $title = $lang["TITLE_INDEX"];
-        include __DIR__ . "\..\src\accueil.php";
+        $title = $lang["TITLE_LOGIN"];
+        include __DIR__ . "\..\src\login.php";
     }
 }

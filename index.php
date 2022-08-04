@@ -39,6 +39,7 @@ if ($route == "") {
         die();
     }
 }
+
 if (preg_match("/^signup/", $route)) {
     include __DIR__ . "\controllers\SignupController.php";
     $controller = new PA\SignupController();
@@ -51,6 +52,16 @@ if (preg_match("/^signup/", $route)) {
 
     if ($method == "POST") {
         $controller->create();
+        die();
+    }
+}
+
+if (preg_match("/^login/", $route)) {
+    include __DIR__ . "\controllers\LoginController.php";
+    $controller = new PA\LoginController();
+
+    if ($method == "GET") {
+        $controller->get();
         die();
     }
 }
