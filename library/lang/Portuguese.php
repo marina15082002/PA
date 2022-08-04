@@ -46,7 +46,9 @@ class Pt
             "TEXT_EMAIL" => "meu-endereço-de-e-mail@gmail.com",
             "TEXT_PASSWORD" => "Minha senha",
             "LINK_REMEMBER" => "Lembre de mim",
-            "LINK_PASSWORD_FORGOT" => "Esqueceu sua senha"
+            "LINK_PASSWORD_FORGOT" => "Esqueceu sua senha",
+            "TEXT_SIGNUP" => "Não tem uma conta ainda ?",
+            "LINK_SIGNUP" => "Registro"
         );
         return $lang;
     }

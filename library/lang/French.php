@@ -46,7 +46,9 @@ class Fr
             "TEXT_EMAIL" => "mon-email@gmail.com",
             "TEXT_PASSWORD" => "Mon mot de passe",
             "LINK_REMEMBER" => "Se souvenir de moi",
-            "LINK_PASSWORD_FORGOT" => "Mot de passe oublié"
+            "LINK_PASSWORD_FORGOT" => "Mot de passe oublié",
+            "TEXT_SIGNUP" => "Vous n'avez pas encore de compte ?",
+            "LINK_SIGNUP" => "S'inscrire"
         );
         return $lang;
     }

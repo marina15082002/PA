@@ -46,7 +46,9 @@ class En
             "TEXT_EMAIL" => "my-email@gmail.com",
             "TEXT_PASSWORD" => "My password",
             "LINK_REMEMBER" => "Remember me",
-            "LINK_PASSWORD_FORGOT" => "Forgot password"
+            "LINK_PASSWORD_FORGOT" => "Forgot password",
+            "TEXT_SIGNUP" => "Do not have an account yet ?",
+            "LINK_SIGNUP" => "Register"
         );
         return $lang;
     }

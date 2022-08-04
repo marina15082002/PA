@@ -46,7 +46,9 @@ class Ie
             "TEXT_EMAIL" => "mo-sheoladh-ríomhphoist@gmail.com",
             "TEXT_PASSWORD" => "Mo phasfhocal",
             "LINK_REMEMBER" => "Cuimhnigh orm",
-            "LINK_PASSWORD_FORGOT" => "Ar rinne tú dearmad ar do Phásfhocail"
+            "LINK_PASSWORD_FORGOT" => "Ar rinne tú dearmad ar do Phásfhocail",
+            "TEXT_SIGNUP" => "Níl cuntas agat fós?",
+            "LINK_SIGNUP" => "Clár"
         );
         return $lang;
     }

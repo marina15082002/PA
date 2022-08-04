@@ -46,7 +46,9 @@ class It
             "TEXT_EMAIL" => "il-mio-indirizzo-email@gmail.com",
             "TEXT_PASSWORD" => "La mia password",
             "LINK_REMEMBER" => "Ricordati di me",
-            "LINK_PASSWORD_FORGOT" => "Hai dimenticato la password"
+            "LINK_PASSWORD_FORGOT" => "Hai dimenticato la password",
+            "TEXT_SIGNUP" => "Non hai ancora un tuo account ?",
+            "LINK_SIGNUP" => "Registrati"
         );
         return $lang;
     }
