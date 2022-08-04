@@ -71,11 +71,12 @@ class LoginController
             exit;
         }
 
-        session_start();
-        $_SESSION["id"] = $res["id"];
+
 
         header("Location: /PA/" . $language . "/");
-        header("Connection: close");
-        exit;
+        session_start();
+        $_SESSION["id"] = $res[0]["id"];
+        //header("Connection: close");
+        //exit;
     }
 }

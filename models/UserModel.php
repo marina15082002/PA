@@ -55,6 +55,6 @@ class UserModel
             'password' => $password
         ]);
 
-        return $prep->fetch();
+        return $prep->fetchAll();
     }
 }
