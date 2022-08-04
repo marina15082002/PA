@@ -13,6 +13,10 @@ class It
             "BTN_MODIFY" => "Modificare",
             "BTN_DELETE" => "Cancellare",
             "TITLE_SIGNUP" => "Iscrizione",
+            "TITLE_INDEX" => "Accoglienza",
+            "TITLE_MODIFY_USERS" => "Modifica utenti",
+            "TITLE_ERROR" => "Errore",
+            "TITLE_LOGIN" => "Login",
             "FIELD_COMPANY" => "Azienda",
             "FIELD_ASSOCIATION" => "Associazione",
             "FIELD_PARTICULAR" => "Particolare",
@@ -38,7 +42,14 @@ class It
             "LINK_CONNECTION" => "Sono già un membro",
             "LABEL_ERROR" => "C'è stato un errore !",
             "LINK_ERROR" => "Torna alla home page",
-            "FIELD_TYPE" => "Genere"
+            "FIELD_TYPE" => "Genere",
+            "TEXT_EMAIL" => "il-mio-indirizzo-email@gmail.com",
+            "TEXT_PASSWORD" => "La mia password",
+            "LINK_REMEMBER" => "Ricordati di me",
+            "LINK_PASSWORD_FORGOT" => "Hai dimenticato la password",
+            "TEXT_SIGNUP" => "Non hai ancora un tuo account ?",
+            "LINK_SIGNUP" => "Registrati",
+            "FIELD_LOGIN_ERROR" => "Il tuo indirizzo email o la tua password non sono corretti"
         );
         return $lang;
     }

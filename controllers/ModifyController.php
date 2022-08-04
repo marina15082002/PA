@@ -25,6 +25,26 @@ class ModifyController
 
         $table = $getColumnsModel->getAllTable($connect, "USERS");
 
+        $route = $_REQUEST["route"] ?? "";
+
+        if (preg_match("/^en/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\En();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^it/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\It();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^pt/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\Pt();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^ie/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\Ie();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else {
+            $GLOBALS["site_lang"] = new Lang\Fr();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        }
+
+        $title = $lang["TITLE_MODIFY_USERS"];
         include __DIR__ . "\..\src\modifyUsers.php";
     }
 

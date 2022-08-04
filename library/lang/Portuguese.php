@@ -13,6 +13,10 @@ class Pt
             "BTN_MODIFY" => "Editar",
             "BTN_DELETE" => "Deletar",
             "TITLE_SIGNUP" => "Cadastro",
+            "TITLE_INDEX" => "Bem-vindo",
+            "TITLE_MODIFY_USERS" => "Modificar usuários",
+            "TITLE_ERROR" => "Erro",
+            "TITLE_LOGIN" => "Conecte-se",
             "FIELD_COMPANY" => "Companhia",
             "FIELD_ASSOCIATION" => "Associação",
             "FIELD_PARTICULAR" => "Especial",
@@ -38,7 +42,14 @@ class Pt
             "LINK_CONNECTION" => "Eu já sou um membro",
             "LABEL_ERROR" => "Ocorreu um erro !",
             "LINK_ERROR" => "Voltar à página inicial",
-            "FIELD_TYPE" => "Gentil"
+            "FIELD_TYPE" => "Gentil",
+            "TEXT_EMAIL" => "meu-endereço-de-e-mail@gmail.com",
+            "TEXT_PASSWORD" => "Minha senha",
+            "LINK_REMEMBER" => "Lembre de mim",
+            "LINK_PASSWORD_FORGOT" => "Esqueceu sua senha",
+            "TEXT_SIGNUP" => "Não tem uma conta ainda ?",
+            "LINK_SIGNUP" => "Registro",
+            "FIELD_LOGIN_ERROR" => "Seu endereço de e-mail ou senha está incorreto"
         );
         return $lang;
     }

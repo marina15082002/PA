@@ -44,9 +44,36 @@ class UserModel
         return !!$prep->fetch();
     }
 
+    public function checkEmailPassword($email, $password)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE email = :email and password = :password");
+        $prep->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        return !!$prep->fetch();
+    }
+
+    public function userConnect($email, $password)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare(
+            "SELECT id  FROM " . $this->table . " WHERE email = :email AND password = :password"
+        );
+        $prep->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        return $prep->fetchAll();
+    }
+
     public function checkPasswordWithEmail($password, $email)
     {
-        $passwordHash = $this->connection->prepare("SELECT password FROM " . $this->table . " WHERE email = :email");
+        $connect = getDatabaseConnection();
+        $passwordHash = $connect->prepare("SELECT password FROM " . $this->table . " WHERE email = :email");
         $passwordHash->execute([
             'email' => $email
         ]);
@@ -54,23 +81,10 @@ class UserModel
 
         $passwordHash = $passwordHash[0]['password'];
 
+
         if (password_verify($password, $passwordHash)) {
             return 1;
         }
         return 0;
-    }
-
-    public function userConnect($email, $password)
-    {
-        $connect = getDatabaseConnection();
-        $prep = $connect->prepare(
-            "SELECT id, adm  FROM " . $this->table . " WHERE email = :email AND password = :password"
-        );
-        $prep->execute([
-            'email' => $email,
-            'password' => $password
-        ]);
-
-        return $prep->fetch();
     }
 }

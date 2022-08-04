@@ -5,28 +5,31 @@ error_reporting(E_ALL);
 $route = $_REQUEST["route"] ?? "";
 $method = $_SERVER["REQUEST_METHOD"];
 
-if (preg_match("/^fr/", $route)) {
-    include __DIR__ . "\library\lang\French.php";
-    $GLOBALS["site_lang"] = new PA\Lang\Fr();
-    $lang = $GLOBALS["site_lang"]->getArray();
-} else if (preg_match("/^en/", $route)) {
+if (preg_match("/^en/", $route)) {
     include __DIR__ . "\library\lang\English.php";
     $GLOBALS["site_lang"] = new PA\Lang\En();
     $lang = $GLOBALS["site_lang"]->getArray();
+    $language = "en";
 } else if (preg_match("/^it/", $route)) {
     include __DIR__ . "\library\lang\Italian.php";
     $GLOBALS["site_lang"] = new PA\Lang\It();
     $lang = $GLOBALS["site_lang"]->getArray();
+    $language = "it";
 } else if (preg_match("/^pt/", $route)) {
     include __DIR__ . "\library\lang\Portuguese.php";
     $GLOBALS["site_lang"] = new PA\Lang\Pt();
     $lang = $GLOBALS["site_lang"]->getArray();
+    $language = "pt";
 } else if (preg_match("/^ie/", $route)) {
     include __DIR__ . "\library\lang\Irish.php";
     $GLOBALS["site_lang"] = new PA\Lang\Ie();
     $lang = $GLOBALS["site_lang"]->getArray();
+    $language = "ie";
 } else {
-    header("Location: /" . $GLOBALS["default_lang"] . "/" . $route);
+    include __DIR__ . "\library\lang\French.php";
+    $GLOBALS["site_lang"] = new PA\Lang\Fr();
+    $lang = $GLOBALS["site_lang"]->getArray();
+    $language = "fr";
 }
 
 $route = explode("/", $route, 2)[1];
@@ -39,6 +42,7 @@ if ($route == "") {
         die();
     }
 }
+
 if (preg_match("/^signup/", $route)) {
     include __DIR__ . "\controllers\SignupController.php";
     $controller = new PA\SignupController();
@@ -51,6 +55,21 @@ if (preg_match("/^signup/", $route)) {
 
     if ($method == "POST") {
         $controller->create();
+        die();
+    }
+}
+
+if (preg_match("/^login/", $route)) {
+    include __DIR__ . "\controllers\LoginController.php";
+    $controller = new PA\LoginController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->connect();
         die();
     }
 }
@@ -88,6 +107,13 @@ if (preg_match("/^deleteUsers/", $route)) {
         $controller->delete();
         die();
     }
+}
+
+if (preg_match("/^signout/", $route)) {
+    session_start();
+    session_destroy();
+    header("Location: /PA/" . $language . "/");
+    die();
 }
 
 die();

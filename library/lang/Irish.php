@@ -13,6 +13,10 @@ class Ie
             "BTN_MODIFY" => "Cuir in eagar",
             "BTN_DELETE" => "A scriosadh",
             "TITLE_SIGNUP" => "Clárú",
+            "TITLE_INDEX" => "Fáilte",
+            "TITLE_MODIFY_USERS" => "Úsáideoirí a mhodhnú",
+            "TITLE_ERROR" => "Botún",
+            "TITLE_LOGIN" => "Logáil isteach",
             "FIELD_COMPANY" => "Cuideachta",
             "FIELD_ASSOCIATION" => "Comhlachas",
             "FIELD_PARTICULAR" => "Ar leith",
@@ -38,7 +42,14 @@ class Ie
             "LINK_CONNECTION" => "Tá mé i mo bhall cheana féin",
             "LABEL_ERROR" => "Tharla earráid !",
             "LINK_ERROR" => "Ar ais go leathanach baile",
-            "FIELD_TYPE" => "Cineál"
+            "FIELD_TYPE" => "Cineál",
+            "TEXT_EMAIL" => "mo-sheoladh-ríomhphoist@gmail.com",
+            "TEXT_PASSWORD" => "Mo phasfhocal",
+            "LINK_REMEMBER" => "Cuimhnigh orm",
+            "LINK_PASSWORD_FORGOT" => "Ar rinne tú dearmad ar do Phásfhocail",
+            "TEXT_SIGNUP" => "Níl cuntas agat fós?",
+            "LINK_SIGNUP" => "Clár",
+            "FIELD_LOGIN_ERROR" => "Tá do sheoladh ríomhphoist nó do phasfhocal mícheart"
         );
         return $lang;
     }

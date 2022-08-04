@@ -13,6 +13,10 @@ class Fr
             "BTN_MODIFY" => "Modifier",
             "BTN_DELETE" => "Supprimer",
             "TITLE_SIGNUP" => "Inscription",
+            "TITLE_INDEX" => "Accueil",
+            "TITLE_MODIFY_USERS" => "Modification utilisateurs",
+            "TITLE_ERROR" => "Erreur",
+            "TITLE_LOGIN" => "Connexion",
             "FIELD_COMPANY" => "Entreprise",
             "FIELD_ASSOCIATION" => "Association",
             "FIELD_PARTICULAR" => "Particulier",
@@ -38,7 +42,14 @@ class Fr
             "LINK_CONNECTION" => "Je suis déjà membre",
             "LABEL_ERROR" => "Une erreur est survenue !",
             "LINK_ERROR" => "Revenir à la page d'accueil",
-            "FIELD_TYPE" => "Type"
+            "FIELD_TYPE" => "Type",
+            "TEXT_EMAIL" => "mon-email@gmail.com",
+            "TEXT_PASSWORD" => "Mon mot de passe",
+            "LINK_REMEMBER" => "Se souvenir de moi",
+            "LINK_PASSWORD_FORGOT" => "Mot de passe oublié",
+            "TEXT_SIGNUP" => "Vous n'avez pas encore de compte ?",
+            "LINK_SIGNUP" => "S'inscrire",
+            "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect"
         );
         return $lang;
     }

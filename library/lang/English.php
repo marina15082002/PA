@@ -13,6 +13,10 @@ class En
             "BTN_MODIFY" => "Edit",
             "BTN_DELETE" => "Delete",
             "TITLE_SIGNUP" => "Signup",
+            "TITLE_INDEX" => "Welcome",
+            "TITLE_MODIFY_USERS" => "Modify users",
+            "TITLE_ERROR" => "Error",
+            "TITLE_LOGIN" => "Login",
             "FIELD_COMPANY" => "Company",
             "FIELD_ASSOCIATION" => "Association",
             "FIELD_PARTICULAR" => "Particular",
@@ -38,7 +42,14 @@ class En
             "LINK_CONNECTION" => "I am already a member",
             "LABEL_ERROR" => "An error has occurred !",
             "LINK_ERROR" => "Back to home page",
-            "FIELD_TYPE" => "Kind"
+            "FIELD_TYPE" => "Kind",
+            "TEXT_EMAIL" => "my-email@gmail.com",
+            "TEXT_PASSWORD" => "My password",
+            "LINK_REMEMBER" => "Remember me",
+            "LINK_PASSWORD_FORGOT" => "Forgot password",
+            "TEXT_SIGNUP" => "Do not have an account yet ?",
+            "LINK_SIGNUP" => "Register",
+            "FIELD_LOGIN_ERROR" => "Your email address or password is incorrect"
         );
         return $lang;
     }
