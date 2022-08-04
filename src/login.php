@@ -10,14 +10,14 @@
                     <div class="col-md-7">
                         <h3><strong><?php echo $lang["TITLE_LOGIN"]; ?></strong></h3>
                         <p class="mb-4"><?php echo $lang["TEXT_SIGNUP"]; ?><a href="signup"><?php echo $lang["LINK_SIGNUP"]; ?></a></p>
-                        <form action="#" method="post">
+                        <form method="POST" action="login" enctype="multipart/form-data">
                             <div class="form-group first">
                                 <label for="username"><?php echo $lang["FIELD_EMAIL"]; ?></label>
-                                <input type="text" class="form-control" placeholder="<?php echo $lang["TEXT_EMAIL"]; ?>" id="username">
+                                <input type="text" name="email" class="form-control" placeholder="<?php echo $lang["TEXT_EMAIL"]; ?>" id="username">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password"><?php echo $lang["FIELD_PASSWORD"]; ?></label>
-                                <input type="password" class="form-control" placeholder="<?php echo $lang["TEXT_PASSWORD"]; ?>" id="password">
+                                <input name="password" type="password" class="form-control" placeholder="<?php echo $lang["TEXT_PASSWORD"]; ?>" id="password">
                             </div>
 
                             <div class="d-flex mb-5 align-items-center">

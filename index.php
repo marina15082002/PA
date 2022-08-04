@@ -64,6 +64,11 @@ if (preg_match("/^login/", $route)) {
         $controller->get();
         die();
     }
+
+    if ($method == "POST") {
+        $controller->connect();
+        die();
+    }
 }
 
 if (preg_match("/^error/", $route)) {

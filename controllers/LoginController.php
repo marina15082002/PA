@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace PA;
 
+include __DIR__ . "\..\models\UserModel.php";
+
 class LoginController
 {
     public function get()
@@ -34,5 +36,46 @@ class LoginController
 
         $title = $lang["TITLE_LOGIN"];
         include __DIR__ . "\..\src\login.php";
+    }
+
+    public function connect()
+    {
+        $route = $_REQUEST["route"] ?? "";
+
+        if (preg_match("/^en/", $route)) {
+            $language = "en";
+        } else if (preg_match("/^it/", $route)) {
+            $language = "it";
+        } else if (preg_match("/^pt/", $route)) {
+            $language = "pt";
+        } else if (preg_match("/^ie/", $route)) {
+            $language = "ie";
+        } else {
+            $language = "fr";
+        }
+
+        $userModel = new Models\UserModel();
+        $body = $_POST;
+
+        if (empty($body["password"]) || empty($body["email"])) {
+            header("Location: /PA/" . $language . "/error");
+            header("Connection: close");
+            exit;
+        }
+
+        $res = $userModel->userConnect($body["email"], hash("sha256", $body["password"]));
+
+        if ($res == -1) {
+            header("Location: /PA/" . $language . "/error");
+            header("Connection: close");
+            exit;
+        }
+
+        session_start();
+        $_SESSION["id"] = $res["id"];
+
+        header("Location: /PA/" . $language . "/");
+        header("Connection: close");
+        exit;
     }
 }

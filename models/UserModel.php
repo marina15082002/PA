@@ -44,27 +44,11 @@ class UserModel
         return !!$prep->fetch();
     }
 
-    public function checkPasswordWithEmail($password, $email)
-    {
-        $passwordHash = $this->connection->prepare("SELECT password FROM " . $this->table . " WHERE email = :email");
-        $passwordHash->execute([
-            'email' => $email
-        ]);
-        $passwordHash = $passwordHash->fetchAll();
-
-        $passwordHash = $passwordHash[0]['password'];
-
-        if (password_verify($password, $passwordHash)) {
-            return 1;
-        }
-        return 0;
-    }
-
     public function userConnect($email, $password)
     {
         $connect = getDatabaseConnection();
         $prep = $connect->prepare(
-            "SELECT id, adm  FROM " . $this->table . " WHERE email = :email AND password = :password"
+            "SELECT id  FROM " . $this->table . " WHERE email = :email AND password = :password"
         );
         $prep->execute([
             'email' => $email,
