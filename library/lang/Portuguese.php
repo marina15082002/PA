@@ -48,7 +48,8 @@ class Pt
             "LINK_REMEMBER" => "Lembre de mim",
             "LINK_PASSWORD_FORGOT" => "Esqueceu sua senha",
             "TEXT_SIGNUP" => "Não tem uma conta ainda ?",
-            "LINK_SIGNUP" => "Registro"
+            "LINK_SIGNUP" => "Registro",
+            "FIELD_LOGIN_ERROR" => "Seu endereço de e-mail ou senha está incorreto"
         );
         return $lang;
     }

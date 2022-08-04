@@ -48,7 +48,8 @@ class It
             "LINK_REMEMBER" => "Ricordati di me",
             "LINK_PASSWORD_FORGOT" => "Hai dimenticato la password",
             "TEXT_SIGNUP" => "Non hai ancora un tuo account ?",
-            "LINK_SIGNUP" => "Registrati"
+            "LINK_SIGNUP" => "Registrati",
+            "FIELD_LOGIN_ERROR" => "Il tuo indirizzo email o la tua password non sono corretti"
         );
         return $lang;
     }

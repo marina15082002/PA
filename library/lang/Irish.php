@@ -48,7 +48,8 @@ class Ie
             "LINK_REMEMBER" => "Cuimhnigh orm",
             "LINK_PASSWORD_FORGOT" => "Ar rinne tú dearmad ar do Phásfhocail",
             "TEXT_SIGNUP" => "Níl cuntas agat fós?",
-            "LINK_SIGNUP" => "Clár"
+            "LINK_SIGNUP" => "Clár",
+            "FIELD_LOGIN_ERROR" => "Tá do sheoladh ríomhphoist nó do phasfhocal mícheart"
         );
         return $lang;
     }

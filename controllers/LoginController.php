@@ -38,6 +38,21 @@ class LoginController
         include __DIR__ . "\..\src\login.php";
     }
 
+    private function checkConnect($language)
+    {
+        $userModel = new Models\UserModel();
+        $body = $_POST;
+
+        $res = $userModel->checkEmailPassword($body['email'], hash("sha256", $body["password"]));
+
+        echo $res;
+        if (empty($res)) {
+            header("Location: /PA/" . $language . "/login?passwordEmailError=true");
+            header("Connection: close");
+            exit;
+        }
+    }
+
     public function connect()
     {
         $route = $_REQUEST["route"] ?? "";
@@ -53,6 +68,8 @@ class LoginController
         } else {
             $language = "fr";
         }
+
+        $this->checkConnect($language);
 
         $userModel = new Models\UserModel();
         $body = $_POST;
@@ -71,12 +88,10 @@ class LoginController
             exit;
         }
 
-
-
         header("Location: /PA/" . $language . "/");
         session_start();
         $_SESSION["id"] = $res[0]["id"];
-        //header("Connection: close");
-        //exit;
+        header("Connection: close");
+        exit;
     }
 }

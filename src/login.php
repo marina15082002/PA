@@ -20,6 +20,12 @@
                                 <input name="password" type="password" class="form-control" placeholder="<?php echo $lang["TEXT_PASSWORD"]; ?>" id="password">
                             </div>
 
+                            <?php
+                            if (isset($_GET["passwordEmailError"])) {
+                                echo '<div class="alert alert-danger" role="alert">' . $lang["FIELD_LOGIN_ERROR"] . '</div>';
+                            }
+                            ?>
+
                             <div class="d-flex mb-5 align-items-center">
                                 <label class="control control--checkbox mb-0"><span class="caption"><?php echo $lang["LINK_REMEMBER"]; ?></span>
                                     <input type="checkbox" checked="checked"/>

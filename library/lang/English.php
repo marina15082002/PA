@@ -48,7 +48,8 @@ class En
             "LINK_REMEMBER" => "Remember me",
             "LINK_PASSWORD_FORGOT" => "Forgot password",
             "TEXT_SIGNUP" => "Do not have an account yet ?",
-            "LINK_SIGNUP" => "Register"
+            "LINK_SIGNUP" => "Register",
+            "FIELD_LOGIN_ERROR" => "Your email address or password is incorrect"
         );
         return $lang;
     }
