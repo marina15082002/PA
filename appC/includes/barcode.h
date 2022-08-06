@@ -1,5 +1,5 @@
-#ifndef WEATHER_H
-# define WEATHER_H
+#ifndef BARCODE_H
+# define BARCODE_H
 
 # include <stdio.h>
 # include <stdlib.h>

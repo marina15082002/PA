@@ -1,4 +1,4 @@
-NAME = weather
+NAME = barcode
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -ljson-c -lcurl
@@ -20,7 +20,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
-$(OBJS): $(INCLUDES)/weather.h
+$(OBJS): $(INCLUDES)/barcode.h
 
 clean:
 	rm -f $(OBJS)
