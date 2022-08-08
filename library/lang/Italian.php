@@ -49,7 +49,11 @@ class It
             "LINK_PASSWORD_FORGOT" => "Hai dimenticato la password",
             "TEXT_SIGNUP" => "Non hai ancora un tuo account ?",
             "LINK_SIGNUP" => "Registrati",
-            "FIELD_LOGIN_ERROR" => "Il tuo indirizzo email o la tua password non sono corretti"
+            "FIELD_LOGIN_ERROR" => "Il tuo indirizzo email o la tua password non sono corretti",
+            "DATE" => "Data",
+            "CODE" => "Codificato",
+            "NAME" => "Nome",
+            "DOWNLOAD" => "Scarica"
         );
         return $lang;
     }

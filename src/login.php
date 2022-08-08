@@ -34,7 +34,7 @@
                                 <span class="ml-auto"><a href="#" class="forgot-pass"><?php echo $lang["LINK_PASSWORD_FORGOT"]; ?></a></span>
                             </div>
 
-                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                            <input type="submit" value="<?php echo $lang["TITLE_LOGIN"]; ?>" class="btn btn-block btn-primary">
 
                         </form>
                     </div>

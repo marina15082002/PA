@@ -6,7 +6,7 @@ class Ie
 {
     public function getArray()
     {
-        $lang = array(
+        $lang = [
             "FIELD_EMPTY" => "Réimse riachtanach",
             "FIELDS_EMPTY" => "Tá gach réimse éigeantach",
             "BTN_CONFIRM" => "A dheimhniú",
@@ -49,8 +49,12 @@ class Ie
             "LINK_PASSWORD_FORGOT" => "Ar rinne tú dearmad ar do Phásfhocail",
             "TEXT_SIGNUP" => "Níl cuntas agat fós?",
             "LINK_SIGNUP" => "Clár",
-            "FIELD_LOGIN_ERROR" => "Tá do sheoladh ríomhphoist nó do phasfhocal mícheart"
-        );
+            "FIELD_LOGIN_ERROR" => "Tá do sheoladh ríomhphoist nó do phasfhocal mícheart",
+            "DATE" => "Dáta",
+            "CODE" => "Cód",
+            "NAME" => "Sloinne",
+            "DOWNLOAD" => "Íosluchtaigh"
+        ];
         return $lang;
     }
 }

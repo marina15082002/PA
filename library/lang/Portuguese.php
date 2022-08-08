@@ -49,7 +49,11 @@ class Pt
             "LINK_PASSWORD_FORGOT" => "Esqueceu sua senha",
             "TEXT_SIGNUP" => "Não tem uma conta ainda ?",
             "LINK_SIGNUP" => "Registro",
-            "FIELD_LOGIN_ERROR" => "Seu endereço de e-mail ou senha está incorreto"
+            "FIELD_LOGIN_ERROR" => "Seu endereço de e-mail ou senha está incorreto",
+            "DATE" => "Encontro",
+            "CODE" => "Codificado",
+            "NAME" => "Sobrenome",
+            "DOWNLOAD" => "Download"
         );
         return $lang;
     }

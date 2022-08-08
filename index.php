@@ -116,4 +116,14 @@ if (preg_match("/^signout/", $route)) {
     die();
 }
 
+if (preg_match("/^getBarCode/", $route)) {
+    include __DIR__ . "\controllers\BarcodeController.php";
+    $controller = new PA\BarcodeController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+}
+
 die();

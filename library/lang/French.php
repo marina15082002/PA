@@ -49,7 +49,11 @@ class Fr
             "LINK_PASSWORD_FORGOT" => "Mot de passe oublié",
             "TEXT_SIGNUP" => "Vous n'avez pas encore de compte ?",
             "LINK_SIGNUP" => "S'inscrire",
-            "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect"
+            "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect",
+            "DATE" => "Date",
+            "CODE" => "Code",
+            "NAME" => "Nom",
+            "DOWNLOAD" => "Téléchargement"
         );
         return $lang;
     }

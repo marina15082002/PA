@@ -49,7 +49,11 @@ class En
             "LINK_PASSWORD_FORGOT" => "Forgot password",
             "TEXT_SIGNUP" => "Do not have an account yet ?",
             "LINK_SIGNUP" => "Register",
-            "FIELD_LOGIN_ERROR" => "Your email address or password is incorrect"
+            "FIELD_LOGIN_ERROR" => "Your email address or password is incorrect",
+            "DATE" => "Date",
+            "CODE" => "Code",
+            "NAME" => "Name",
+            "DOWNLOAD" => "Download"
         );
         return $lang;
     }
