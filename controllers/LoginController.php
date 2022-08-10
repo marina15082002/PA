@@ -91,6 +91,7 @@ class LoginController
         header("Location: /PA/" . $language . "/");
         session_start();
         $_SESSION["id"] = $res[0]["id"];
+        $_SESSION["email"] = $body["email"];
         header("Connection: close");
         exit;
     }

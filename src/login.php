@@ -1,5 +1,7 @@
 <?php include __DIR__ . "\head.php";?>
 
+<link rel="stylesheet" href="/PA/src/css/style.css">
+
 <main>
     <div class="d-lg-flex half">
         <div class="bg order-1 order-md-2" style="background-image: url('/PA/src/imgs/bg_1.jpg');"></div>

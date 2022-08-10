@@ -49,7 +49,12 @@ class Fr
             "LINK_PASSWORD_FORGOT" => "Mot de passe oublié",
             "TEXT_SIGNUP" => "Vous n'avez pas encore de compte ?",
             "LINK_SIGNUP" => "S'inscrire",
-            "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect"
+            "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect",
+            "TITLE_CALENDAR" => "Calendrier",
+            "TITLE_ADD_PRODUCT" => "Ajouter un produit",
+            "FIELD_BARCODE" => "Code barre",
+            "FIELD_QUANTITY" => "Quantité",
+            "FIELD_BARCODE_SYNTAX" => "Mauvais format : Le code barre est composé de 13 chiffres"
         );
         return $lang;
     }
