@@ -54,7 +54,28 @@ class Fr
             "TITLE_ADD_PRODUCT" => "Ajouter un produit",
             "FIELD_BARCODE" => "Code barre",
             "FIELD_QUANTITY" => "Quantité",
-            "FIELD_BARCODE_SYNTAX" => "Mauvais format : Le code barre est composé de 13 chiffres"
+            "FIELD_BARCODE_SYNTAX" => "Mauvais format : Le code barre est composé de 13 chiffres",
+            "TITLE_PRINT_COLLECT_USER" => "Demande de collecte",
+            "TITLE_MESSAGE" => "Message",
+            "JAN" => "Jan",
+            "FEB" => "Fév",
+            "MAR" => "Mars",
+            "APR" => "Avr",
+            "MAY" => "Mai",
+            "JUN" => "Juin",
+            "JUL" => "Jui",
+            "AUG" => "Août",
+            "SEP" => "Sep",
+            "OCT" => "Oct",
+            "NOV" => "Nov",
+            "DEC" => "Déc",
+            "SUN" => "Dim",
+            "MON" => "Lun",
+            "TUE" => "Mar",
+            "WED" => "Mer",
+            "THU" => "Jeu",
+            "FRI" => "Ven",
+            "SAT" => "Sam"
         );
         return $lang;
     }

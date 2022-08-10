@@ -140,7 +140,22 @@ if (preg_match("/^calendar/", $route)) {
         $controller->get();
         die();
     }
+
+    if ($method == "POST") {
+        $controller->add();
+        die();
+    }
 }
+
+/*if (preg_match("/^calendarForm/", $route)) {
+    include __DIR__ . "\controllers\CalendarController.php";
+    $controller = new PA\CalendarController();
+
+    if ($method == "POST") {
+        $controller->add();
+        die();
+    }
+}*/
 
 if (preg_match("/^ProductController/", $route)) {
     include __DIR__ . "\controllers\AddProductController.php";
@@ -148,6 +163,31 @@ if (preg_match("/^ProductController/", $route)) {
 
     if ($method == "POST") {
         $controller->error($_GET["name1"]);
+        die();
+    }
+}
+
+if (preg_match("/^printCollectUser/", $route)) {
+    include __DIR__ . "\controllers\PrintCollectUserController.php";
+    $controller = new PA\PrintCollectUserController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->delete();
+        die();
+    }
+}
+
+if (preg_match("/^message/", $route)) {
+    include __DIR__ . "\controllers\MessageController.php";
+    $controller = new PA\MessageController();
+
+    if ($method == "GET") {
+        $controller->get();
         die();
     }
 }

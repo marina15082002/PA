@@ -88,10 +88,22 @@ class LoginController
             exit;
         }
 
+        $res = $userModel->getUser($res[0]["id"]);
+
+        var_dump($res);
+
+
         header("Location: /PA/" . $language . "/");
         session_start();
         $_SESSION["id"] = $res[0]["id"];
         $_SESSION["email"] = $body["email"];
+        $_SESSION["name"] = $res[0]["name"];
+        $_SESSION["type"] = $res[0]["type"];
+        $_SESSION["siren"] = $res[0]["siren"];
+        $_SESSION["phone"] = $res[0]["phone"];
+        $_SESSION["country"] = $res[0]["country"];
+        $_SESSION["city"] = $res[0]["city"];
+        $_SESSION["address"] = $res[0]["address"];
         header("Connection: close");
         exit;
     }

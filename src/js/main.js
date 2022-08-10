@@ -49,9 +49,12 @@ function init_calendar(date) {
         else {
             var curr_date = $("<td class='table-date'>"+day+"</td>");
             var events = check_events(day, month+1, year);
-            if(today===day && $(".active-date").length===0) {
+            if(today+1===day && $(".active-date").length===0) {
                 curr_date.addClass("active-date");
                 show_events(events, months[month], day);
+                document.getElementById("day").value = day;
+                document.getElementById("month").value = month+1;
+                document.getElementById("year").value = year;
             }
             // If this date has any events, style it with .event-date
             if(events.length!==0) {
@@ -81,6 +84,7 @@ function date_click(event) {
     $(".active-date").removeClass("active-date");
     $(this).addClass("active-date");
     show_events(event.data.events, event.data.month, event.data.day);
+    document.getElementById("day").value = event.data.day;
 };
 
 // Event handler for when a month is clicked
@@ -93,6 +97,7 @@ function month_click(event) {
     var new_month = $(".month").index(this);
     date.setMonth(new_month);
     init_calendar(date);
+    document.getElementById("month").value = new_month + 1;
 }
 
 // Event handler for when the year right-button is clicked
@@ -103,16 +108,21 @@ function next_year(event) {
     $("year").html(new_year);
     date.setFullYear(new_year);
     init_calendar(date);
+    document.getElementById("year").value = new_year;
 }
 
 // Event handler for when the year left-button is clicked
 function prev_year(event) {
-    $("#dialog").hide(250);
-    var date = event.data.date;
-    var new_year = date.getFullYear()-1;
-    $("year").html(new_year);
-    date.setFullYear(new_year);
-    init_calendar(date);
+    let dateNow = new Date();
+
+    if (event.data.date.getFullYear() > dateNow.getFullYear()) {
+        $("#dialog").hide(250);
+        var date = event.data.date;
+        var new_year = date.getFullYear() - 1;
+        $("year").html(new_year);
+        date.setFullYear(new_year);
+        init_calendar(date);
+    }
 }
 
 // Event handler for clicking the new event button
@@ -151,7 +161,6 @@ function new_event(event) {
         }
         else {
             $("#dialog").hide(250);
-            console.log("new event");
             new_event_json(name, count, date, day);
             date.setDate(day);
             init_calendar(date);
@@ -176,31 +185,34 @@ function show_events(events, month, day) {
     // Clear the dates container
     //$(".events-container").empty();
     //$(".events-container").show(250);
-    console.log(event_data["events"]);
+    //document.getElementById("day").value = day;
+    //document.getElementById("month").value = month;
+    //document.getElementById("year").value = events.year;
     // If there are no events for this date, notify the user
     if(events.length===0) {
-        /*var event_card = $("<div class='event-card'></div>");
+        //var event_card = $("<div class='event-card'></div>");
         var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
-        $(event_card).css({ "border-left": "10px solid #FF1744" });
-        $(event_card).append(event_name);
-        $(".events-container").append(event_card);*/
+        //$(event_card).css({ "border-left": "10px solid #FF1744" });
+        //$(event_card).append(event_name);
+        //$(".events-container").append(event_card);
     }
     else {
         // Go through and add each event as a card to the events container
-        /*for(var i=0; i<events.length; i++) {
-            var event_card = $("<div class='event-card'></div>");
+        for(var i=0; i<events.length; i++) {
+            //var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
             var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
             if(events[i]["cancelled"]===true) {
-                $(event_card).css({
+               /* $(event_card).css({
                     "border-left": "10px solid #FF1744"
-                });
+                });*/
                 event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(event_count);
-            $(".events-container").append(event_card);
-        }*/
+           // $(event_card).append(event_name).append(event_count);
+            //$(".events-container").append(event_card);
+        }
     }
+
 }
 
 // Checks if a specific date has any events

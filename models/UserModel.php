@@ -70,6 +70,17 @@ class UserModel
         return $prep->fetchAll();
     }
 
+    public function getUser($id)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE id = :id");
+        $prep->execute([
+            'id' => $id
+        ]);
+
+        return $prep->fetchAll();
+    }
+
     public function checkPasswordWithEmail($password, $email)
     {
         $connect = getDatabaseConnection();

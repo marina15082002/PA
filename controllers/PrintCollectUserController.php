@@ -2,17 +2,16 @@
 
 /**
  * @file
- * CalendarController class file.
+ * PrintCollectUserController class file.
  */
 
 declare(strict_types=1);
 
 namespace PA;
 
-include __DIR__ . "\..\models\CalendarModel.php";
-include __DIR__ . "\..\library\get-database-connection.php";
+include __DIR__ . "\..\models\PrintCollectModel.php";
 
-class CalendarController
+class PrintCollectUserController
 {
     public function get()
     {
@@ -35,11 +34,18 @@ class CalendarController
             $lang = $GLOBALS["site_lang"]->getArray();
         }
 
-        $title = $lang["TITLE_CALENDAR"];
-        include __DIR__ . "\..\src\calendar.php";
+        $getColumnsModel = new Models\PrintCollectModel();
+
+        session_start();
+
+        $table_products = $getColumnsModel->getProductsUser();
+        $table_infos = $getColumnsModel->getCollect($_SESSION["email"]);
+
+        $title = $lang["TITLE_PRINT_COLLECT_USER"];
+        include __DIR__ . "\..\src\printCollectUser.php";
     }
 
-    public function add() {
+    public function delete() {
         $route = $_REQUEST["route"] ?? "";
 
         if (preg_match("/^en/", $route)) {
@@ -54,29 +60,10 @@ class CalendarController
             $language = "fr";
         }
 
+        $productModel = new Models\PrintCollectModel();
         $body = $_POST;
 
-        if ($body["day"] < 10) {
-            $body["day"] = "0" . $body["day"];
-        }
-
-        if ($body["month"] < 10) {
-            $body["month"] = "0" . $body["month"];
-        }
-
-        session_start();
-
-        $calendarModel = new Models\CalendarModel();
-        $connect = getDatabaseConnection();
-        $res = $calendarModel->insert($connect, array(
-            $body["years"] . "-" . $body["month"] . "-" . $body["day"],
-            $body["hours"],
-            $_SESSION["email"],
-            $body["phone"],
-            $body["country"],
-            $body["city"],
-            $body["address"]
-        ));
+        $res = $productModel->delete();
 
         if ($res == -1) {
             header("Location: /PA/" . $language . "/error");
@@ -84,9 +71,8 @@ class CalendarController
             exit;
         }
 
-        header("Location: /PA/" . $language . "/printCollectUser");
+        header("Location: /PA/" . $language . "/message");
         header("Connection: close");
         exit;
     }
-
 }

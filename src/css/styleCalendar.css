@@ -8187,7 +8187,7 @@ h1, h2, h3, h4, h5,
   height: 500px;
   position: relative;
   margin: 20px auto;
-  background: #7e0cf5; }
+  background: #1093c2; }
 
 /*  Events display */
 .events-container {
@@ -8200,7 +8200,7 @@ h1, h2, h3, h4, h5,
   padding: 0px;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  padding: 0; }
+  padding: 20px; }
   @media (max-width: 767.98px) {
     .events-container {
       width: 100%;
@@ -8429,8 +8429,40 @@ h1, h2, h3, h4, h5,
     background: #28a745; }
 
 .active-date {
-  background: #cd4dcc;
+  background: #1093c2;
   color: #fff; }
+
+#title-hours {
+  color: black;
+  font-size: 18px;
+}
+
+#div-title-hours{
+  height: 40px;
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+#div-hours {
+  margin: 5px;
+  padding-top: 10px;
+}
+
+.past-day{
+  color: #94a3ab !important;
+}
+
+.hours {
+  margin-bottom: 5px;
+  background-color: #44baee;
+  border: 1px solid #3081a4;
+}
+
+.hours:hover{
+  background-color: #3081a4;
+  border: 1px solid #44baee;
+}
 
 .event-date.active-date {
   background: #7e0cf5; }
