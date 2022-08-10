@@ -38,7 +38,7 @@
                         <input type='text' value='" . $value["product_code"] . "' id='barcode" . $i . "' name='barcode" . $i . "' size='35'/>
                 
                         <label>" . $lang["FIELD_QUANTITY"] . "</label>
-                        <input type='int' value='" . $value["quantity"] . "' id='quantity" . $i . "' name='quantity" . $i . "'/>
+                        <input type='number' value='" . $value["quantity"] . "' id='quantity" . $i . "' name='quantity" . $i . "' min='1'/>
                 
                         <button onclick='deleteProduct(" . $i . ")'>-</button>
                 

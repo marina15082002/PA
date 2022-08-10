@@ -37,8 +37,6 @@ class AddProductController
         $productModel = new Models\ProductModel();
         $table = $productModel->getProductsUser();
 
-        var_dump($table);
-
         $title = $lang["TITLE_ADD_PRODUCT"];
         include __DIR__ . "\..\src\addProduct.php";
     }
