@@ -109,11 +109,112 @@ if (preg_match("/^deleteUsers/", $route)) {
     }
 }
 
+if (preg_match("/^deleteUser/", $route)) {
+    include __DIR__ . "\controllers\ProfileController.php";
+    $controller = new PA\ProfileController();
+
+    if ($method == "POST") {
+        $controller->delete();
+        die();
+    }
+}
+
 if (preg_match("/^signout/", $route)) {
     session_start();
     session_destroy();
     header("Location: /PA/" . $language . "/");
     die();
+}
+
+if (preg_match("/^addProduct/", $route)) {
+    include __DIR__ . "\controllers\AddProductController.php";
+    $controller = new PA\AddProductController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+   if ($method == "POST") {
+        $controller->add();
+        die();
+    }
+}
+
+
+if (preg_match("/^calendar/", $route)) {
+    include __DIR__ . "\controllers\CalendarController.php";
+    $controller = new PA\CalendarController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->add();
+        die();
+    }
+}
+
+/*if (preg_match("/^calendarForm/", $route)) {
+    include __DIR__ . "\controllers\CalendarController.php";
+    $controller = new PA\CalendarController();
+
+    if ($method == "POST") {
+        $controller->add();
+        die();
+    }
+}*/
+
+if (preg_match("/^ProductController/", $route)) {
+    include __DIR__ . "\controllers\AddProductController.php";
+    $controller = new PA\AddProductController();
+
+    if ($method == "POST") {
+        $controller->error($_GET["name1"]);
+        die();
+    }
+}
+
+if (preg_match("/^printCollectUser/", $route)) {
+    include __DIR__ . "\controllers\PrintCollectUserController.php";
+    $controller = new PA\PrintCollectUserController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->delete();
+        die();
+    }
+}
+
+if (preg_match("/^message/", $route)) {
+    include __DIR__ . "\controllers\MessageController.php";
+    $controller = new PA\MessageController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+}
+
+if (preg_match("/^profile/", $route)) {
+    include __DIR__ . "\controllers\ProfileController.php";
+    $controller = new PA\ProfileController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->modify();
+        die();
+    }
 }
 
 die();
