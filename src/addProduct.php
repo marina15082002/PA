@@ -1,6 +1,6 @@
 <?php include __DIR__ . "\header.php";?>
 
-<h1>Produits à donner</h1>
+<h1><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
 
 <main>
     <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>

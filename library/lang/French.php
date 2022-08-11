@@ -50,7 +50,7 @@ class Fr
             "TEXT_SIGNUP" => "Vous n'avez pas encore de compte ?",
             "LINK_SIGNUP" => "S'inscrire",
             "FIELD_LOGIN_ERROR" => "Votre adresse mail ou votre mot de passe est incorrect",
-            "TITLE_CALENDAR" => "Calendrier",
+            "TITLE_CALENDAR" => "Horaires",
             "TITLE_ADD_PRODUCT" => "Ajouter un produit",
             "FIELD_BARCODE" => "Code barre",
             "FIELD_QUANTITY" => "Quantité",
@@ -75,7 +75,24 @@ class Fr
             "WED" => "Mer",
             "THU" => "Jeu",
             "FRI" => "Ven",
-            "SAT" => "Sam"
+            "SAT" => "Sam",
+            "TITLE_CALENDAR_PAGE" => "Choisissez une date",
+            "LABEL_HOURS" => "Choisissez un horaire",
+            "LABEL_DATE" => "Date",
+            "LABEL_HOUR" => "Heure",
+            "BTN_CANCEL" => "Annuler",
+            "TITLE_PRINT_COLLECT" => "Votre demande de collect à été annulée",
+            "LINK_ADD_PRODUCT" => "Refaire une demande de collect",
+            "LINK_HOME" => "Retour à la page d'accueil",
+            "9AM" => "09h00",
+            "10AM" => "10h00",
+            "11AM" => "11h00",
+            "12AM" => "12h00",
+            "2PM" => "14h00",
+            "3PM" => "15h00",
+            "4PM" => "16h00",
+            "5PM" => "17h00",
+            "6PM" => "18h00"
         );
         return $lang;
     }

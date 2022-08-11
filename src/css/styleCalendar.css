@@ -8300,7 +8300,7 @@ h1, h2, h3, h4, h5,
       -o-transition: none;
       transition: none; } }
   .left-button:hover, .right-button:hover {
-    color: #7e0cf5 !important; }
+    color: #3081a4 !important; }
 
 .left-button {
   left: 0; }
@@ -8392,7 +8392,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .month:hover {
-  color: #cd4dcc; }
+  color: #3081a4; }
 
 /*  Dates table */
 .table-date {
@@ -8412,7 +8412,7 @@ h1, h2, h3, h4, h5,
   position: relative; }
 
 .table-date:not(.nil):hover {
-  border-color: #cd4dcc; }
+  border-color: #3081a4; }
 
 .event-date {
   border-color: #7e0cf5;
@@ -8456,7 +8456,7 @@ h1, h2, h3, h4, h5,
 .hours {
   margin-bottom: 5px;
   background-color: #44baee;
-  border: 1px solid #3081a4;
+  border: none;
 }
 
 .hours:hover{

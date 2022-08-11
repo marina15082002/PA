@@ -5,7 +5,7 @@
 <section id="calendar" class="ftco-section">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">Calendar</h2>
+                <h2 class="heading-section"><?php echo $lang['TITLE_CALENDAR_PAGE']; ?></h2>
             </div>
         </div>
         <div class="row">
@@ -15,7 +15,7 @@
                         <div class="calendar">
                             <div class="year-header">
                                 <span class="left-button fa fa-chevron-left" id="prev"> </span>
-                                <span class="year" id="label"></span>
+                                <span class="year" id="label"> </span>
                                 <span class="right-button fa fa-chevron-right" id="next"> </span>
                             </div>
                             <table class="months-table w-100">
@@ -56,19 +56,19 @@
                     </div>
                     <div class="events-container">
                         <div id="div-title-hours">
-                            <label id="title-hours""> Choisissez un horaire </label>
+                            <label id="title-hours"><?php echo $lang['LABEL_HOURS']; ?></label>
                         </div>
 
                         <div id="div-hours" class = "row">
-                            <button  onclick="hours(9)" class="col-sm-12 hours" id="button9">9:00</button>
-                            <button  onclick="hours(10)" class="col-sm-12 hours" id="button10">10:00</button>
-                            <button  onclick="hours(11)" class="col-sm-12 hours" id="button11">11:00</button>
-                            <button  onclick="hours(12)" class="col-sm-12 hours" id="button12">12:00</button>
-                            <button  onclick="hours(14)" class="col-sm-12 hours" id="button14">14:00</button>
-                            <button  onclick="hours(15)" class="col-sm-12 hours" id="button15">15:00</button>
-                            <button  onclick="hours(16)" class="col-sm-12 hours" id="button16">16:00</button>
-                            <button  onclick="hours(17)" class="col-sm-12 hours" id="button17">17:00</button>
-                            <button  onclick="hours(18)" class="col-sm-12 hours" id="button18">18:00</button>
+                            <button  onclick="hours(9)" class="col-sm-12 hours" id="button9"><?php echo $lang['9AM']; ?></button>
+                            <button  onclick="hours(10)" class="col-sm-12 hours" id="button10"><?php echo $lang['10AM']; ?></button>
+                            <button  onclick="hours(11)" class="col-sm-12 hours" id="button11"><?php echo $lang['11AM']; ?></button>
+                            <button  onclick="hours(12)" class="col-sm-12 hours" id="button12"><?php echo $lang['12AM']; ?></button>
+                            <button  onclick="hours(14)" class="col-sm-12 hours" id="button14"><?php echo $lang['2PM']; ?></button>
+                            <button  onclick="hours(15)" class="col-sm-12 hours" id="button15"><?php echo $lang['3PM']; ?></button>
+                            <button  onclick="hours(16)" class="col-sm-12 hours" id="button16"><?php echo $lang['4PM']; ?></button>
+                            <button  onclick="hours(17)" class="col-sm-12 hours" id="button17"><?php echo $lang['5PM']; ?></button>
+                            <button  onclick="hours(18)" class="col-sm-12 hours" id="button18"><?php echo $lang['6PM']; ?></button>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
         <div style='position:absolute; visibility: collapse' id='fields' class='alert alert-danger' role='alert'><?php echo $lang["FIELDS_EMPTY"]; ?></div>
         <div style='position:absolute; visibility: collapse' id='phone_alert' class='alert alert-danger' role='alert'><?php echo $lang["FIELD_PHONE_SYNTAX"]; ?></div>
     </div>
-    <button id="confirm" type="button" onclick="validate()">Confirm</button>
+    <button id="confirm" type="button" onclick="validate()"><?php echo $lang['BTN_CONFIRM']; ?></button>
 </form>
 
 <script>

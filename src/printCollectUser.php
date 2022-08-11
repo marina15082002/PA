@@ -4,9 +4,9 @@
     <?php
     foreach ($table_products as $value) {
         echo "
-            <label>Code barre : " . $value["product_code"] . "</label>
-            <label>Nom : " . $value["product_name"] . "</label>
-            <label>Quantité : " . $value["quantity"] . "</label>
+            <label>" . $lang["FIELD_BARCODE"] . " : " . $value["product_code"] . "</label>
+            <label>" . $lang["FIELD_NAME"] . " : " . $value["product_name"] . "</label>
+            <label>" . $lang["FIELD_QUANTITY"] . " : " . $value["quantity"] . "</label>
             <br/>
         ";
     }
@@ -14,18 +14,18 @@
     foreach ($table_infos as $value) {
         echo "
             <br>
-            <label>Date : " . $value["date"] . "</label><br/>
-            <label>Heure : " . $value["hours"] . "</label><br/>
-            <label>Email : " . $value["email"] . "</label><br/>
-            <label>Téléphone : " . $value["phone"] . "</label><br/>
-            <label>Pays : " . $value["country"] . "</label><br/>
-            <label>Ville : " . $value["city"] . "</label><br/>
-            <label>Adresse : " . $value["address"] . "</label><br/>
+            <label>" . $lang["LABEL_DATE"] . " : " . $value["date"] . "</label><br/>
+            <label>" . $lang["LABEL_HOUR"] . " : " . $value["hours"] . "</label><br/>
+            <label>" . $lang["FIELD_EMAIL"] . " : " . $value["email"] . "</label><br/>
+            <label>" . $lang["FIELD_PHONE"] . " : " . $value["phone"] . "</label><br/>
+            <label>" . $lang["FIELD_COUNTRY"] . " : " . $value["country"] . "</label><br/>
+            <label>" . $lang["FIELD_CITY"] . " : " . $value["city"] . "</label><br/>
+            <label>" . $lang["FIELD_ADDRESS"] . " : " . $value["address"] . "</label><br/>
         ";
     }
     ?>
 
     <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
-        <input type="submit" value="Annuler" class="button">
+        <input type="submit" value="<?php echo $lang['BTN_CANCEL']; ?>" class="button">
     </form>
 </main>
