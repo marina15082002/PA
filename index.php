@@ -109,6 +109,16 @@ if (preg_match("/^deleteUsers/", $route)) {
     }
 }
 
+if (preg_match("/^deleteUser/", $route)) {
+    include __DIR__ . "\controllers\ProfileController.php";
+    $controller = new PA\ProfileController();
+
+    if ($method == "POST") {
+        $controller->delete();
+        die();
+    }
+}
+
 if (preg_match("/^signout/", $route)) {
     session_start();
     session_destroy();
@@ -188,6 +198,21 @@ if (preg_match("/^message/", $route)) {
 
     if ($method == "GET") {
         $controller->get();
+        die();
+    }
+}
+
+if (preg_match("/^profile/", $route)) {
+    include __DIR__ . "\controllers\ProfileController.php";
+    $controller = new PA\ProfileController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->modify();
         die();
     }
 }
