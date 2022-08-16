@@ -92,7 +92,9 @@ class Fr
             "3PM" => "15h00",
             "4PM" => "16h00",
             "5PM" => "17h00",
-            "6PM" => "18h00"
+            "6PM" => "18h00",
+            "FIELD_POSTE" => "Poste",
+            "BTN_ADD" => "Ajouter"
         );
         return $lang;
     }
