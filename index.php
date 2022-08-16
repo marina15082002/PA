@@ -99,6 +99,41 @@ if (preg_match("/^modifyUsers/", $route)) {
     }
 }
 
+if (preg_match("/^modifyAdmin/", $route)) {
+    include __DIR__ . "\controllers\ModifyController.php";
+    $controller = new PA\ModifyController();
+
+    if ($method == "GET") {
+        $controller->getAdmin();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->modifyAdmin();
+        die();
+    }
+}
+
+if (preg_match("/^createAdmin/", $route)) {
+    include __DIR__ . "\controllers\ModifyController.php";
+    $controller = new PA\ModifyController();
+
+    if ($method == "POST") {
+        $controller->createAdmin();
+        die();
+    }
+}
+
+if (preg_match("/^deleteAdmin/", $route)) {
+    include __DIR__ . "\controllers\ModifyController.php";
+    $controller = new PA\ModifyController();
+
+    if ($method == "POST") {
+        $controller->deleteAdmin();
+        die();
+    }
+}
+
 if (preg_match("/^deleteUsers/", $route)) {
     include __DIR__ . "\controllers\ModifyController.php";
     $controller = new PA\ModifyController();
