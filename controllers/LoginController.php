@@ -90,9 +90,6 @@ class LoginController
 
         $res = $userModel->getUser($res[0]["id"]);
 
-        var_dump($res);
-
-
         header("Location: /PA/" . $language . "/");
         session_start();
         $_SESSION["id"] = $res[0]["id"];
@@ -104,6 +101,7 @@ class LoginController
         $_SESSION["country"] = $res[0]["country"];
         $_SESSION["city"] = $res[0]["city"];
         $_SESSION["address"] = $res[0]["address"];
+        $_SESSION["poste"] = $res[0]["poste"];
         header("Connection: close");
         exit;
     }

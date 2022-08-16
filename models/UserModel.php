@@ -62,40 +62,47 @@ class UserModel
         $prep = $connect->prepare(
             "SELECT id  FROM " . $this->table . " WHERE email = :email AND password = :password"
         );
-        $prep->execute([
+        $res = $prep->execute([
             'email' => $email,
             'password' => $password
         ]);
 
-        return $prep->fetchAll();
+        $res = $prep->fetchAll();
+
+        if (!$res[0]) {
+            $prep = $connect->prepare(
+                "SELECT id  FROM ADMIN WHERE email = :email AND password = :password"
+            );
+
+            $prep->execute([
+                'email' => $email,
+                'password' => $password
+            ]);
+
+            return $prep->fetchAll();
+        }
+
+        return $res;
     }
 
     public function getUser($id)
     {
         $connect = getDatabaseConnection();
         $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE id = :id");
-        $prep->execute([
+        $res = $prep->execute([
             'id' => $id
         ]);
 
-        return $prep->fetchAll();
-    }
+        $res = $prep->fetchAll();
 
-    public function checkPasswordWithEmail($password, $email)
-    {
-        $connect = getDatabaseConnection();
-        $passwordHash = $connect->prepare("SELECT password FROM " . $this->table . " WHERE email = :email");
-        $passwordHash->execute([
-            'email' => $email
-        ]);
-        $passwordHash = $passwordHash->fetchAll();
-
-        $passwordHash = $passwordHash[0]['password'];
-
-
-        if (password_verify($password, $passwordHash)) {
-            return 1;
+        if (!$res[0]) {
+            $prep = $connect->prepare("SELECT * FROM ADMIN WHERE id = :id");
+            $prep->execute([
+                'id' => $id
+            ]);
+            return $prep->fetchAll();
         }
-        return 0;
+
+        return $res;
     }
 }
