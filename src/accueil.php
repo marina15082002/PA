@@ -20,6 +20,32 @@
         z-index: -1;
         margin-top: 100px;
     }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 0;
+        margin: 0;
+    }
+
+    #viewport {
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .page-wrapper {
+        padding: 0px;
+        margin: 12px 48px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: calc(100% - 2*48px);
+        word-wrap: break-word;
+    }
 </style>
 
 <main id="main">
@@ -37,6 +63,8 @@
                 <div style="display: block; text-align: start; position: relative; opacity: 1; visibility: inherit; transform: translate(0px, 0%);"><i style="color: #2a2a2a; font-style: normal"> Au gaspillage avec </i></div>
                 <div style="display: block; text-align: start; position: relative; opacity: 1; visibility: inherit; transform: translate(0px, 0%);"><i style="color: #0d74d3;font-style: normal;">No More Waste</i></div>
             </h1>
+
+            <label>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
         </div>
     </div>
 
@@ -118,10 +146,11 @@
             /*** Orbit controls ***/
 
             controls = new OrbitControls( camera, renderer.domElement );
+            /*
             controls.addEventListener( 'change', render );
             controls.minDistance = 50;
             controls.maxDistance = 1000;
-
+*/
             /*** Ambient Light ***/
             // soft white light presence on all the scene
 
@@ -195,6 +224,13 @@
 
             window.addEventListener( 'resize', onWindowResize );
         }
+
+        function updateCamera(ev) {
+            let div1 = document.getElementById("main");
+            basket.position.z = -1.5 + window.scrollY / 250.0;
+        }
+
+        window.addEventListener("scroll", updateCamera);
 
         function onWindowResize() {
 
