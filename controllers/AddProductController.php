@@ -68,7 +68,7 @@ class AddProductController
             $res = $productModel->insert(
                 array(
                     $_SESSION['email'],
-                    intval($body['barcode' . $i]),
+                    $body['barcode' . $i],
                     $body['name' . $i],
                     $body['quantity' . $i]
                 )
@@ -81,9 +81,18 @@ class AddProductController
             }
         }
 
-        header("Location: /PA/" . $language . "/calendar");
-        header("Connection: close");
-        exit;
+        $printCollect = $productModel->getCollect($_SESSION['email']);
+        var_dump($printCollect);
+
+        if ($printCollect[0] == "") {
+            header("Location: /PA/" . $language . "/calendar");
+            header("Connection: close");
+            exit;
+        } else {
+            header("Location: /PA/" . $language . "/");
+            header("Connection: close");
+            exit;
+        }
     }
 }
 

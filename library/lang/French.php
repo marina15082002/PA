@@ -97,7 +97,9 @@ class Fr
             "BTN_ADD" => "Ajouter",
             "LABEL_PRODUCTS" => "Produits",
             "LABEL_STATUS" => "Statut",
-            "LABEL_TAB_HOURS" => "Horaires"
+            "LABEL_TAB_HOURS" => "Horaires",
+            "LABEL_COLLECT" => "Modifier la collecte",
+            "FIELD_QUANTITY_SYNTAX" => "La quantité doit être supérieur à 1"
         );
         return $lang;
     }

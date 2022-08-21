@@ -53,4 +53,15 @@ class ProductModel
         $prep->execute();
         return $prep->fetchAll();
     }
+
+    public function getCollect($email)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM collect WHERE email = '" . $email . "'");
+        $prep->execute([
+            "email" => $email
+        ]);
+
+        return $prep->fetchAll();
+    }
 }

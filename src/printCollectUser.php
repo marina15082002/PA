@@ -4,9 +4,9 @@
     <?php
     foreach ($table_products as $value) {
         echo "
-            <label>" . $lang["FIELD_BARCODE"] . " : " . $value["product_code"] . "</label>
-            <label>" . $lang["FIELD_NAME"] . " : " . $value["product_name"] . "</label>
-            <label>" . $lang["FIELD_QUANTITY"] . " : " . $value["quantity"] . "</label>
+            <label>" . $lang["FIELD_BARCODE"] . " : " . htmlspecialchars($value["product_code"], ENT_QUOTES, 'UTF-8') . "</label>
+            <label>" . $lang["FIELD_NAME"] . " : " . htmlspecialchars($value["product_name"], ENT_QUOTES, 'UTF-8') . "</label>
+            <label>" . $lang["FIELD_QUANTITY"] . " : " . htmlspecialchars($value["quantity"], ENT_QUOTES, 'UTF-8') . "</label>
             <br/>
         ";
     }
@@ -14,13 +14,13 @@
     foreach ($table_infos as $value) {
         echo "
             <br>
-            <label>" . $lang["LABEL_DATE"] . " : " . $value["date"] . "</label><br/>
-            <label>" . $lang["LABEL_HOUR"] . " : " . $value["hours"] . "</label><br/>
-            <label>" . $lang["FIELD_EMAIL"] . " : " . $value["email"] . "</label><br/>
-            <label>" . $lang["FIELD_PHONE"] . " : " . $value["phone"] . "</label><br/>
-            <label>" . $lang["FIELD_COUNTRY"] . " : " . $value["country"] . "</label><br/>
-            <label>" . $lang["FIELD_CITY"] . " : " . $value["city"] . "</label><br/>
-            <label>" . $lang["FIELD_ADDRESS"] . " : " . $value["address"] . "</label><br/>
+            <label>" . $lang["LABEL_DATE"] . " : " . htmlspecialchars($value["date"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["LABEL_HOUR"] . " : " . htmlspecialchars($value["hours"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["FIELD_EMAIL"] . " : " . htmlspecialchars($value["email"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["FIELD_PHONE"] . " : " . htmlspecialchars($value["phone"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["FIELD_COUNTRY"] . " : " . htmlspecialchars($value["country"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["FIELD_CITY"] . " : " . htmlspecialchars($value["city"], ENT_QUOTES, 'UTF-8') . "</label><br/>
+            <label>" . $lang["FIELD_ADDRESS"] . " : " . htmlspecialchars($value["address"], ENT_QUOTES, 'UTF-8') . "</label><br/>
         ";
     }
     ?>
