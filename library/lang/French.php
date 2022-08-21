@@ -94,7 +94,10 @@ class Fr
             "5PM" => "17h00",
             "6PM" => "18h00",
             "FIELD_POSTE" => "Poste",
-            "BTN_ADD" => "Ajouter"
+            "BTN_ADD" => "Ajouter",
+            "LABEL_PRODUCTS" => "Produits",
+            "LABEL_STATUS" => "Statut",
+            "LABEL_TAB_HOURS" => "Horaires"
         );
         return $lang;
     }

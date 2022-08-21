@@ -176,6 +176,21 @@ if (preg_match("/^addProduct/", $route)) {
     }
 }
 
+if (preg_match("/^calendarAdmin/", $route)) {
+    include __DIR__ . "\controllers\CalendarController.php";
+    $controller = new PA\CalendarController();
+
+    if ($method == "GET") {
+        $controller->getAdmin();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->addAdmin();
+        die();
+    }
+}
+
 
 if (preg_match("/^calendar/", $route)) {
     include __DIR__ . "\controllers\CalendarController.php";
@@ -191,16 +206,6 @@ if (preg_match("/^calendar/", $route)) {
         die();
     }
 }
-
-/*if (preg_match("/^calendarForm/", $route)) {
-    include __DIR__ . "\controllers\CalendarController.php";
-    $controller = new PA\CalendarController();
-
-    if ($method == "POST") {
-        $controller->add();
-        die();
-    }
-}*/
 
 if (preg_match("/^ProductController/", $route)) {
     include __DIR__ . "\controllers\AddProductController.php";
