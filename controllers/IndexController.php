@@ -33,6 +33,6 @@ class IndexController
         }
 
         $title = $lang["TITLE_INDEX"];
-        include "/src/accueil.php";
+        include "/app/src/accueil.php";
     }
 }
