@@ -6,22 +6,22 @@ $route = $_REQUEST["route"] ?? "";
 $method = $_SERVER["REQUEST_METHOD"];
 
 if (preg_match("/^en/", $route)) {
-    include __DIR__ . "\library\lang\English.php";
+    include "./library/lang/English.php";
     $GLOBALS["site_lang"] = new PA\Lang\En();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "en";
 } else if (preg_match("/^it/", $route)) {
-    include __DIR__ . "\library\lang\Italian.php";
+    include "./library/lang/Italian.php";
     $GLOBALS["site_lang"] = new PA\Lang\It();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "it";
 } else if (preg_match("/^pt/", $route)) {
-    include __DIR__ . "\library\lang\Portuguese.php";
+    include "./library/lang/Portuguese.php";
     $GLOBALS["site_lang"] = new PA\Lang\Pt();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "pt";
 } else if (preg_match("/^ie/", $route)) {
-    include __DIR__ . "\library\lang\Irish.php";
+    include "./library/lang/Irish.php";
     $GLOBALS["site_lang"] = new PA\Lang\Ie();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "ie";
@@ -31,6 +31,11 @@ if (preg_match("/^en/", $route)) {
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "fr";
 }
+
+echo "<br>";
+echo $route;
+echo "<br>";
+var_dump(explode("/", $route, 2));
 
 $route = explode("/", $route, 2)[1];
 
