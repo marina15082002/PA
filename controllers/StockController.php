@@ -39,9 +39,7 @@ class StockController
             $language = "fr";
         }
 
-/*
         $title = $lang["TITLE_LOGIN"];
         include __DIR__ . "\..\src\stock.php";
-*/
     }
 }

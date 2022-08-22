@@ -2,25 +2,46 @@
 
 <h1>Stock</h1>
 
-<?php
-    foreach ($table as $value) {
-        echo "
-        <div id='product" . $i . "'>
-            <label>" . $lang['FIELD_NAME'] . "</label>
-            <input type='text' value='" . $value["product_name"] . "' id='name" . $i . "' name='name" . $i . "' size='35'/>
-        
-            <label>" . $lang["FIELD_BARCODE"] . "</label>
-            <input type='text' value='" . $value["product_code"] . "' id='barcode" . $i . "' name='barcode" . $i . "' size='35'/>
-        
-            <label>" . $lang["FIELD_QUANTITY"] . "</label>
-            <input type='number' value='" . $value["quantity"] . "' id='quantity" . $i . "' name='quantity" . $i . "' min='1'/>
-        
-            <button onclick='deleteProduct(" . $i . ")'>-</button>
-        
-            <div style='position:absolute; visibility: collapse' id='fieldEmptyError" . $i . "' class='alert alert-danger' role='alert'>" . $lang["FIELDS_EMPTY"] . "</div>
-            <div style='position:absolute; visibility: collapse' id='barcodeSyntaxError" . $i . "' class='alert alert-danger' role='alert'>" . $lang['FIELD_BARCODE_SYNTAX'] . "</div>
-            <div style='position:absolute; visibility: collapse' id='quantitySyntaxError" . $i . "' class='alert alert-danger' role='alert'>" . $lang['FIELD_QUANTITY_SYNTAX'] . "</div>
-        </div>";
-        $i += 1;
+<input type="text" value="" name="search" id="search">
+
+
+<script>
+    printStock("");
+
+    document.getElementById("search").addEventListener("keyup", function(event) {
+        printStock(event.target.value);
+    });
+
+    function printStock(ev) {
+        if (document.getElementById("product")) {
+            document.getElementById("product").remove();
+        }
+
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                let response = JSON.parse(req.responseText);
+
+                for (let i = 0; i < response['stock'].length; ++i) {
+                    let product_code = response['stock'][i]['product_code'];
+                    let reg = new RegExp("^" + ev);
+                    if (reg.test(product_code)) {
+                        let product = response['stock'][i];
+                        let productDiv = document.createElement('div');
+                        productDiv.id = 'product';
+                        productDiv.innerHTML = `
+                    <div id="product-info">
+                        <p>${product['product_code']}</p>
+                        <p>${product['quantity']}</p>
+                    </div>
+                `;
+                        document.body.appendChild(productDiv);
+                    }
+                }
+            }
+        };
+        req.open('GET', '/PA/controllers/GetStock.php');
+        req.send();
     }
-    ?>
+</script>
+

@@ -64,4 +64,13 @@ class ProductModel
 
         return $prep->fetchAll();
     }
+
+    public function getStock()
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM stockage");
+        $prep->execute();
+
+        return $prep->fetchAll();
+    }
 }
