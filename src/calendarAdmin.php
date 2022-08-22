@@ -176,8 +176,8 @@
         document.getElementById(idButton).setAttribute('onclick', 'showProducts("' + email + '", "' + idTr  + '", "' + idButton + '")');
     }
 
-    function changeStatus(status, index, email) {
-        if (status === false) {
+    function changeStatus(old_status, index, email) {
+        if (old_status === false) {
             document.getElementById("path" + index).setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
             document.getElementById("svg" + index).setAttribute("fill", "green");
             document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + email + "')");
@@ -186,8 +186,8 @@
             document.getElementById("svg" + index).setAttribute("fill", "red");
             document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(false, " + index + ", '" + email + "')");
         }
-
-
+        fetch("/PA/controllers/SetStatus.php?status=" + (!old_status).toString() + "&email=" + email)
+            .then((response) => console.log("Status changed"));
     }
 
 </script>
