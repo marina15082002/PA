@@ -32,11 +32,6 @@ if (preg_match("/^en/", $route)) {
     $language = "fr";
 }
 
-echo "<br>";
-echo $route;
-echo "<br>";
-var_dump(explode("/", $route, 2));
-
 $route = explode("/", $route, 2)[1];
 
 if ($route == "https://project-no-more-waste.herokuapp.com/") {
