@@ -34,6 +34,15 @@ if (preg_match("/^en/", $route)) {
 
 $route = explode("/", $route, 2)[1];
 
+if ($route == "https://project-no-more-waste.herokuapp.com/") {
+    include __DIR__ . "\controllers\IndexController.php";
+    $controller = new PA\IndexController();
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+}
+
 if ($route == "") {
     include __DIR__ . "\controllers\IndexController.php";
     $controller = new PA\IndexController();
