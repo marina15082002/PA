@@ -109,6 +109,7 @@
 
         function check() {
             let i = 1;
+            console.log(document.getElementById("quantitySyntaxError" + i));
             while (document.getElementById("name" + i)) {
                 if (document.getElementById("fieldEmptyError" + i).style.visibility === "visible") {
                     document.getElementById("fieldEmptyError" + i).style.visibility = "collapse";
@@ -159,6 +160,7 @@
             newDivProduct.children[5].id = "quantity" + (index + 1);
             newDivProduct.children[7].id = "fieldEmptyError" + (index + 1);
             newDivProduct.children[8].id = "barcodeSyntaxError" + (index + 1);
+            newDivProduct.children[9].id = "quantitySyntaxError" + (index + 1);
             newDivProduct.children[1].value = "";
             newDivProduct.children[3].value = "";
             newDivProduct.children[5].value = "";

@@ -207,6 +207,16 @@ if (preg_match("/^calendar/", $route)) {
     }
 }
 
+if (preg_match("/^stock/", $route)) {
+    include __DIR__ . "\controllers\StockController.php";
+    $controller = new PA\StockController();
+
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+}
+
 if (preg_match("/^ProductController/", $route)) {
     include __DIR__ . "\controllers\AddProductController.php";
     $controller = new PA\AddProductController();
