@@ -29,10 +29,6 @@ class StockController
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
-            $language = "ie";
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();

@@ -20,11 +20,6 @@ if (preg_match("/^en/", $route)) {
     $GLOBALS["site_lang"] = new PA\Lang\Pt();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "pt";
-} else if (preg_match("/^ie/", $route)) {
-    include __DIR__ . "\library\lang\Irish.php";
-    $GLOBALS["site_lang"] = new PA\Lang\Ie();
-    $lang = $GLOBALS["site_lang"]->getArray();
-    $language = "ie";
 } else {
     include __DIR__ . "\library\lang\French.php";
     $GLOBALS["site_lang"] = new PA\Lang\Fr();
