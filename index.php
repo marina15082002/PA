@@ -49,7 +49,7 @@ if ($route == "https://project-no-more-waste.herokuapp.com/") {
 }
 
 if ($route == "") {
-    include __DIR__ . "\controllers\IndexController.php";
+    include "./controllers/IndexController.php";
     $controller = new PA\IndexController();
     if ($method == "GET") {
         $controller->get();
