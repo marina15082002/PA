@@ -23,8 +23,10 @@
         position: relative;
         right: 0;
         width: calc(100%*2);
-        height: calc(100% - 2rem);
-        margin: 1rem 0;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 1rem 0;
+        overflow: scroll;
         display: flex;
         flex-direction: row;
         transition: all 0.5s ease-out;
@@ -53,13 +55,13 @@
 
 <main>
     <div class="d-lg-flex half">
-        <div class="bg order-1 order-md-2" style="background-image: url('../PA/src/imgs/bg_1.jpg');"></div>
+        <div class="bg order-1 order-md-2" style="background-image: url('/PA/src/imgs/bg_1.jpg');"></div>
         <form method="POST" action="signup" enctype="multipart/form-data" id="left-panel-container" class="contents order-2 order-md-1">
             <div id="left-panel">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-7">
                         <h3><strong><?php echo $lang["TITLE_SIGNUP"] ?></strong></h3>
-                        <p class="mb-4"><?php echo $lang["TEXT_LOGIN"] ?><a href="signup"><?php echo $lang["LINK_LOGIN"] ?></a></p>
+                        <p class="mb-4"><?php echo $lang["TEXT_LOGIN"] ?> <a href="signup"><?php echo $lang["LINK_LOGIN"] ?></a></p>
 
                         <!-- User type -->
                         <div class="form-group" id="user-type-form-group">
