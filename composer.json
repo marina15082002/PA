@@ -1,5 +1,5 @@
 {
-    "name": "marinaPA",
+    "name": "marina/pa",
     "autoload": {
         "psr-4": {
             "Marina\\PA\\": "src/"
