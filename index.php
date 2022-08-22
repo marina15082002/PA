@@ -26,7 +26,7 @@ if (preg_match("/^en/", $route)) {
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "ie";
 } else {
-    include "\PA\library\lang\French.php";
+    include "./library/lang/French.php";
     $GLOBALS["site_lang"] = new PA\Lang\Fr();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "fr";
