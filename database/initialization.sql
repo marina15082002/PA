@@ -54,4 +54,5 @@ CREATE TABLE IF NOT EXISTS PRODUCT_COLLECT(
 ) ENGINE = InnoDB;
 
 INSERT INTO USERS (type, name, email, siren, phone, country, city, address, password) VALUES ("Entreprise", "Robert", "marina@gmail.com", "123456789", "0781811058", "France", "Paris", "1 rue de la paix", "97dee97560699a639f3cf55c464855eefe97ae97493b242fe01ecdbab39ea463");
+INSERT INTO USERS (type, name, email, siren, phone, country, city, address, password) VALUES ("Entreprise", "Robert", "marina1508@gmail.com", "123456789", "0781811058", "France", "Paris", "1 rue de la paix", "97dee97560699a639f3cf55c464855eefe97ae97493b242fe01ecdbab39ea463");
 
