@@ -112,6 +112,66 @@
         }
     }
 
+    function showProducts(email, idTr, idButton){
+        let newTd;
+
+        if (document.getElementById("productsTable")) {
+            document.getElementById("productsTable").remove();
+        }
+
+        let newTable = document.createElement("table");
+        newTable.className = "table";
+        newTable.id = "productsTable";
+        let newThead = document.createElement("thead");
+        let newTr = document.createElement("tr");
+        let newTh = document.createElement("th");
+        newTh.innerHTML = "Product_code";
+        newTr.appendChild(newTh);
+        newTh = document.createElement("th");
+        newTh.innerHTML = "Product_name";
+        newTr.appendChild(newTh);
+        newTh = document.createElement("th");
+        newTh.innerHTML = "Quantity";
+        newTr.appendChild(newTh);
+        newThead.appendChild(newTr);
+        newTable.appendChild(newThead);
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                let response = JSON.parse(req.responseText);
+
+                for (let i = 0; i < response['tableProducts'].length; ++i) {
+                    if (email === response['tableProducts'][i]['email'] ) {
+                        newTr = document.createElement('tr');
+
+                        newTd = document.createElement('td');
+                        newTd.innerHTML = response['tableProducts'][i]['product_code'];
+                        newTr.appendChild(newTd);
+
+                        newTd = document.createElement('td');
+                        newTd.innerHTML = response['tableProducts'][i]['product_name'];
+                        newTr.appendChild(newTd);
+
+                        newTd = document.createElement('td');
+                        newTd.innerHTML = response['tableProducts'][i]['quantity'];
+                        newTr.appendChild(newTd);
+
+                        newTable.appendChild(newTr);
+                    }
+                }
+                document.getElementById(idTr).after(newTable);
+                document.getElementById(idButton).setAttribute("onclick", 'hideProducts("' + email + '", "' + idTr  + '", "' + idButton + '")');
+            }
+        };
+        req.open('GET', '/PA/controllers/Calendar.php');
+        req.send();
+    }
+
+    function hideProducts(email, idTr, idButton) {
+        document.getElementById("productsTable").remove();
+        document.getElementById(idButton).setAttribute('onclick', 'showProducts("' + email + '", "' + idTr  + '", "' + idButton + '")');
+    }
+
 </script>
 
 <script src="/PA/src/js/jquery.min.js"></script>
@@ -230,7 +290,45 @@
             let table = document.getElementById('table-date');
             let tr, td, button, email, newTable, newTr, newTd, newButton, newEmail;
 
-            // php
+            const req = new XMLHttpRequest();
+            req.onreadystatechange = function () {
+                if (req.readyState === 4) {
+                    let response = JSON.parse(req.responseText);
+
+                    for (let i = 0; i < response['tableCollect'].length; ++i) {
+                        if (yearTmp + '-' + monthTmp + '-' + event.data.day === response['tableCollect'][i]['date']) {
+                            newTr = document.createElement('tr');
+                            newTr.id = "tr" + i;
+
+                            newTd = document.createElement('td');
+                            newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                            newTr.appendChild(newTd);
+
+                            newTd = document.createElement('td');
+                            newTd.innerHTML = response['tableCollect'][i]['email'];
+                            newTr.appendChild(newTd);
+
+                            newTd = document.createElement('td');
+                            newTd.innerHTML = response['tableCollect'][i]['phone'];
+                            newTr.appendChild(newTd);
+
+                            newTd = document.createElement('td');
+                            newTd.innerHTML = response['tableCollect'][i]['address'];
+                            newTr.appendChild(newTd);
+
+                            newButton = document.createElement('button');
+                            newButton.innerHTML = 'Voir produits';
+                            newButton.id = "button" + i;
+                            newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
+                            newTr.appendChild(newButton);
+
+                            table.appendChild(newTr);
+                        }
+                    }
+                }
+            };
+            req.open('GET', '/PA/controllers/Calendar.php');
+            req.send();
         };
 
 // Event handler for when a month is clicked
