@@ -45,7 +45,6 @@ class LoginController
 
         $res = $userModel->checkEmailPassword($body['email'], hash("sha256", $body["password"]));
 
-        echo $res;
         if (empty($res)) {
             header("Location: /PA/" . $language . "/login?passwordEmailError=true");
             header("Connection: close");
@@ -88,7 +87,7 @@ class LoginController
             exit;
         }
 
-        $res = $userModel->getUser($res[0]["id"]);
+        $res = $userModel->getUser($body['email']);
 
         header("Location: /PA/" . $language . "/");
         session_start();
@@ -102,6 +101,7 @@ class LoginController
         $_SESSION["city"] = $res[0]["city"];
         $_SESSION["address"] = $res[0]["address"];
         $_SESSION["poste"] = $res[0]["poste"];
+        $_SESSION["role"] = $res[0]["role"];
         header("Connection: close");
         exit;
     }
