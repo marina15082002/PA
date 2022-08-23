@@ -99,7 +99,12 @@ class Fr
             "5PM" => "17h00",
             "6PM" => "18h00",
             "FIELD_POSTE" => "Poste",
-            "BTN_ADD" => "Ajouter"
+            "BTN_ADD" => "Ajouter",
+            "LABEL_PRODUCTS" => "Produits",
+            "LABEL_STATUS" => "Statut",
+            "LABEL_TAB_HOURS" => "Horaires",
+            "LABEL_COLLECT" => "Modifier la collecte",
+            "FIELD_QUANTITY_SYNTAX" => "La quantité doit être supérieur à 1"
         );
         return $lang;
     }
