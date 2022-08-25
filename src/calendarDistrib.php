@@ -2,6 +2,12 @@
 
 <link rel="stylesheet" href="/PA/src/css/styleCalendar.css">
 
+<h1>Liste des Distributions</h1>
+
+<?php
+    var_dump($tableDistrib);
+?>
+
 <section id="calendar" class="ftco-section">
     <div class="row">
         <div class="col-md-12">
@@ -57,12 +63,10 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col"><?php echo $lang["LABEL_TAB_HOURS"]; ?></th>
-        <th scope="col"><?php echo $lang["FIELD_EMAIL"]; ?></th>
-        <th scope="col"><?php echo $lang["FIELD_PHONE"]; ?></th>
         <th scope="col"><?php echo $lang["FIELD_ADDRESS"]; ?></th>
         <th scope="col"><?php echo $lang["LABEL_PRODUCTS"]; ?></th>
         <th scope="col"><?php echo $lang["LABEL_STATUS"]; ?></th>
+        <th scope="col">Récapitulatif</th>
     </tr>
     </thead>
     <tbody id="table-date">
@@ -70,53 +74,21 @@
     </tbody>
 </table>
 
-<form style="visibility: collapse; position: absolute" id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
-    <input type="hidden" id="day" name="day" value="">
-    <input type="hidden" id="year" name="years" value="">
-    <input type="hidden" id="month" name="month" value="">
-    <input type="hidden" id="hours" name="hours" value="">
-
-    <input type="text" id="phone" name="phone" value="">
-    <input type="text" id="country" name="country" value="">
-    <input type="text" id="city" name="city" value="">
-    <input type="text" id="address" name="address" value="">
-
-    <div style='position:absolute; visibility: collapse' id='fields' class='alert alert-danger' role='alert'><?php echo $lang["FIELDS_EMPTY"]; ?></div>
-    <div style='position:absolute; visibility: collapse' id='phone_alert' class='alert alert-danger' role='alert'><?php echo $lang["FIELD_PHONE_SYNTAX"]; ?></div>
-
-    <button id="confirm" type="button" onclick="submitForm()"><?php echo $lang['BTN_CONFIRM']; ?></button>
-</form>
-
 <label id="emailLabel" style="visibility: collapse; position: absolute;"></label>
 
 <svg style="visibility: collapse; position: absolute" id="checkFalse" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="red" class="bi bi-check-square-fill" viewBox="0 0 16 16">
     <path id="pathFalse" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
 </svg>
 
+<form style="visibility: collapse; position: absolute" id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
+    <input type="hidden" id="day" name="day" value="">
+    <input type="hidden" id="year" name="years" value="">
+    <input type="hidden" id="month" name="month" value="">
+    <input type="hidden" id="hours" name="hours" value="">
+</form>
 
 <script>
-    function hours(hour) {
-        document.getElementById("hours").value = hour;
-    }
-
-    function submitForm() {
-        document.getElementById("fields").style.visibility = "collapse";
-        document.getElementById("phone_alert").style.visibility = "collapse";
-        document.getElementById("fields").style.position = "absolute";
-        document.getElementById("phone_alert").style.position = "absolute";
-
-        if (document.getElementById("phone").value === "" || document.getElementById("country").value === "" || document.getElementById("city").value === "" || document.getElementById("address").value === "") {
-            document.getElementById("fields").style.visibility = "visible";
-            document.getElementById("fields").style.position = "relative";
-        } else if (!document.getElementById("phone").value.match(/^[0-9]{10}$/)) {
-            document.getElementById("phone_alert").style.visibility = "visible";
-            document.getElementById("phone_alert").style.position = "relative";
-        } else {
-            document.getElementById("calendarForm").submit();
-        }
-    }
-
-    function showProducts(email, idTr, idButton){
+    function showProducts(id, idTr, idButton){
         let newTd;
 
         if (document.getElementById("productsTable")) {
@@ -132,9 +104,6 @@
         newTh.innerHTML = "Product_code";
         newTr.appendChild(newTh);
         newTh = document.createElement("th");
-        newTh.innerHTML = "Product_name";
-        newTr.appendChild(newTh);
-        newTh = document.createElement("th");
         newTh.innerHTML = "Quantity";
         newTr.appendChild(newTh);
         newThead.appendChild(newTr);
@@ -145,15 +114,11 @@
                 let response = JSON.parse(req.responseText);
 
                 for (let i = 0; i < response['tableProducts'].length; ++i) {
-                    if (email === response['tableProducts'][i]['email'] ) {
+                    if (id === response['tableProducts'][i]['id_distrib'] ) {
                         newTr = document.createElement('tr');
 
                         newTd = document.createElement('td');
                         newTd.innerHTML = response['tableProducts'][i]['product_code'];
-                        newTr.appendChild(newTd);
-
-                        newTd = document.createElement('td');
-                        newTd.innerHTML = response['tableProducts'][i]['product_name'];
                         newTr.appendChild(newTd);
 
                         newTd = document.createElement('td');
@@ -164,29 +129,30 @@
                     }
                 }
                 document.getElementById(idTr).after(newTable);
-                document.getElementById(idButton).setAttribute("onclick", 'hideProducts("' + email + '", "' + idTr  + '", "' + idButton + '")');
+                document.getElementById(idButton).setAttribute("onclick", 'hideProducts("' + id + '", "' + idTr  + '", "' + idButton + '")');
             }
         };
-        req.open('GET', '/PA/controllers/Calendar.php');
+        req.open('GET', '/PA/controllers/CalendarDistrib.php');
         req.send();
     }
 
-    function hideProducts(email, idTr, idButton) {
+    function hideProducts(id, idTr, idButton) {
         document.getElementById("productsTable").remove();
-        document.getElementById(idButton).setAttribute('onclick', 'showProducts("' + email + '", "' + idTr  + '", "' + idButton + '")');
+        document.getElementById(idButton).setAttribute('onclick', 'showProducts("' + id + '", "' + idTr  + '", "' + idButton + '")');
     }
 
-    function changeStatus(old_status, index, email) {
+    function changeStatus(old_status, index, id) {
+        console.log(id);
         if (old_status === false) {
             document.getElementById("path" + index).setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
             document.getElementById("svg" + index).setAttribute("fill", "green");
-            document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + email + "')");
+            document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + id + "')");
         } else {
             document.getElementById("path" + index).setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z");
             document.getElementById("svg" + index).setAttribute("fill", "red");
-            document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(false, " + index + ", '" + email + "')");
+            document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(false, " + index + ", '" + id + "')");
         }
-        fetch("/PA/controllers/SetStatus.php?status=" + (!old_status).toString() + "&email=" + email)
+        fetch("/PA/controllers/SetStatusDistrib.php?status=" + (!old_status).toString() + "&id=" + id)
             .then((response) => console.log("Status changed"));
     }
 
@@ -254,35 +220,19 @@
                             if (req.readyState === 4) {
                                 let response = JSON.parse(req.responseText);
 
-                                response['tableCollect'].sort(function (a, b) {
-                                    return a.hours - b.hours;
-                                });
-
-                                for (let i = 0; i < response['tableCollect'].length; ++i) {
-                                    if (year + '-' + monthTmp + '-' + day === response['tableCollect'][i]['date']) {
+                                for (let i = 0; i < response['tableDistrib'].length; ++i) {
+                                    if (year + '-' + monthTmp + '-' + day === response['tableDistrib'][i]['date']) {
                                         newTr = document.createElement('tr');
                                         newTr.id = "tr" + i;
 
                                         newTd = document.createElement('td');
-                                        newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
-                                        newTr.appendChild(newTd);
-
-                                        newTd = document.createElement('td');
-                                        newTd.innerHTML = response['tableCollect'][i]['email'];
-                                        newTr.appendChild(newTd);
-
-                                        newTd = document.createElement('td');
-                                        newTd.innerHTML = response['tableCollect'][i]['phone'];
-                                        newTr.appendChild(newTd);
-
-                                        newTd = document.createElement('td');
-                                        newTd.innerHTML = response['tableCollect'][i]['address'];
+                                        newTd.innerHTML = response['tableDistrib'][i]['address'];
                                         newTr.appendChild(newTd);
 
                                         newButton = document.createElement('button');
                                         newButton.innerHTML = 'Voir produits';
                                         newButton.id = "button" + i;
-                                        newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
+                                        newButton.setAttribute('onclick', 'showProducts("' + response['tableDistrib'][i]['id'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
                                         newTr.appendChild(newButton);
 
                                         newTd = document.createElement('td');
@@ -291,12 +241,12 @@
                                         newSVG.style.position = 'relative';
                                         newSVG.id = "svg" + i;
                                         newPath = document.getElementById('pathFalse').cloneNode();
-                                        if (response['tableCollect'][i]['status'] == 1) {
+                                        if (response['tableDistrib'][i]['status'] == 1) {
                                             newPath.setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
                                             newSVG.setAttribute("fill", "green");
-                                            newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                            newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
                                         } else {
-                                            newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                            newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
                                         }
                                         newPath.id = "path" + i;
                                         newSVG.appendChild(newPath);
@@ -321,8 +271,8 @@
 
                             for(var i=0; i<35+first_day; i++) {
                                 var newDay = i-first_day+1;
-                                for (let j = 0; j < response['tableCollect'].length; ++j) {
-                                    if (year + '-' + monthTmp + '-' + newDay === response['tableCollect'][j]['date']) {
+                                for (let j = 0; j < response['tableDistrib'].length; ++j) {
+                                    if (year + '-' + monthTmp + '-' + newDay === response['tableDistrib'][j]['date']) {
                                         if (!document.getElementById(newDay).classList.contains("date-event")) {
                                             document.getElementById(newDay).className += ' date-event';
                                         }
@@ -332,7 +282,7 @@
                             }
                         }
                     };
-                    req.open('GET', '/PA/controllers/Calendar.php');
+                    req.open('GET', '/PA/controllers/CalendarDistrib.php');
                     req.send();
 
 
@@ -379,35 +329,19 @@
                 if (req.readyState === 4) {
                     let response = JSON.parse(req.responseText);
 
-                    response['tableCollect'].sort(function (a, b) {
-                        return a.hours - b.hours;
-                    });
-
-                    for (let i = 0; i < response['tableCollect'].length; ++i) {
-                        if (yearTmp + '-' + monthTmp + '-' + event.data.day === response['tableCollect'][i]['date']) {
+                    for (let i = 0; i < response['tableDistrib'].length; ++i) {
+                        if (yearTmp + '-' + monthTmp + '-' + event.data.day === response['tableDistrib'][i]['date']) {
                             newTr = document.createElement('tr');
                             newTr.id = "tr" + i;
 
                             newTd = document.createElement('td');
-                            newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
-                            newTr.appendChild(newTd);
-
-                            newTd = document.createElement('td');
-                            newTd.innerHTML = response['tableCollect'][i]['email'];
-                            newTr.appendChild(newTd);
-
-                            newTd = document.createElement('td');
-                            newTd.innerHTML = response['tableCollect'][i]['phone'];
-                            newTr.appendChild(newTd);
-
-                            newTd = document.createElement('td');
-                            newTd.innerHTML = response['tableCollect'][i]['address'];
+                            newTd.innerHTML = response['tableDistrib'][i]['address'];
                             newTr.appendChild(newTd);
 
                             newButton = document.createElement('button');
                             newButton.innerHTML = 'Voir produits';
                             newButton.id = "button" + i;
-                            newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
+                            newButton.setAttribute('onclick', 'showProducts("' + response['tableDistrib'][i]['id'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
                             newTr.appendChild(newButton);
 
                             newTd = document.createElement('td');
@@ -416,12 +350,12 @@
                             newSVG.style.position = 'relative';
                             newSVG.id = "svg" + i;
                             newPath = document.getElementById('pathFalse').cloneNode();
-                            if (response['tableCollect'][i]['status'] == 1) {
+                            if (response['tableDistrib'][i]['status'] == 1) {
                                 newPath.setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
                                 newSVG.setAttribute("fill", "green");
-                                newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
                             } else {
-                                newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
                             }
                             newPath.id = "path" + i;
                             newSVG.appendChild(newPath);
@@ -433,7 +367,7 @@
                     }
                 }
             };
-            req.open('GET', '/PA/controllers/Calendar.php');
+            req.open('GET', '/PA/controllers/CalendarDistrib.php');
             req.send();
         };
 

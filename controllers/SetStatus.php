@@ -30,7 +30,7 @@ foreach ($product_collect as $product) {
 
     $prep = $connect->prepare("SELECT quantity FROM STOCKAGE WHERE product_code = :product;");
     $prep->execute([
-        'product' => $product_collect[0]['product_code']
+        'product' => $product['product_code']
     ]);
     $stockage = $prep->fetchAll();
 

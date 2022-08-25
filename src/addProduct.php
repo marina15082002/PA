@@ -109,7 +109,6 @@
 
         function check() {
             let i = 1;
-            console.log(document.getElementById("quantitySyntaxError" + i));
             while (document.getElementById("name" + i)) {
                 if (document.getElementById("fieldEmptyError" + i).style.visibility === "visible") {
                     document.getElementById("fieldEmptyError" + i).style.visibility = "collapse";
