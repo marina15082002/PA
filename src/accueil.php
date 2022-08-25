@@ -4,6 +4,7 @@
 /*
     if (!empty($_SESSION['id'])) {
         echo "<a href='signout'>Déconnexion</a>";
+        echo $_SESSION['email'];
     }
 */
 ?>

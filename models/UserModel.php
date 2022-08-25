@@ -53,7 +53,23 @@ class UserModel
             'password' => $password
         ]);
 
-        return !!$prep->fetch();
+        $res = $prep->fetchAll();
+
+        if (!$res[0]) {
+            echo "test";
+            $prep = $connect->prepare(
+                "SELECT *  FROM ADMIN WHERE email = :email AND password = :password"
+            );
+
+            $prep->execute([
+                'email' => $email,
+                'password' => $password
+            ]);
+
+            return !!$prep->fetchAll();
+        }
+
+        return !!$res;
     }
 
     public function userConnect($email, $password)
@@ -62,29 +78,48 @@ class UserModel
         $prep = $connect->prepare(
             "SELECT id  FROM " . $this->table . " WHERE email = :email AND password = :password"
         );
-        $prep->execute([
+        $res = $prep->execute([
             'email' => $email,
             'password' => $password
         ]);
 
-        return $prep->fetchAll();
+        $res = $prep->fetchAll();
+
+        if (!$res[0]) {
+            echo "test";
+            $prep = $connect->prepare(
+                "SELECT id  FROM ADMIN WHERE email = :email AND password = :password"
+            );
+
+            $prep->execute([
+                'email' => $email,
+                'password' => $password
+            ]);
+
+            return $prep->fetchAll();
+        }
+
+        return $res;
     }
 
-    public function checkPasswordWithEmail($password, $email)
+    public function getUser($email)
     {
         $connect = getDatabaseConnection();
-        $passwordHash = $connect->prepare("SELECT password FROM " . $this->table . " WHERE email = :email");
-        $passwordHash->execute([
+        $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE email = :email");
+        $res = $prep->execute([
             'email' => $email
         ]);
-        $passwordHash = $passwordHash->fetchAll();
 
-        $passwordHash = $passwordHash[0]['password'];
+        $res = $prep->fetchAll();
 
-
-        if (password_verify($password, $passwordHash)) {
-            return 1;
+        if (!$res[0]) {
+            $prep = $connect->prepare("SELECT * FROM ADMIN WHERE email = :email");
+            $prep->execute([
+                'email' => $email
+            ]);
+            return $prep->fetchAll();
         }
-        return 0;
+
+        return $res;
     }
 }

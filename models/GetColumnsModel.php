@@ -19,4 +19,15 @@ class GetColumnsModel
 
         return $prep->fetchAll();
     }
+
+    public function getUser($connect, $table, $id)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM " . $table . " WHERE id = :id");
+        $prep->execute([
+            "id" => $id
+        ]);
+
+        return $prep->fetchAll();
+    }
 }

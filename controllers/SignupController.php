@@ -26,9 +26,6 @@ class SignupController
         } else if (preg_match("/^pt/", $route)) {
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();
@@ -48,8 +45,6 @@ class SignupController
             $language = "it";
         } else if (preg_match("/^pt/", $route)) {
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $language = "ie";
         } else {
             $language = "fr";
         }
@@ -59,17 +54,9 @@ class SignupController
 
         $this->checkInputs($language);
 
-        if (isset($body['company']) || $body['company']) {
-            $type = $body['company'];
-        } else if (isset($body['association']) || $body['association']) {
-            $type = $body['association'];
-        } else {
-            $type = $body['particular'];
-        }
-
         $res = $userModel->insert(
             array(
-                $type,
+                $body['type'],
                 $body['name'],
                 $body['email'],
                 $body['siren'],
@@ -110,7 +97,7 @@ class SignupController
     {
         $body = $_POST;
 
-        if ((!isset($body['company']) || !$body['company']) && ((!isset($body['association']) || !$body['association'])) && ((!isset($body['particular']) || !$body['particular']))) {
+        if ((!isset($body['type']) || !$body['type'])) {
             header("Location: /PA/" . $language . "/signup?typeEmptyError=true");
             header("Connection: close");
             exit;

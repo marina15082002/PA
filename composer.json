@@ -1,5 +1,5 @@
 {
-    "name": "marina/PA",
+    "name": "marina/pa",
     "autoload": {
         "psr-4": {
             "Marina\\PA\\": "src/"
@@ -11,10 +11,5 @@
             "email": "marina.robert1508@gmail.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Marina\\PA\\": "src/"
-        }
-    },
     "require": {}
 }
