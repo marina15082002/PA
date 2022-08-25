@@ -8458,14 +8458,18 @@ h1, h2, h3, h4, h5,
 }
 
 .hours {
+  outline: unset !important;
   margin-bottom: 5px;
+  border: 1px solid #44baee;
   background-color: #44baee;
-  border: none;
 }
 
-.hours:hover{
+.hours:hover {
   background-color: #3081a4;
-  border: 1px solid #44baee;
+}
+
+.hours[selected="true"] {
+  background-color: #3794BD;
 }
 
 .event-date.active-date {
