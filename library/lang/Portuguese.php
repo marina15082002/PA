@@ -8,6 +8,7 @@ class Pt
     {
         $lang = array(
             "FIELD_EMPTY" => "Campo obrigatório",
+            "FIELD_NAME" => "Nome",
             "FIELDS_EMPTY" => "Todos os campos são obrigatórios",
             "BTN_CONFIRM" => "Confirmar",
             "BTN_MODIFY" => "Editar",
@@ -61,6 +62,8 @@ class Pt
             "FIELD_BARCODE_SYNTAX" => "Formato errado: Código de barras é composto por 13 dígitos",
             "TITLE_PRINT_COLLECT_USER" => "Solicitação de cobrança",
             "TITLE_MESSAGE" => "Mensagem",
+            "NO_INCOMING_COLLECT_MSG" => "Nenhuma coleção em andamento, crie uma!",
+            "INCOMING_COLLECT_MSG" => "Uma arrecadação de fundos está chegando!",
             "NEXT" => "Próximo",
             "BACK" => "Voltar",
             "JAN" => "Jan",
@@ -87,6 +90,11 @@ class Pt
             "LABEL_DATE" => "Encontro",
             "LABEL_HOUR" => "Hora",
             "BTN_CANCEL" => "Cancelar",
+            "CANCEL" => "Cancelar",
+            "CONFIRM" => "Confirmar",
+            "INFORMATION" => "Informação",
+            "PRODUCTS" => "Produtos",
+            "ADD_PRODUCT" => "Adicionar um produto",
             "TITLE_PRINT_COLLECT" => "Sua solicitação de coleta foi cancelada",
             "LINK_ADD_PRODUCT" => "Refazer uma solicitação de coleta",
             "LINK_HOME" => "Voltar a página inicial",
