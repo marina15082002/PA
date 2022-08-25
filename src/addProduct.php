@@ -1,7 +1,5 @@
 <?php include __DIR__ . "\header.php";?>
 
-<h1 id = "h1"><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
-
 <style type="text/css">
     main {
         padding-top: 3rem;
@@ -119,34 +117,34 @@
     <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>
         <p><?php
             if ($table == null) {
-                echo "Pas de collecte en cours, créez en une&nbsp;!";
+                echo $lang['NO_INCOMING_COLLECT_MSG'];
             } else {
-                echo "Une collecte est en approche&nbsp;!";
+                echo $lang['INCOMING_COLLECT_MSG'];
             }
         ?></p>
         
         <div style="display: none;" id="informations">
-            <p>Informations :</p>
+            <p><?php echo $lang['INFORMATION']; ?></p>
 
-            <span id="date">qd : </span><br>
-            <span id="hours">dsd : </span><br>
-            <span id="email">dqsf : </span><br>
-            <span id="phone">qdf : </span><br>
-            <span id="country">dqf : </span><br>
-            <span id="city">qds : </span><br>
-            <span id="address">dq : </span><br>
+            <span id="date"><?php echo $lang['LABEL_DATE']; ?> : </span><br>
+            <span id="hours"><?php echo $lang['LABEL_HOUR']; ?> : </span><br>
+            <span id="email"><?php echo $lang['FIELD_EMAIL']; ?> : </span><br>
+            <span id="phone"><?php echo $lang['FIELD_PHONE']; ?> : </span><br>
+            <span id="country"><?php echo $lang['FIELD_COUNTRY']; ?> : </span><br>
+            <span id="city"><?php echo $lang['FIELD_CITY']; ?> : </span><br>
+            <span id="address"><?php echo $lang['FIELD_ADDRESS']; ?> : </span><br>
 
             <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
-                <input type="submit" id="buttonCancel" value="Cancel" class="btn btn-block btn-primary">
+                <input type="submit" id="buttonCancel" value="<?php echo $lang['CANCEL']; ?>" class="btn btn-block btn-primary">
             </form>
         </div>
 
-        <p>Produits :</p>
+        <p><?php echo $lang['PRODUCTS']; ?> :</p>
         <table class="table table-striped table-hover" id="products">
             <tr>
-                <th>Nom</th>
-                <th>Code barre</th>
-                <th>Quantité</th>
+                <th><?php echo $lang['FIELD_NAME']; ?></th>
+                <th><?php echo $lang['FIELD_BARCODE']; ?></th>
+                <th><?php echo $lang['FIELD_QUANTITY']; ?></th>
                 <th></th>
             </tr>
             <?php
@@ -168,13 +166,13 @@
             ?>
             <tr id="buttonAddRow">
                 <td colspan="4" id='buttonAdd' onclick='add()'>
-                    Add product
+                    <?php echo $lang['ADD_PRODUCT']; ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
                 </td>
             </tr>
         </table>
 
-        <input id="buttonConfirm" type="button" value="Confirmer" class="btn btn-block btn-primary" onclick="check()">
+        <input id="buttonConfirm" type="button" value="<?php echo $lang['CONFIRM']; ?>" class="btn btn-block btn-primary" onclick="check()">
     </form>
 </main>
 <script>
