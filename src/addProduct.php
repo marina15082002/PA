@@ -114,31 +114,31 @@
     }
 </style>
 <main>
-    <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>
-        <p><?php
-            if ($table == null) {
-                echo $lang['NO_INCOMING_COLLECT_MSG'];
-            } else {
-                echo $lang['INCOMING_COLLECT_MSG'];
-            }
-        ?></p>
+    <p><?php
+        if ($table == null) {
+            echo $lang['NO_INCOMING_COLLECT_MSG'];
+        } else {
+            echo $lang['INCOMING_COLLECT_MSG'];
+        }
+    ?></p>
         
-        <div style="display: none;" id="informations">
-            <p><?php echo $lang['INFORMATION']; ?></p>
+    <div style="display: none;" id="informations">
+        <p><?php echo $lang['INFORMATION']; ?></p>
 
-            <span id="date"><?php echo $lang['LABEL_DATE']; ?> : </span><br>
-            <span id="hours"><?php echo $lang['LABEL_HOUR']; ?> : </span><br>
-            <span id="email"><?php echo $lang['FIELD_EMAIL']; ?> : </span><br>
-            <span id="phone"><?php echo $lang['FIELD_PHONE']; ?> : </span><br>
-            <span id="country"><?php echo $lang['FIELD_COUNTRY']; ?> : </span><br>
-            <span id="city"><?php echo $lang['FIELD_CITY']; ?> : </span><br>
-            <span id="address"><?php echo $lang['FIELD_ADDRESS']; ?> : </span><br>
+        <span id="date"><?php echo $lang['LABEL_DATE']; ?> : </span><br>
+        <span id="hours"><?php echo $lang['LABEL_HOUR']; ?> : </span><br>
+        <span id="email"><?php echo $lang['FIELD_EMAIL']; ?> : </span><br>
+        <span id="phone"><?php echo $lang['FIELD_PHONE']; ?> : </span><br>
+        <span id="country"><?php echo $lang['FIELD_COUNTRY']; ?> : </span><br>
+        <span id="city"><?php echo $lang['FIELD_CITY']; ?> : </span><br>
+        <span id="address"><?php echo $lang['FIELD_ADDRESS']; ?> : </span><br>
 
-            <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
-                <input type="submit" id="buttonCancel" value="<?php echo $lang['CANCEL']; ?>" class="btn btn-block btn-primary">
-            </form>
-        </div>
-
+        <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
+            <input type="submit" id="buttonCancel" value="<?php echo $lang['CANCEL']; ?>" class="btn btn-block btn-primary">
+        </form>
+    </div>
+    
+    <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>
         <p><?php echo $lang['PRODUCTS']; ?> :</p>
         <table class="table table-striped table-hover" id="products">
             <tr>
