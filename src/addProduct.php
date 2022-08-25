@@ -112,6 +112,13 @@
     #products input[error="true"] {
         border: 1px solid red;
     }
+
+    /* Responsiveness */
+    @media all and (max-width: 800px) {
+        form {
+            width: 95vw;
+        }
+    }
 </style>
 <main>
     <p><?php
