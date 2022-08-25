@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="/PA/src/css/styleCalendar.css">
 
+
+
 <style>
     body {
         background: #f6f7fc;
@@ -19,6 +21,13 @@
 
     #confirm {
         width: 10rem;
+        background-color: #37c256 !important;
+    }
+
+    #confirm:hover {
+        width: 10rem;
+        background-color: #113b1a !important;
+        border-color: #113b1a!important;
     }
 
     #slider {
