@@ -254,9 +254,6 @@
             child.children[0].firstElementChild.id = "name" + (i + 1);
             child.children[1].firstElementChild.id = "barcode" + (i + 1);
             child.children[2].firstElementChild.id = "quantity" + (i + 1);
-            child.children[0].firstElementChild.value = "";
-            child.children[1].firstElementChild.value = "";
-            child.children[2].firstElementChild.value = "";
             child.children[3].firstElementChild.onclick = function() { deleteProduct(i + 1) };
         }
         form.action = "addProduct?index=" + (children.length - 2);
