@@ -9,10 +9,6 @@
         background: #f6f7fc;
     }
 
-    #calendar {
-        padding-bottom: 2rem;
-    }
-
     .center-flex {
         display: flex;
         flex-direction: column;
@@ -28,6 +24,7 @@
         width: 10rem;
         background-color: #113b1a !important;
         border-color: #113b1a!important;
+        margin-bottom: 3rem;
     }
 
     #slider {
@@ -42,7 +39,7 @@
     .ftco-section {
         width: 100vw;
         overflow: hidden;
-        margin-bottom: 2rem;
+        padding-bottom: 2rem;
     }
 
     .form-control {
