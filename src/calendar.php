@@ -7,10 +7,6 @@
         background: #f6f7fc;
     }
 
-    #calendar {
-        padding-bottom: 2rem;
-    }
-
     .center-flex {
         display: flex;
         flex-direction: column;
@@ -19,6 +15,7 @@
 
     #confirm {
         width: 10rem;
+        margin-bottom: 3rem;
     }
 
     #slider {
@@ -33,7 +30,7 @@
     .ftco-section {
         width: 100vw;
         overflow: hidden;
-        margin-bottom: 2rem;
+        padding-bottom: 2rem;
     }
 
     .form-control {
