@@ -181,8 +181,6 @@
     const req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (req.readyState === 4) {
-            console.log(req.responseText);
-
             let response = JSON.parse(req.responseText);
 
             if (response['printCollect'] != "") {
