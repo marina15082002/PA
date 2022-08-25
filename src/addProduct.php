@@ -254,14 +254,14 @@
         let children = products.firstElementChild.children;
         for (let i = 1; i < children.length - 1; i++) {
             let child = children[i];
-            child.id = "product" + (i + 1);
-            child.children[0].firstElementChild.name = "name" + (i + 1);
-            child.children[1].firstElementChild.name = "barcode" + (i + 1);
-            child.children[2].firstElementChild.name = "quantity" + (i + 1);
-            child.children[0].firstElementChild.id = "name" + (i + 1);
-            child.children[1].firstElementChild.id = "barcode" + (i + 1);
-            child.children[2].firstElementChild.id = "quantity" + (i + 1);
-            child.children[3].firstElementChild.onclick = function() { deleteProduct(i + 1) };
+            child.id = "product" + (i);
+            child.children[0].firstElementChild.name = "name" + i;
+            child.children[1].firstElementChild.name = "barcode" + i;
+            child.children[2].firstElementChild.name = "quantity" + i;
+            child.children[0].firstElementChild.id = "name" + i;
+            child.children[1].firstElementChild.id = "barcode" + i;
+            child.children[2].firstElementChild.id = "quantity" + i;
+            child.children[3].firstElementChild.onclick = function() { deleteProduct(i) };
         }
         form.action = "addProduct?index=" + (children.length - 2);
         if (children.length - 2 == 0) {
