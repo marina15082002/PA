@@ -6,22 +6,22 @@ $route = $_REQUEST["route"] ?? "";
 $method = $_SERVER["REQUEST_METHOD"];
 
 if (preg_match("/^en/", $route)) {
-    include __DIR__ . "\library\lang\English.php";
+    include "./library/lang/English.php";
     $GLOBALS["site_lang"] = new PA\Lang\En();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "en";
 } else if (preg_match("/^it/", $route)) {
-    include __DIR__ . "\library\lang\Italian.php";
+    include "./library/lang/Italian.php";
     $GLOBALS["site_lang"] = new PA\Lang\It();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "it";
 } else if (preg_match("/^pt/", $route)) {
-    include __DIR__ . "\library\lang\Portuguese.php";
+    include "./library/lang/Portuguese.php";
     $GLOBALS["site_lang"] = new PA\Lang\Pt();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "pt";
 } else {
-    include __DIR__ . "\library\lang\French.php";
+    include "./library/lang/French.php";
     $GLOBALS["site_lang"] = new PA\Lang\Fr();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "fr";
@@ -29,8 +29,17 @@ if (preg_match("/^en/", $route)) {
 
 $route = explode("/", $route, 2)[1];
 
-if ($route == "") {
+if ($route == "https://project-no-more-waste.herokuapp.com/") {
     include __DIR__ . "\controllers\IndexController.php";
+    $controller = new PA\IndexController();
+    if ($method == "GET") {
+        $controller->get();
+        die();
+    }
+}
+
+if ($route == "") {
+    include "./controllers/IndexController.php";
     $controller = new PA\IndexController();
     if ($method == "GET") {
         $controller->get();

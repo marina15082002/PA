@@ -8,4 +8,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ /PA/index.php?route=$1 [L,QSA]
-
+#RewriteRule ^(.*)$ https://project-no-more-waste.herokuapp.com/index.php?route=$1 [L,QSA]

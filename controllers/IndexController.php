@@ -30,6 +30,6 @@ class IndexController
         }
 
         $title = $lang["TITLE_INDEX"];
-        include __DIR__ . "\..\src\accueil.php";
+        include "/app/src/accueil.php";
     }
 }

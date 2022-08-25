@@ -1,4 +1,4 @@
-<?php include __DIR__ . "\head.php";?>
+<?php include __DIR__ . "\header.php";?>
 
 <link rel="stylesheet" href="/PA/src/css/style.css">
 
