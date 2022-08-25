@@ -35,6 +35,7 @@ if ($status == 1) {
 
     $filename= "/PA/src/recap/test.pdf";
     //$pdf->Output('F', $filename);
-    $pdf->Output('D', $filename, true);
-    //$pdf->Output();
+    //$pdf->Output('D', $filename, true);
+    //$pdf->Output('/PA/filename.pdf', 'F');
+    $pdf->Output();
 }
