@@ -18,31 +18,18 @@ class PrintCollectUserController
         $route = $_REQUEST["route"] ?? "";
 
         if (preg_match("/^en/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\En();
-            $lang = $GLOBALS["site_lang"]->getArray();
+            $language = "en";
         } else if (preg_match("/^it/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\It();
-            $lang = $GLOBALS["site_lang"]->getArray();
+            $language = "it";
         } else if (preg_match("/^pt/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Pt();
-            $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
+            $language = "pt";
         } else {
-            $GLOBALS["site_lang"] = new Lang\Fr();
-            $lang = $GLOBALS["site_lang"]->getArray();
+            $language = "fr";
         }
 
-        $getColumnsModel = new Models\PrintCollectModel();
-
-        session_start();
-
-        $table_products = $getColumnsModel->getProductsUser();
-        $table_infos = $getColumnsModel->getCollect($_SESSION["email"]);
-
-        $title = $lang["TITLE_PRINT_COLLECT_USER"];
-        include __DIR__ . "\..\src\printCollectUser.php";
+        header("Location: /PA/" . $language . "/addProduct");
+        header("Connection: close");
+        exit;
     }
 
     public function delete() {
