@@ -42,4 +42,20 @@ class CalendarModel
         }
         return (-1);
     }
+
+    public function getAllCollect($connect) {
+        $prep = $connect->prepare(
+            "SELECT * FROM collect"
+        );
+        $prep->execute();
+        return $prep->fetchAll();
+    }
+
+    public function getAllProducts($connect) {
+        $prep = $connect->prepare(
+            "SELECT * FROM PRODUCT_COLLECT"
+        );
+        $prep->execute();
+        return $prep->fetchAll();
+    }
 }

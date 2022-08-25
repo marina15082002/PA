@@ -20,11 +20,6 @@ if (preg_match("/^en/", $route)) {
     $GLOBALS["site_lang"] = new PA\Lang\Pt();
     $lang = $GLOBALS["site_lang"]->getArray();
     $language = "pt";
-} else if (preg_match("/^ie/", $route)) {
-    include "./library/lang/Irish.php";
-    $GLOBALS["site_lang"] = new PA\Lang\Ie();
-    $lang = $GLOBALS["site_lang"]->getArray();
-    $language = "ie";
 } else {
     include "./library/lang/French.php";
     $GLOBALS["site_lang"] = new PA\Lang\Fr();
@@ -185,6 +180,21 @@ if (preg_match("/^addProduct/", $route)) {
     }
 }
 
+if (preg_match("/^calendarAdmin/", $route)) {
+    include __DIR__ . "\controllers\CalendarController.php";
+    $controller = new PA\CalendarController();
+
+    if ($method == "GET") {
+        $controller->getAdmin();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->addAdmin();
+        die();
+    }
+}
+
 
 if (preg_match("/^calendar/", $route)) {
     include __DIR__ . "\controllers\CalendarController.php";
@@ -201,15 +211,15 @@ if (preg_match("/^calendar/", $route)) {
     }
 }
 
-/*if (preg_match("/^calendarForm/", $route)) {
-    include __DIR__ . "\controllers\CalendarController.php";
-    $controller = new PA\CalendarController();
+if (preg_match("/^stock/", $route)) {
+    include __DIR__ . "\controllers\StockController.php";
+    $controller = new PA\StockController();
 
-    if ($method == "POST") {
-        $controller->add();
+    if ($method == "GET") {
+        $controller->get();
         die();
     }
-}*/
+}
 
 if (preg_match("/^ProductController/", $route)) {
     include __DIR__ . "\controllers\AddProductController.php";

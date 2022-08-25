@@ -8,6 +8,7 @@ class En
     {
         $lang = array(
             "FIELD_EMPTY" => "Required field",
+            "FIELD_NAME" => "Name",
             "FIELDS_EMPTY" => "All fields are mandatory",
             "BTN_CONFIRM" => "To confirm",
             "BTN_MODIFY" => "Edit",
@@ -60,6 +61,8 @@ class En
             "FIELD_BARCODE_SYNTAX" => "Wrong format: The bar code is composed of 13 digits",
             "TITLE_PRINT_COLLECT_USER" => "Collection request",
             "TITLE_MESSAGE" => "Message",
+            "NO_INCOMING_COLLECT_MSG" => "No incoming collection, create one!",
+            "INCOMING_COLLECT_MSG" => "A collection is incoming!",
             "NEXT" => "Next",
             "BACK" => "Back",
             "JAN" => "Jan",
@@ -86,6 +89,11 @@ class En
             "LABEL_DATE" => "Date",
             "LABEL_HOUR" => "Hour",
             "BTN_CANCEL" => "Cancel",
+            "CANCEL" => "Cancel",
+            "CONFIRM" => "Confirm",
+            "INFORMATION" => "Information",
+            "PRODUCTS" => "Products",
+            "ADD_PRODUCT" => "Add product",
             "TITLE_PRINT_COLLECT" => "Your collection request has been canceled",
             "LINK_ADD_PRODUCT" => "Redo a collection request",
             "LINK_HOME" => "Back to the homepage",

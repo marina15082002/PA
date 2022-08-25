@@ -8,6 +8,7 @@ class Fr
     {
         $lang = array(
             "FIELD_EMPTY" => "Champ obligatoire",
+            "FIELD_NAME" => "Nom",
             "FIELDS_EMPTY" => "Tous les champs sont obligatoires",
             "BTN_CONFIRM" => "Confirmer",
             "BTN_MODIFY" => "Modifier",
@@ -60,6 +61,8 @@ class Fr
             "FIELD_BARCODE_SYNTAX" => "Mauvais format : Le code barre est composé de 13 chiffres",
             "TITLE_PRINT_COLLECT_USER" => "Demande de collecte",
             "TITLE_MESSAGE" => "Message",
+            "NO_INCOMING_COLLECT_MSG" => "Pas de collecte en cours, créez en une&nbsp;!",
+            "INCOMING_COLLECT_MSG" => "Une collecte est en approche&nbsp;!",
             "NEXT" => "Suivant",
             "BACK" => "Retour",
             "JAN" => "Jan",
@@ -86,6 +89,11 @@ class Fr
             "LABEL_DATE" => "Date",
             "LABEL_HOUR" => "Heure",
             "BTN_CANCEL" => "Annuler",
+            "CANCEL" => "Annuler",
+            "CONFIRM" => "Confirmer",
+            "INFORMATION" => "Informations",
+            "PRODUCTS" => "Produits",
+            "ADD_PRODUCT" => "Ajouter un produit",
             "TITLE_PRINT_COLLECT" => "Votre demande de collect à été annulée",
             "LINK_ADD_PRODUCT" => "Refaire une demande de collect",
             "LINK_HOME" => "Retour à la page d'accueil",
@@ -99,7 +107,12 @@ class Fr
             "5PM" => "17h00",
             "6PM" => "18h00",
             "FIELD_POSTE" => "Poste",
-            "BTN_ADD" => "Ajouter"
+            "BTN_ADD" => "Ajouter",
+            "LABEL_PRODUCTS" => "Produits",
+            "LABEL_STATUS" => "Statut",
+            "LABEL_TAB_HOURS" => "Horaires",
+            "LABEL_COLLECT" => "Modifier la collecte",
+            "FIELD_QUANTITY_SYNTAX" => "La quantité doit être supérieur à 1"
         );
         return $lang;
     }

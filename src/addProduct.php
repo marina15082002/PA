@@ -1,127 +1,297 @@
 <?php include __DIR__ . "\header.php";?>
 
-<h1><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
+<h1 id = "h1"><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
 
+<style type="text/css">
+    main {
+        padding-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    form {
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    #informations, #products {
+        margin-bottom: 2rem;
+    }
+
+    #products td>input {
+        min-width: calc(100% - .8rem);
+        max-width: calc(100% - .8rem);
+    }
+
+    /* Borders */
+    #products td, #products th {
+        border: 1px solid black;
+        padding: 0;
+    }
+    #products {
+        border-spacing: unset;
+        border-collapse: collapse;
+    }
+    #products th {
+        padding: .2rem;
+    }
+    #products td:nth-child(3), #products th:nth-child(3) {
+        border-right: none;
+    }
+    #products td:nth-child(4), #products th:nth-child(4) {
+        border-left: none;
+        width: 2rem;
+    }
+
+    /* Cell sizes */
+    #products th:nth-child(1) {
+        width: calc(50%);
+    }
+    #products th:nth-child(3) {
+        width: calc(35%);
+    }
+    #products th:nth-child(3) {
+        width: calc(15%);
+    }
+
+    #products input, #products button {
+        all: unset;
+        padding: .4rem;
+    }
+
+    /* Buttons */
+    .delete-button, #buttonAdd>svg {
+        cursor: pointer;
+        height: 1.2rem;
+        width: 1.2rem;
+        vertical-align: text-bottom;
+    }
+    #products #buttonAdd {
+        cursor: pointer;
+        padding: .4rem;
+        text-align: center;
+        border: 1px dashed black;
+        background-color: white;
+    }
+    .delete-button:hover {
+        fill: red;
+    }
+    #buttonAdd:hover>svg, #buttonAdd:hover {
+        fill: green;
+        color: green;
+    }
+
+    #buttonConfirm, #buttonCancel {
+        width: 10rem;
+        max-width: 100%;
+    }
+    #buttonConfirm[disabled] {
+        cursor: not-allowed;
+    }
+
+    /* Paragraph */
+    main>p {
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    form>p, #informations>p {
+        width: 100%;
+        text-align: left;
+        margin-bottom: .5rem;
+    }
+
+    /* Errors */
+    #products input[error="true"] {
+        border: 1px solid red;
+    }
+
+    /* Responsiveness */
+    @media all and (max-width: 800px) {
+        form {
+            width: 95vw;
+        }
+    }
+</style>
 <main>
-    <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>
-        <?php
+    <p><?php
         if ($table == null) {
-            echo "
-                    <div id='product1'>
-                        <label>" . $lang['FIELD_NAME'] . "</label>
-                        <input type='text' value='' id='name1' name='name1' size='35'/>
-                
-                        <label>" . $lang["FIELD_BARCODE"] . "</label>
-                        <input type='text' value='' id='barcode1' name='barcode1' size='35'/>
-                
-                        <label>" . $lang["FIELD_QUANTITY"] . "</label>
-                        <input type='int' value='' id='quantity1' name='quantity1'/>
-                
-                        <button onclick='deleteProduct(1)'>-</button>
-                
-                        <div style='position:absolute; visibility: collapse' id='fieldEmptyError1' class='alert alert-danger' role='alert'>" . $lang["FIELDS_EMPTY"] . "</div>
-                        <div style='position:absolute; visibility: collapse' id='barcodeSyntaxError1' class='alert alert-danger' role='alert'>" . $lang['FIELD_BARCODE_SYNTAX'] . "</div>
-                    </div>
-                    
-                    <button type='button' id='buttonAdd' onclick='add(1)'>+</button>
-                    <br>
-                    ";
+            echo $lang['NO_INCOMING_COLLECT_MSG'];
         } else {
-            $i = 1;
-            foreach ($table as $value) {
-                echo "
-                    <div id='product" . $i . "'>
-                        <label>" . $lang['FIELD_NAME'] . "</label>
-                        <input type='text' value='" . $value["product_name"] . "' id='name" . $i . "' name='name" . $i . "' size='35'/>
-                
-                        <label>" . $lang["FIELD_BARCODE"] . "</label>
-                        <input type='text' value='" . $value["product_code"] . "' id='barcode" . $i . "' name='barcode" . $i . "' size='35'/>
-                
-                        <label>" . $lang["FIELD_QUANTITY"] . "</label>
-                        <input type='number' value='" . $value["quantity"] . "' id='quantity" . $i . "' name='quantity" . $i . "' min='1'/>
-                
-                        <button onclick='deleteProduct(" . $i . ")'>-</button>
-                
-                        <div style='position:absolute; visibility: collapse' id='fieldEmptyError" . $i . "' class='alert alert-danger' role='alert'>" . $lang["FIELDS_EMPTY"] . "</div>
-                        <div style='position:absolute; visibility: collapse' id='barcodeSyntaxError" . $i . "' class='alert alert-danger' role='alert'>" . $lang['FIELD_BARCODE_SYNTAX'] . "</div>
-                    </div>";
-                $i += 1;
-            }
-
-            echo "
-                <button type='button' id='buttonAdd' onclick='add(" . ($i - 1) . ")'>+</button>
-                <br>
-                <script>
-                    document.getElementById('form').action = 'addProduct?index=" . ($i - 1) . "';
-                </script>
-            ";
+            echo $lang['INCOMING_COLLECT_MSG'];
         }
+    ?></p>
+        
+    <div style="display: none;" id="informations">
+        <p><?php echo $lang['INFORMATION']; ?></p>
 
-        ?>
+        <span id="date"><?php echo $lang['LABEL_DATE']; ?> : </span><br>
+        <span id="hours"><?php echo $lang['LABEL_HOUR']; ?> : </span><br>
+        <span id="email"><?php echo $lang['EMAIL']; ?> : </span><br>
+        <span id="phone"><?php echo $lang['PHONE']; ?> : </span><br>
+        <span id="country"><?php echo $lang['COUNTRY']; ?> : </span><br>
+        <span id="city"><?php echo $lang['CITY']; ?> : </span><br>
+        <span id="address"><?php echo $lang['ADDRESS']; ?> : </span><br>
 
-        <button type="button" id="buttonAdd" onclick="check()"><?php echo $lang['BTN_CONFIRM']; ?></button>
+        <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
+            <input type="submit" id="buttonCancel" value="<?php echo $lang['CANCEL']; ?>" class="btn btn-block btn-primary">
+        </form>
+    </div>
+    
+    <form id='form' class='formulaire' action='addProduct?index=1' method='POST' enctype='multipart/form-data'>
+        <p><?php echo $lang['PRODUCTS']; ?> :</p>
+        <table class="table table-striped table-hover" id="products">
+            <tr>
+                <th><?php echo $lang['FIELD_NAME']; ?></th>
+                <th><?php echo $lang['FIELD_BARCODE']; ?></th>
+                <th><?php echo $lang['FIELD_QUANTITY']; ?></th>
+                <th></th>
+            </tr>
+            <?php
+                if ($table != null) {
+                    $i = 1;
+                    foreach ($table as $value) {
+                        echo "
+                        <tr>
+                            <td><input type='text' value='" . htmlspecialchars($value["product_name"], ENT_QUOTES) . "' id='name' name='name' size='35'/></td>
+                            <td><input type='text' value='" . htmlspecialchars($value["product_code"], ENT_QUOTES) . "' id='barcode' name='barcode' size='35'/></td>
+                            <td><input type='number' value='" . htmlspecialchars($value["quantity"], ENT_QUOTES) . "' id='quantity' name='quantity' min='1'/></td>
+                            <td>
+                                <button type='button'>
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='delete-button bi bi-x-square' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg>
+                                </button>
+                            </td>
+                        </tr>";
+                        $i += 1;
+                    }
+                }
+            ?>
+            <tr id="buttonAddRow">
+                <td colspan="4" id='buttonAdd' onclick='add()'>
+                    <?php echo $lang['ADD_PRODUCT']; ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+                </td>
+            </tr>
+        </table>
+
+        <input id="buttonConfirm" type="button" value="<?php echo $lang['CONFIRM']; ?>" class="btn btn-block btn-primary" onclick="check()">
     </form>
-
-
-    <script>
-        function check() {
-            let i = 1;
-            while (document.getElementById("name" + i)) {
-                if (document.getElementById("fieldEmptyError" + i).style.visibility === "visible") {
-                    document.getElementById("fieldEmptyError" + i).style.visibility = "collapse";
-                    document.getElementById("fieldEmptyError" + i).style.position = "absolute";
-                } else if (document.getElementById("barcodeSyntaxError" + i).style.visibility === "visible") {
-                    document.getElementById("barcodeSyntaxError" + i).style.visibility = "collapse";
-                    document.getElementById("barcodeSyntaxError" + i).style.position = "absolute";
-                }
-                i += 1;
-            }
-
-            i = 1;
-            let error = false;
-            let reg = /^[0-9]{13}$/;
-            while (document.getElementById("name" + i)) {
-                if (document.getElementById("name" + i).value === "" || document.getElementById("barcode" + i).value === "" || document.getElementById("quantity" + i).value === "") {
-                    document.getElementById("fieldEmptyError" + i).style.visibility = "visible";
-                    document.getElementById("fieldEmptyError" + i).style.position = "relative";
-                    error = "true";
-                } else if (document.getElementById("barcode" + i).value.match(reg) === null) {
-                    document.getElementById("barcodeSyntaxError" + i).style.visibility = "visible";
-                    document.getElementById("barcodeSyntaxError" + i).style.position = "relative";
-                    error = "true";
-                }
-                i += 1;
-            }
-            if (error === false) {
-                document.getElementById("form").submit();
-            }
-        }
-
-        function add(index) {
-            let divProduct = document.getElementById("product" + index);
-            let newDivProduct = divProduct.cloneNode(true);
-            newDivProduct.id = "product" + (index + 1);
-            newDivProduct.children[1].name = "name" + (index + 1);
-            newDivProduct.children[3].name = "barcode" + (index + 1);
-            newDivProduct.children[5].name = "quantity" + (index + 1);
-            newDivProduct.children[1].id = "name" + (index + 1);
-            newDivProduct.children[3].id = "barcode" + (index + 1);
-            newDivProduct.children[5].id = "quantity" + (index + 1);
-            newDivProduct.children[7].id = "fieldEmptyError" + (index + 1);
-            newDivProduct.children[8].id = "barcodeSyntaxError" + (index + 1);
-            newDivProduct.children[1].value = "";
-            newDivProduct.children[3].value = "";
-            newDivProduct.children[5].value = "";
-            newDivProduct.children[6].onclick = function() {deleteProduct(index + 1)};
-            divProduct.after(newDivProduct);
-
-            document.getElementById("buttonAdd").onclick = function() {add(index + 1)};
-            document.getElementById("form").action = "addProduct?index=" + (index + 1);
-        }
-
-        function deleteProduct(index) {
-            let divProduct = document.getElementById("product" + index);
-            divProduct.remove();
-        }
-    </script>
 </main>
+<script>
+    const req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            let response = JSON.parse(req.responseText);
+
+            if (response['printCollect'] != "") {
+                document.getElementById("informations").style.display = "block";
+
+                document.getElementById("date").innerHTML += response['printCollect'][0]['date'];
+                document.getElementById("hours").innerHTML += response['printCollect'][0]['hours'];
+                document.getElementById("email").innerHTML += response['printCollect'][0]['email'];
+                document.getElementById("phone").innerHTML += response['printCollect'][0]['phone'];
+                document.getElementById("country").innerHTML += response['printCollect'][0]['country'];
+                document.getElementById("city").innerHTML += response['printCollect'][0]['city'];
+                document.getElementById("address").innerHTML += response['printCollect'][0]['address'];
+            }
+        }
+    };
+    req.open('GET', '/PA/controllers/AddProduct.php');
+    req.send();
+
+    var form = document.getElementById("form");
+    var products = document.getElementById("products");
+    var button_add_row = document.getElementById("buttonAddRow");
+    var button_confirm = document.getElementById("buttonConfirm");
+
+    // Init form
+    if (products.firstElementChild.children.length - 2 == 0) {
+        add();
+    }
+    refresh_indexes();
+
+    function check() {
+        let error = false;
+        let regBarCode = /^[0-9]{13}$/;
+        let children = products.firstElementChild.children;
+        for (let i = 1; i < children.length - 1; i++) {
+            let child = children[i];
+
+            console.log(i);
+            if (child.children[0].firstElementChild.value === "") {
+                child.children[0].firstElementChild.setAttribute("error", "true");
+                error = true;
+            } else {
+                child.children[0].firstElementChild.removeAttribute("error");
+            }
+            if (child.children[1].firstElementChild.value === "" || child.children[1].firstElementChild.value.match(regBarCode) === null) {
+                child.children[1].firstElementChild.setAttribute("error", "true");
+                error = true;
+            } else {
+                child.children[1].firstElementChild.removeAttribute("error");
+            }
+            if (child.children[2].firstElementChild.value === "" || parseInt(child.children[2].firstElementChild.value) == NaN) {
+                child.children[2].firstElementChild.setAttribute("error", "true");
+                error = true;
+            } else {
+                child.children[2].firstElementChild.removeAttribute("error");
+            }
+        }
+
+        if (error === false) {
+            console.log("submit");
+            document.getElementById("form").submit();
+        }
+    }
+
+    function refresh_indexes() {
+        let children = products.firstElementChild.children;
+        for (let i = 1; i < children.length - 1; i++) {
+            let child = children[i];
+            child.id = "product" + (i);
+            child.children[0].firstElementChild.name = "name" + i;
+            child.children[1].firstElementChild.name = "barcode" + i;
+            child.children[2].firstElementChild.name = "quantity" + i;
+            child.children[0].firstElementChild.id = "name" + i;
+            child.children[1].firstElementChild.id = "barcode" + i;
+            child.children[2].firstElementChild.id = "quantity" + i;
+            child.children[3].firstElementChild.onclick = function() { deleteProduct(i) };
+        }
+        form.action = "addProduct?index=" + (children.length - 2);
+        if (children.length - 2 == 0) {
+            button_confirm.disabled = true;
+        } else {
+            button_confirm.disabled = false;
+        }
+    }
+
+    function add() {
+        let new_product = document.createElement("tr");
+        new_product.innerHTML = '\
+            <td><input type="text" value="" id="name" name="name" size="35"/></td>\
+            <td><input type="text" value="" id="barcode" name="barcode" size="35"/></td>\
+            <td><input type="number" value="" id="quantity" name="quantity" min="1"/></td>\
+            <td>\
+                <button type="button">\
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-button bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>\
+                </button>\
+            </td>';
+        buttonAddRow.parentNode.insertBefore(new_product, button_add_row);
+        refresh_indexes();
+    }
+
+    function deleteProduct(index) {
+        let product = document.getElementById("product" + index);
+        product.remove();
+        refresh_indexes();
+    }
+</script>
