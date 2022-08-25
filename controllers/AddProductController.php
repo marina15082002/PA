@@ -26,9 +26,6 @@ class AddProductController
         } else if (preg_match("/^pt/", $route)) {
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();
@@ -51,8 +48,6 @@ class AddProductController
             $language = "it";
         } else if (preg_match("/^pt/", $route)) {
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $language = "ie";
         } else {
             $language = "fr";
         }
@@ -68,7 +63,7 @@ class AddProductController
             $res = $productModel->insert(
                 array(
                     $_SESSION['email'],
-                    intval($body['barcode' . $i]),
+                    $body['barcode' . $i],
                     $body['name' . $i],
                     $body['quantity' . $i]
                 )
@@ -81,9 +76,17 @@ class AddProductController
             }
         }
 
-        header("Location: /PA/" . $language . "/calendar");
-        header("Connection: close");
-        exit;
+        $printCollect = $productModel->getCollect($_SESSION['email']);
+        var_dump($printCollect);
+
+        if ($printCollect[0] == "") {
+            header("Location: /PA/" . $language . "/calendar");
+            header("Connection: close");
+            exit;
+        } else {
+            header("Location: /PA/" . $language . "/");
+            header("Connection: close");
+            exit;
+        }
     }
 }
-
