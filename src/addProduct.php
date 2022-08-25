@@ -1,5 +1,7 @@
 <?php include __DIR__ . "\header.php";?>
 
+<h1 id = "h1"><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
+
 <style type="text/css">
     main {
         padding-top: 3rem;
@@ -244,6 +246,7 @@
                 child.children[2].firstElementChild.removeAttribute("error");
             }
         }
+
         if (error === false) {
             console.log("submit");
             document.getElementById("form").submit();

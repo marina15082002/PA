@@ -60,8 +60,6 @@ class ProfileController
             $language = "it";
         } else if (preg_match("/^pt/", $route)) {
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $language = "ie";
         } else {
             $language = "fr";
         }
@@ -159,8 +157,6 @@ class ProfileController
             $language = "it";
         } else if (preg_match("/^pt/", $route)) {
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $language = "ie";
         } else {
             $language = "fr";
         }

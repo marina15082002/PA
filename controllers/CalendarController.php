@@ -27,9 +27,6 @@ class CalendarController
         } else if (preg_match("/^pt/", $route)) {
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();
@@ -37,6 +34,34 @@ class CalendarController
 
         $title = $lang["TITLE_CALENDAR"];
         include __DIR__ . "\..\src\calendar.php";
+    }
+
+    public function getAdmin()
+    {
+        $route = $_REQUEST["route"] ?? "";
+
+        $connect = getDatabaseConnection();
+        $calendarModel = new Models\CalendarModel();
+
+        $tableCollect = $calendarModel->getAllCollect($connect);
+        $tableProducts = $calendarModel->getAllProducts($connect);
+
+        if (preg_match("/^en/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\En();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^it/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\It();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else if (preg_match("/^pt/", $route)) {
+            $GLOBALS["site_lang"] = new Lang\Pt();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        } else {
+            $GLOBALS["site_lang"] = new Lang\Fr();
+            $lang = $GLOBALS["site_lang"]->getArray();
+        }
+
+        $title = $lang["TITLE_CALENDAR"];
+        include __DIR__ . "\..\src\calendarAdmin.php";
     }
 
     public function add() {
@@ -48,8 +73,6 @@ class CalendarController
             $language = "it";
         } else if (preg_match("/^pt/", $route)) {
             $language = "pt";
-        } else if (preg_match("/^ie/", $route)) {
-            $language = "ie";
         } else {
             $language = "fr";
         }

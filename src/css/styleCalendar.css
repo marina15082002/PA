@@ -8429,8 +8429,12 @@ h1, h2, h3, h4, h5,
     background: #28a745; }
 
 .active-date {
-  background: #1093c2;
+  background: #1093c2!important;
   color: #fff; }
+
+.date-event {
+  background: #0a526e;
+  color: #fff!important; }
 
 #title-hours {
   color: black;
