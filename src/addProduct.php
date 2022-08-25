@@ -186,8 +186,6 @@
             let response = JSON.parse(req.responseText);
 
             if (response['printCollect'] != "") {
-                document.title = "<?php echo $lang['LABEL_COLLECT']; ?>";
-
                 document.getElementById("informations").style.display = "block";
 
                 document.getElementById("date").innerHTML += response['printCollect'][0]['date'];
