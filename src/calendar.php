@@ -2,7 +2,64 @@
 
 <link rel="stylesheet" href="/PA/src/css/styleCalendar.css">
 
-<section id="calendar" class="ftco-section">
+<style>
+    body {
+        background: #f6f7fc;
+    }
+
+    #calendar {
+        padding-bottom: 2rem;
+    }
+
+    .center-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #confirm {
+        width: 10rem;
+    }
+
+    #slider {
+        position: relative;
+        width: 200%;
+        display: flex;
+        flex-direction: row;
+        right: 0%;
+        transition: right 0.5s ease-in-out;
+    }
+
+    .ftco-section {
+        width: 100vw;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .form-control {
+        border: none;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        height: 54px;
+        background: #fff;
+        width: 20rem;
+        max-width: 90vw;
+    }
+
+    .form-control:active, .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    #formAddress svg {
+        width: 1.2rem;
+        vertical-align: text-top;
+    }
+</style>
+<div id="slider">
+    <section id="calendar" class="ftco-section">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
                 <h2 class="heading-section"><?php echo $lang['TITLE_CALENDAR_PAGE']; ?></h2>
@@ -75,28 +132,74 @@
                 </div>
             </div>
         </div>
-</section>
+    </section>
+    <section class="ftco-section">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section"><?php echo $lang['STILL_SOME_INFORMATION_TO_CHECK']; ?><h2>
+            </div>
+        </div>
 
-<form id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
-    <input type="hidden" id="day" name="day" value="">
-    <input type="hidden" id="year" name="years" value="">
-    <input type="hidden" id="month" name="month" value="">
-    <input type="hidden" id="hours" name="hours" value="">
-    <div id="formAddress" style="visibility: collapse">
-        <input type="text" id="phone" name="phone" value="<?php echo $_SESSION['phone']; ?>">
-        <input type="text" id="country" name="country" value="<?php echo $_SESSION['country']; ?>">
-        <input type="text" id="city" name="city" value="<?php echo $_SESSION['city']; ?>">
-        <input type="text" id="address" name="address" value="<?php echo $_SESSION['address']; ?>">
+        <form id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
+            <input type="hidden" id="day" name="day" value="">
+            <input type="hidden" id="year" name="years" value="">
+            <input type="hidden" id="month" name="month" value="">
+            <input type="hidden" id="hours" name="hours" value="">
+            <div id="formAddress" class="center-flex">
+                <div>
+                    <label for="phone">
+                        <?php echo $lang["PHONE"] ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-telephone-fill image_svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path></svg>
+                    </label>
+                    <input class="form-control" type="text" id="phone" name="phone" placeholder="0612345678" value="<?php echo $_SESSION['phone']; ?>">
+                    <br/>
 
-        <div style='position:absolute; visibility: collapse' id='fields' class='alert alert-danger' role='alert'><?php echo $lang["FIELDS_EMPTY"]; ?></div>
-        <div style='position:absolute; visibility: collapse' id='phone_alert' class='alert alert-danger' role='alert'><?php echo $lang["FIELD_PHONE_SYNTAX"]; ?></div>
-    </div>
-    <button id="confirm" type="button" onclick="validate()"><?php echo $lang['BTN_CONFIRM']; ?></button>
-</form>
+                    <label for="country">
+                        <?php echo $lang["COUNTRY"] ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path></svg>
+                    </label>
+                    <input class="form-control" type="text" id="country" name="country" placeholder="Taiwan" value="<?php echo $_SESSION['country']; ?>">
+                    <br/>
+
+                    <label for="city">
+                        <?php echo $lang["CITY"] ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path></svg>
+                    </label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="Hong Kong" value="<?php echo $_SESSION['city']; ?>">
+                    <br/>
+                    
+                    <label for="address">
+                        <?php echo $lang["ADDRESS"] ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path></svg>
+                    </label>
+                    <input class="form-control" type="text" id="address" name="address" placeholder="10 Downing Street" value="<?php echo $_SESSION['address']; ?>">
+                    <br/>
+                </div>
+        
+                <div style='position:absolute; visibility: collapse' id='fields' class='alert alert-danger' role='alert'><?php echo $lang["FIELDS_EMPTY"]; ?></div>
+                <div style='position:absolute; visibility: collapse' id='phone_alert' class='alert alert-danger' role='alert'><?php echo $lang["FIELD_PHONE_SYNTAX"]; ?></div>
+            </div>
+        </form>
+    </section>
+</div>
+
+<div class="center-flex">
+    <button id="confirm" type="button" class="btn btn-block btn-primary" onclick="validate()"><?php echo $lang['CONTINUE']; ?></button>
+</div>
 
 <script>
     function hours(hour) {
         document.getElementById("hours").value = hour;
+        for (i = 9; i <= 18; i++) {
+            if (i == 13) {
+                continue;
+            }
+            if (i == hour) {
+                document.getElementById("button" + i).setAttribute("selected", "true");
+            } else {
+                document.getElementById("button" + i).removeAttribute("selected");
+            }
+        }
     }
 
     function validate() {
@@ -109,10 +212,9 @@
         } else if (document.getElementById("hours").value === "") {
             alert("Please select an hour");
         } else {
-            document.getElementById("calendar").style.visibility = "collapse"; // Hide the calendar
-            document.getElementById("calendar").style.position = "absolute";
-            document.getElementById("formAddress").style.visibility = "visible"; // Show the form address
+            document.getElementById("slider").style.right = "100%";
             document.getElementById("confirm").setAttribute("onclick", "submitForm()");
+            document.getElementById("confirm").innerText = "<?php echo $lang['CONFIRM']; ?>";
         }
     }
 
