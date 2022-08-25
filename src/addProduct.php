@@ -127,11 +127,11 @@
 
         <span id="date"><?php echo $lang['LABEL_DATE']; ?> : </span><br>
         <span id="hours"><?php echo $lang['LABEL_HOUR']; ?> : </span><br>
-        <span id="email"><?php echo $lang['FIELD_EMAIL']; ?> : </span><br>
-        <span id="phone"><?php echo $lang['FIELD_PHONE']; ?> : </span><br>
-        <span id="country"><?php echo $lang['FIELD_COUNTRY']; ?> : </span><br>
-        <span id="city"><?php echo $lang['FIELD_CITY']; ?> : </span><br>
-        <span id="address"><?php echo $lang['FIELD_ADDRESS']; ?> : </span><br>
+        <span id="email"><?php echo $lang['EMAIL']; ?> : </span><br>
+        <span id="phone"><?php echo $lang['PHONE']; ?> : </span><br>
+        <span id="country"><?php echo $lang['COUNTRY']; ?> : </span><br>
+        <span id="city"><?php echo $lang['CITY']; ?> : </span><br>
+        <span id="address"><?php echo $lang['ADDRESS']; ?> : </span><br>
 
         <form class="formulaire" method="POST" action="printCollectUser" enctype="multipart/form-data">
             <input type="submit" id="buttonCancel" value="<?php echo $lang['CANCEL']; ?>" class="btn btn-block btn-primary">
