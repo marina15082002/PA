@@ -8,6 +8,7 @@ class Fr
     {
         $lang = array(
             "FIELD_EMPTY" => "Champ obligatoire",
+            "FIELD_NAME" => "Nom",
             "FIELDS_EMPTY" => "Tous les champs sont obligatoires",
             "BTN_CONFIRM" => "Confirmer",
             "BTN_MODIFY" => "Modifier",
