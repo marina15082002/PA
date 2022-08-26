@@ -20,6 +20,3 @@ if ($printCollect != "") {
 }
 
 echo json_encode($data);
-
-
-

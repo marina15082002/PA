@@ -39,9 +39,11 @@
     } else if (preg_match("/^it/", $route)) {
         $GLOBALS["site_lang"] = new PA\Lang\It();
         $lang = $GLOBALS["site_lang"]->getArray();
+        $language = "it";
     } else if (preg_match("/^pt/", $route)) {
         $GLOBALS["site_lang"] = new PA\Lang\Pt();
         $lang = $GLOBALS["site_lang"]->getArray();
+        $language = "pt";
     } else {
         header("Location: /" . $GLOBALS["default_lang"] . "/" . $route);
     }

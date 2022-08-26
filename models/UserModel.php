@@ -53,7 +53,23 @@ class UserModel
             'password' => $password
         ]);
 
-        return !!$prep->fetch();
+        $res = $prep->fetchAll();
+
+        if (!$res[0]) {
+            echo "test";
+            $prep = $connect->prepare(
+                "SELECT *  FROM ADMIN WHERE email = :email AND password = :password"
+            );
+
+            $prep->execute([
+                'email' => $email,
+                'password' => $password
+            ]);
+
+            return !!$prep->fetchAll();
+        }
+
+        return !!$res;
     }
 
     public function userConnect($email, $password)
@@ -70,6 +86,7 @@ class UserModel
         $res = $prep->fetchAll();
 
         if (!$res[0]) {
+            echo "test";
             $prep = $connect->prepare(
                 "SELECT id  FROM ADMIN WHERE email = :email AND password = :password"
             );
@@ -85,20 +102,20 @@ class UserModel
         return $res;
     }
 
-    public function getUser($id)
+    public function getUser($email)
     {
         $connect = getDatabaseConnection();
-        $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE id = :id");
+        $prep = $connect->prepare("SELECT * FROM " . $this->table . " WHERE email = :email");
         $res = $prep->execute([
-            'id' => $id
+            'email' => $email
         ]);
 
         $res = $prep->fetchAll();
 
         if (!$res[0]) {
-            $prep = $connect->prepare("SELECT * FROM ADMIN WHERE id = :id");
+            $prep = $connect->prepare("SELECT * FROM ADMIN WHERE email = :email");
             $prep->execute([
-                'id' => $id
+                'email' => $email
             ]);
             return $prep->fetchAll();
         }
