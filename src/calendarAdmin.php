@@ -23,10 +23,6 @@
             table-layout: fixed;
         }
 
-        #informations, #products {
-            margin-bottom: 2rem;
-        }
-
         #products td>input {
             min-width: calc(100% - .8rem);
             max-width: calc(100% - .8rem);
@@ -37,10 +33,7 @@
             border: 1px solid black;
             padding: 0;
         }
-        #products {
-            border-spacing: unset;
-            border-collapse: collapse;
-        }
+
         #products th {
             padding: .2rem;
         }
@@ -87,12 +80,6 @@
         }
 
         /* Buttons */
-        .delete-button, #buttonAdd>svg {
-            cursor: pointer;
-            height: 1.2rem;
-            width: 1.2rem;
-            vertical-align: text-bottom;
-        }
         #products #buttonAdd {
             cursor: pointer;
             padding: .4rem;
@@ -106,14 +93,6 @@
         #buttonAdd:hover>svg, #buttonAdd:hover {
             fill: green;
             color: green;
-        }
-
-        #buttonConfirm, #buttonCancel {
-            width: 10rem;
-            max-width: 100%;
-        }
-        #buttonConfirm[disabled] {
-            cursor: not-allowed;
         }
 
         /* Paragraph */
