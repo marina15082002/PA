@@ -9,12 +9,16 @@
 
 <header id="header">
     <style>
-        a{
+        header{
             color: black;
         }
 
-        a:hover{
-            color: #113b1a;
+        header a{
+            color: black;
+        }
+
+        header a:hover{
+            color: #02731e;
         }
 
 		body {
@@ -25,7 +29,7 @@
 			display: flex;
 			flex-direction: row;
 			height: 4rem;
-			background-color: #6eb784;
+			background-color: #6eb784!important;
 		}
 
 		#sitename>svg {
