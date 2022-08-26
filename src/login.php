@@ -14,11 +14,11 @@
                         <p class="mb-4"><?php echo $lang["TEXT_SIGNUP"]; ?><a href="signup"><?php echo $lang["LINK_SIGNUP"]; ?></a></p>
                         <form method="POST" action="login" enctype="multipart/form-data">
                             <div class="form-group first">
-                                <label for="username"><?php echo $lang["FIELD_EMAIL"]; ?></label>
+                                <label for="username"><?php echo $lang["EMAIL"]; ?></label>
                                 <input type="text" name="email" class="form-control" placeholder="<?php echo $lang["TEXT_EMAIL"]; ?>" id="username">
                             </div>
                             <div class="form-group last mb-3">
-                                <label for="password"><?php echo $lang["FIELD_PASSWORD"]; ?></label>
+                                <label for="password"><?php echo $lang["PASSWORD"]; ?></label>
                                 <input name="password" type="password" class="form-control" placeholder="<?php echo $lang["TEXT_PASSWORD"]; ?>" id="password">
                             </div>
 
