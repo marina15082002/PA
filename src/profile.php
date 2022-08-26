@@ -161,7 +161,7 @@
         echo "
             <form class='formulaire' method='POST' action='deleteUser' enctype='multipart/form-data'>
                 <input type='hidden' value='" . $value['id'] . "' name='id' size='35'/>
-                <input type='submit' value='" . $lang["BTN_DELETE"] . "' class='button'>
+                <input type='submit' value='" . $lang["BTN_DELETE"] . "' class='btn btn-block'>
             </form>
             <br/>
         ";
