@@ -73,4 +73,100 @@ class ProductModel
 
         return $prep->fetchAll();
     }
+
+    public function getQuantity($code)
+    {
+        $connect = getDatabaseConnection();
+
+        $prep = $connect->prepare("SELECT quantity FROM stockage WHERE product_code = :product_code");
+        $prep->execute([
+            "product_code" => $code
+        ]);
+
+        return $prep->fetchAll();
+    }
+
+    public function updateQuantity($product_code, $quantity)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT quantity FROM stockage WHERE product_code = :product_code");
+        $prep->execute([
+            "product_code" => $product_code
+        ]);
+        $quantity_old = $prep->fetchAll();
+        $quantity_new = $quantity_old[0]["quantity"] - $quantity;
+
+        if ($quantity_new > 0) {
+            $prep = $connect->prepare("UPDATE stockage SET quantity = :quantity WHERE product_code = :product_code");
+            $prep->execute([
+                "quantity" => $quantity_new,
+                "product_code" => $product_code
+            ]);
+        } else {
+            $prep = $connect->prepare("DELETE FROM stockage WHERE product_code = :product_code");
+            $prep->execute([
+                "product_code" => $product_code
+            ]);
+        }
+
+        return $prep->fetchAll();
+    }
+
+    public function insertProductDistrib ($code, $quantity, $date, $address)
+    {
+        $connect = getDatabaseConnection();
+
+        $id = $connect->prepare("SELECT id FROM DISTRIB WHERE date = :date AND address = :address");
+        $id->execute([
+            "date" => $date,
+            "address" => $address,
+        ]);
+        $id = $id->fetchAll();
+
+        $prep = $connect->prepare("INSERT INTO PRODUCT_DISTRIB (id_distrib, product_code, quantity) VALUES (:id_distrib, :product_code, :quantity)");
+        if ($prep->execute([
+            "id_distrib" => $id[0]["id"],
+            "product_code" => $code,
+            "quantity" => $quantity
+        ])) {
+            return $connect->lastInsertId();
+        }
+
+        return (-1);
+    }
+
+    public function insertDistrib($date, $address)
+    {
+        $connect = getDatabaseConnection();
+
+        $prep = $connect->prepare("INSERT INTO DISTRIB (date, address) VALUES (:date, :address)");
+        if ($prep->execute([
+            "date" => $date,
+            "address" => $address,
+        ])){
+            return $connect->lastInsertId();
+        }
+
+        return (-1);
+    }
+
+    public function getAllDistrib() {
+        $connect = getDatabaseConnection();
+
+        $prep = $connect->prepare(
+            "SELECT * FROM distrib"
+        );
+        $prep->execute();
+        return $prep->fetchAll();
+    }
+
+    public function getAllProductsDistrib() {
+        $connect = getDatabaseConnection();
+
+        $prep = $connect->prepare(
+            "SELECT * FROM PRODUCT_DISTRIB"
+        );
+        $prep->execute();
+        return $prep->fetchAll();
+    }
 }

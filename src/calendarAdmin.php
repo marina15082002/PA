@@ -70,10 +70,10 @@
     </tbody>
 </table>
 
-<form id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
-    <input type="text" id="day" name="day" value="">
-    <input type="text" id="year" name="years" value="">
-    <input type="text" id="month" name="month" value="">
+<form style="visibility: collapse; position: absolute" id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
+    <input type="hidden" id="day" name="day" value="">
+    <input type="hidden" id="year" name="years" value="">
+    <input type="hidden" id="month" name="month" value="">
     <input type="hidden" id="hours" name="hours" value="">
 
     <input type="text" id="phone" name="phone" value="">
@@ -243,6 +243,71 @@
                         document.getElementById("day").value = day;
                         document.getElementById("month").value = month+1;
                         document.getElementById("year").value = year;
+
+                        let monthTmp = (document.getElementById('month').value < 10 ? '0' + document.getElementById('month').value : document.getElementById('month').value);
+                        let table = document.getElementById('table-date');
+                        table.innerHTML = "";
+                        let newTr, newTd, newButton, newSVG, newPath;
+
+                        const req = new XMLHttpRequest();
+                        req.onreadystatechange = function () {
+                            if (req.readyState === 4) {
+                                let response = JSON.parse(req.responseText);
+
+                                response['tableCollect'].sort(function (a, b) {
+                                    return a.hours - b.hours;
+                                });
+
+                                for (let i = 0; i < response['tableCollect'].length; ++i) {
+                                    if (year + '-' + monthTmp + '-' + day === response['tableCollect'][i]['date']) {
+                                        newTr = document.createElement('tr');
+                                        newTr.id = "tr" + i;
+
+                                        newTd = document.createElement('td');
+                                        newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                                        newTr.appendChild(newTd);
+
+                                        newTd = document.createElement('td');
+                                        newTd.innerHTML = response['tableCollect'][i]['email'];
+                                        newTr.appendChild(newTd);
+
+                                        newTd = document.createElement('td');
+                                        newTd.innerHTML = response['tableCollect'][i]['phone'];
+                                        newTr.appendChild(newTd);
+
+                                        newTd = document.createElement('td');
+                                        newTd.innerHTML = response['tableCollect'][i]['address'];
+                                        newTr.appendChild(newTd);
+
+                                        newButton = document.createElement('button');
+                                        newButton.innerHTML = 'Voir produits';
+                                        newButton.id = "button" + i;
+                                        newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
+                                        newTr.appendChild(newButton);
+
+                                        newTd = document.createElement('td');
+                                        newSVG = document.getElementById('checkFalse').cloneNode();
+                                        newSVG.style.visibility = 'visible';
+                                        newSVG.style.position = 'relative';
+                                        newSVG.id = "svg" + i;
+                                        newPath = document.getElementById('pathFalse').cloneNode();
+                                        if (response['tableCollect'][i]['status'] == 1) {
+                                            newPath.setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
+                                            newSVG.setAttribute("fill", "green");
+                                            newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                        } else {
+                                            newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableCollect'][i]['email'] + '")');
+                                        }
+                                        newPath.id = "path" + i;
+                                        newSVG.appendChild(newPath);
+                                        newTd.appendChild(newSVG);
+                                        newTr.appendChild(newTd);
+
+                                        table.appendChild(newTr);
+                                    }
+                                }
+                            }
+                        };
                     }
 
                     curr_date.attr('id', day);

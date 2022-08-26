@@ -4,17 +4,48 @@
 
 <input type="text" value="" name="search" id="search">
 
+<div id="products">
+
+</div>
+
+<button onclick="createDistrib()">Créer une nouvelle distribution</button>
+
+<form id="form" class="formulaire" action="distribution" method="POST" enctype='multipart/form-data'></form>
 
 <script>
+    var products = [];
+
+    let index = 0;
+    while(document.getElementById("select" + index)) {
+        if (document.getElementById("select" + index).checked){
+            products.push(document.getElementById("product_code" + index).innerHTML);
+        }
+        index++;
+    }
+
     printStock("");
 
     document.getElementById("search").addEventListener("keyup", function(event) {
         printStock(event.target.value);
     });
 
+    function createDistrib() {
+        if (products.length == 0) {
+            alert("Veuillez selectionner au moins un produit");
+            return;
+        } else {
+            for (let i = 0; i < products.length; i++) {
+                document.getElementById("form").innerHTML += "<input type='hidden' name='product" + i + "' value='" + products[i] + "'>";
+            }
+            document.getElementById("form").submit();
+        }
+    }
+
     function printStock(ev) {
-        if (document.getElementById("product")) {
-            document.getElementById("product").remove();
+        while (document.getElementById("product")){
+            if (document.getElementById("product")) {
+                document.getElementById("product").remove();
+            }
         }
 
         const req = new XMLHttpRequest();
@@ -29,13 +60,29 @@
                         let product = response['stock'][i];
                         let productDiv = document.createElement('div');
                         productDiv.id = 'product';
-                        productDiv.innerHTML = `
-                    <div id="product-info">
-                        <p>${product['product_code']}</p>
-                        <p>${product['quantity']}</p>
-                    </div>
-                `;
-                        document.body.appendChild(productDiv);
+                        let productInfo = document.createElement('div');
+                        productInfo.id = "product-info";
+                        productDiv.innerHTML = '<input type="checkbox" id="select' + i + '">';
+                        productDiv.innerHTML += '<div id="product_code' + i +'">' + product['product_code'] + '</div>';
+                        productDiv.innerHTML += '<div>' + product['quantity'] + '</div>';
+
+                        productDiv.appendChild(productInfo);
+                        document.getElementById("products").appendChild(productDiv);
+                        for (let j = 0; j < products.length; j++) {
+                            if (products[j] == product_code) {
+                                document.getElementById("select" + i).checked = true;
+                                break;
+                            }
+                        }
+                        document.getElementById("select" + i).addEventListener('change', (event) => {
+                            if (event.target.checked) {
+                                products.push(product_code);
+                            } else {
+                                products.splice(products.indexOf(product_code), 1);
+                            }
+                            console.log(products);
+                        }
+                        );
                     }
                 }
             }

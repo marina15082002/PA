@@ -78,6 +78,31 @@ if (preg_match("/^login/", $route)) {
     }
 }
 
+if (preg_match("/^distribution/", $route)) {
+    include __DIR__ . "\controllers\DistributionController.php";
+    $controller = new PA\DistributionController();
+
+    if ($method == "POST") {
+        $controller->get();
+        die();
+    }
+}
+
+if (preg_match("/^calendarDistrib/", $route)) {
+    include __DIR__ . "\controllers\DistributionController.php";
+    $controller = new PA\DistributionController();
+
+    if ($method == "GET") {
+        $controller->getDistrib();
+        die();
+    }
+
+    if ($method == "POST") {
+        $controller->insert();
+        die();
+    }
+}
+
 if (preg_match("/^error/", $route)) {
     include __DIR__ . "\controllers\ErrorController.php";
     $controller = new PA\ErrorController();

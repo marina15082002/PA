@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="/PA/src/css/bootstrap.min.css">
     <link rel="stylesheet" href="/PA/src/css/icons.css">
 
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+
+
     <title><?php echo $title; ?></title>
     <!--
     <link rel="stylesheet" href="../library/bootstrap-5.0.2-dist/css/bootstrap.css">
