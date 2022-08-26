@@ -1,6 +1,7 @@
 <?php include __DIR__ . "\header.php";?>
 
 <main>
+    <h1>Profil</h1>
     <?php
     foreach ($table as $value) {
         if ($value['role'] == "user") {
@@ -49,5 +50,49 @@
                 ";
         }
     }
+
+    if (!isset($sub[0])) {
+        echo "
+        <form class='formulaire' method='POST' action='subscription' enctype='multipart/form-data'>
+            <input  style='display:none' type='date' id='date' name='date' value=''/>
+            <input type='submit' value='Prendre un abonnement'/>
+        </form>
+    ";
+    } else {
+        echo "
+            <div id='sub'>
+                <label>Votre abonnement prend fin le " . $sub[0]['date'] . "</label>
+                <form id='formUnsub' class='formulaire' method='POST' action='unsubscribe' enctype='multipart/form-data'>
+                    <input type='hidden' value='" . $sub[0]['date'] . "' id='date_end' name='date_end' size='35'/>
+                    <input type='submit' id='unsubscribe' value='Se désabonner'/>
+                </form>
+            </div>
+            ";
+    }
+
+
     ?>
+
+    <script type="text/javascript">
+        if (document.getElementById('date')) {
+            let date = new Date();
+            let day = (date.getDate() < 10)? "0" + date.getDate() : date.getDate();
+            let month = (date.getMonth() < 10)? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            let year = date.getFullYear() + 1;
+            document.getElementById("date").value = year + "-" + month + "-" + day;
+        } else {
+            let date = new Date();
+            let date_end = new Date(document.getElementById('date_end').value);
+            const formatDate = (date)=>{
+                let formatted_date = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+                return formatted_date;
+            }
+            console.log(formatDate(date));
+            console.log(formatDate(date_end));
+            if (formatDate(date) >= formatDate(date_end)) {
+                alert("Votre abonnement a expiré");
+                document.getElementById('formUnsub').submit();
+            }
+        }
+    </script>
 </main>

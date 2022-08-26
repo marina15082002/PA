@@ -296,4 +296,24 @@ if (preg_match("/^profile/", $route)) {
     }
 }
 
+if (preg_match("/^subscription/", $route)) {
+    include __DIR__ . "\controllers\SubscriptionController.php";
+    $controller = new PA\SubscriptionController();
+
+    if ($method == "POST") {
+        $controller->add();
+        die();
+    }
+}
+
+if (preg_match("/^unsubscribe/", $route)) {
+    include __DIR__ . "\controllers\SubscriptionController.php";
+    $controller = new PA\SubscriptionController();
+
+    if ($method == "POST") {
+        $controller->delete();
+        die();
+    }
+}
+
 die();

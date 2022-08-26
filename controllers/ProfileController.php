@@ -26,6 +26,7 @@ class ProfileController
         session_start();
 
         $table = $getColumnsModel->getUser($connect, "USERS", $_SESSION['id']);
+        $sub = $getColumnsModel->getDate($connect, "SUBSCRIPTION", $_SESSION['email']);
 
         $route = $_REQUEST["route"] ?? "";
 
@@ -47,7 +48,7 @@ class ProfileController
         }
 
         $title = $lang["TITLE_MODIFY_USERS"];
-        include __DIR__ . "\..\src\modifyUsers.php";
+        include __DIR__ . "\..\src\profile.php";
     }
 
     public function modify()

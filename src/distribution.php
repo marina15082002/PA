@@ -23,7 +23,7 @@
 <script type="text/javascript">
     let date = new Date();
     let day = (date.getDate() < 10)? "0" + date.getDate() : date.getDate();
-    let month = (date.getMonth() < 10)? "0" + date.getMonth() + 1 : date.getMonth() + 1;
+    let month = (date.getMonth() < 10)? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
     let year = date.getFullYear();
     document.getElementById("date").value = year + "-" + month + "-" + day;
     document.getElementById("date").min = year + "-" + month + "-" + day;
