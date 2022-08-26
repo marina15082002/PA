@@ -85,6 +85,12 @@ CREATE TABLE IF NOT EXISTS DISTRIB(
     status INT DEFAULT FALSE
     ) ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS SUBSCRIPTION(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    date DATE NOT NULL,
+    email VARCHAR(50) NOT NULL
+    ) ENGINE = InnoDB;
+
 INSERT INTO USERS (type, name, email, siren, phone, country, city, address, password) VALUES ("Entreprise", "Robert", "marina@gmail.com", "123456789", "0781811058", "France", "Paris", "1 rue de la paix", "97dee97560699a639f3cf55c464855eefe97ae97493b242fe01ecdbab39ea463");
 INSERT INTO USERS (type, name, email, siren, phone, country, city, address, password) VALUES ("Entreprise", "Robert", "marina1508@gmail.com", "123456789", "0781811058", "France", "Paris", "1 rue de la paix", "97dee97560699a639f3cf55c464855eefe97ae97493b242fe01ecdbab39ea463");
 
