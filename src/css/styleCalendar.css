@@ -6855,7 +6855,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .month:hover {
-  color: #3081a4; }
+  color: #518863; }
 
 /*  Dates table */
 .table-date {
@@ -6875,7 +6875,7 @@ h1, h2, h3, h4, h5,
   position: relative; }
 
 .table-date:not(.nil):hover {
-  border-color: #3081a4; }
+  border-color: #518863; }
 
 .event-date {
   border-color: #7e0cf5;
@@ -6892,11 +6892,11 @@ h1, h2, h3, h4, h5,
   background: #28a745; }
 
 .active-date {
-  background: #1093c2!important;
+  background: #6eb784 !important;
   color: #fff; }
 
 .date-event {
-  background: #0a526e;
+  background: #518863;
   color: #fff!important; }
 
 #title-hours {
@@ -6923,8 +6923,8 @@ h1, h2, h3, h4, h5,
 .hours {
   outline: unset !important;
   margin-bottom: 5px;
-  border: 1px solid #44baee;
-  background-color: #44baee;
+  border: 1px solid #406c50;
+  background-color: #518863;
 }
 
 .hours:hover {
