@@ -87,6 +87,47 @@
     <input type="hidden" id="hours" name="hours" value="">
 </form>
 
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js">
+
+</script>
+
+<script type="text/javascript">
+    function pdf() {
+        // Default export is a4 paper, portrait, using millimeters for units
+        const {jsPDF} = window.jspdf;
+        let index = 25;
+
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                let response = JSON.parse(req.responseText);
+
+                const doc = new jsPDF();
+                doc.text("Récapitulatif de la livraison", 10, 10);
+
+                for (let i = 0; i < response['tableDistrib'].length; ++i) {
+                    doc.text("Date : " + response['tableDistrib'][i]['date'], 10, index);
+                    doc.text("Adresse de livraison : " + response['tableDistrib'][i]['address'], 10, index + 10);
+                    index += 30;
+                }
+
+                doc.text("Liste des produits livrés : ", 10, index);
+                index += 10;
+
+                for (let i = 0; i < response['tableProducts'].length; ++i) {
+                    console.log(response['tableProducts'][i]);
+                    doc.text("Code barre : " + response['tableProducts'][i]['product_code'], 10, index);
+                    doc.text("Quantité : " + response['tableProducts'][i]['quantity'], 10, index + 10);
+                    index += 25;
+                }
+                doc.save('recap' + response["tableDistrib"][0]["id"] + '.pdf');
+            }
+        };
+        req.open('GET', '/PA/controllers/CalendarDistrib.php');
+        req.send();
+    }
+</script>
+
 <script>
     function showProducts(id, idTr, idButton){
         let newTd;
@@ -147,10 +188,21 @@
             document.getElementById("path" + index).setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
             document.getElementById("svg" + index).setAttribute("fill", "green");
             document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + id + "')");
+
+            let td = document.getElementById("td" + index);
+            let button = document.createElement("button");
+            button.setAttribute("onclick", "pdf()");
+            button.id = "pdf" + index;
+            button.innerHTML = "Télécharger";
+            td.appendChild(button);
         } else {
             document.getElementById("path" + index).setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z");
             document.getElementById("svg" + index).setAttribute("fill", "red");
             document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(false, " + index + ", '" + id + "')");
+
+            if (document.getElementById("pdf" + index)) {
+                document.getElementById("pdf" + index).remove();
+            }
         }
         fetch("/PA/controllers/SetStatusDistrib.php?status=" + (!old_status).toString() + "&id=" + id)
             .then((response) => console.log("Status changed"));
@@ -161,6 +213,7 @@
 <script src="/PA/src/js/jquery.min.js"></script>
 <script src="/PA/src/js/bootstrap.min.js"></script>
 <script src="/PA/src/js/popper.js"></script>
+<script src="/PA/src/js/pdf.js"></script>
 
 <script>
     (function($) {
@@ -360,6 +413,18 @@
                             newPath.id = "path" + i;
                             newSVG.appendChild(newPath);
                             newTd.appendChild(newSVG);
+                            newTr.appendChild(newTd);
+
+                            newTd = document.createElement('td');
+                            newTd.id = "td" + i;
+                            if (response['tableDistrib'][i]['status'] == 1) {
+                                let button = document.createElement("button");
+                                button.setAttribute("onclick", "pdf()");
+                                button.id = "pdf" + i;
+                                button.innerHTML = "Télécharger";
+                                newTd.appendChild(button);
+
+                            }
                             newTr.appendChild(newTd);
 
                             table.appendChild(newTr);
