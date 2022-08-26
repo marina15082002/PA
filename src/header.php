@@ -17,7 +17,7 @@
 			display: flex;
 			flex-direction: row;
 			height: 4rem;
-			background-color: #ddd;
+			background-color: #73de9a;
 		}
 
 		#sitename>svg {
@@ -73,7 +73,7 @@
 			position: absolute;
 			right: 1rem;
 			top: 1.5rem;
-			background-color: #bbb;
+			background-color: #a8f0c2;
 			transition: height .4s ease-out;
 			overflow: hidden;
 		}
@@ -88,7 +88,7 @@
 		}
 
 		.header-popup-anchor>div>*:hover {
-			background-color: #aaa;
+			background-color: #6dfca1;
 		}
 
 		.header-popup-anchor>div>*>svg {
