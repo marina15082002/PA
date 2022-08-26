@@ -96,7 +96,7 @@ class Fr
             "INFORMATION" => "Informations",
             "PRODUCTS" => "Produits",
             "ADD_PRODUCT" => "Ajouter un produit",
-            "TITLE_PRINT_COLLECT" => "Votre demande de collect a été annulée",
+            "TITLE_PRINT_COLLECT" => "Votre demande de collecte a été annulée",
             "LINK_ADD_PRODUCT" => "Refaire une demande de collect",
             "LINK_HOME" => "Retour à la page d'accueil",
             "9AM" => "09h00",
