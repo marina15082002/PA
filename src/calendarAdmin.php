@@ -64,10 +64,12 @@
         .btn {
             margin-top: 2.5%;
             background-color: #6EB784FF;
+            width: 10rem;
         }
 
         .btn:hover{
             background-color: #518863;
+            border-color: #113b1a!important;
         }
 
         .btn:focus{

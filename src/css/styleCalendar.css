@@ -6650,7 +6650,7 @@ h1, h2, h3, h4, h5,
   height: 500px;
   position: relative;
   margin: 20px auto;
-  background: #1093c2; }
+  background: #6EB784FF; }
 
 /*  Events display */
 .events-container {
@@ -6928,11 +6928,11 @@ h1, h2, h3, h4, h5,
 }
 
 .hours:hover {
-  background-color: #3081a4;
+  background-color: #6ebd86;
 }
 
 .hours[selected="true"] {
-  background-color: #3794BD;
+  background-color: #6ebd86;
 }
 
 .event-date.active-date {
