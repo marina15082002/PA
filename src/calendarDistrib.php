@@ -205,8 +205,8 @@
     </svg>
 
     <svg style="visibility: collapse; position: absolute" id="download" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        <path id="downloadPath2" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path id="downloadPath" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
     </svg>
 
     <form style="visibility: collapse; position: absolute" id="calendarForm" class='formulaire' action="calendar" method='POST' enctype='multipart/form-data'>
@@ -318,19 +318,15 @@
                 document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + id + "')");
 
                 let td = document.getElementById("td" + index);
-                let newSVG = document.createElement('svg');
-                newSVG.xmlns = "http://www.w3.org/2000/svg";
-                newSVG.width = "16";
-                newSVG.height = "16";
-                newSVG.fill = "currentColor";
-                newSVG.className = "bi bi-download";
-                newSVG.viewBox = "0 0 16 16";
+                let newSVG = document.getElementById('download').cloneNode();
+                newSVG.style.visibility = 'visible';
+                newSVG.style.position = 'relative';
+                newSVG.style.marginLeft = '20%';
+                newSVG.id = "pdf" + index;
                 newSVG.setAttribute("onclick", "pdf(" + id + ")");
-                let newPath = document.createElement('path');
-                newPath.setAttribute("d", "M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z");
+                let newPath = document.getElementById('downloadPath2').cloneNode();
                 newSVG.appendChild(newPath);
-                let newPath2 = document.createElement('path');
-                newPath2.setAttribute("d", "M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z");
+                let newPath2 = document.getElementById('downloadPath').cloneNode();
                 newSVG.appendChild(newPath2);
                 td.appendChild(newSVG);
             } else {
@@ -562,11 +558,12 @@
                                     let newSVG = document.getElementById('download').cloneNode();
                                     newSVG.style.visibility = 'visible';
                                     newSVG.style.position = 'relative';
+                                    newSVG.style.marginLeft = '20%';
                                     newSVG.id = "pdf" + i;
                                     newSVG.setAttribute("onclick", "pdf(" + response['tableDistrib'][i]['id'] + ")");
-                                    newPath = document.getElementById('download').childNodes[0].cloneNode();
+                                    newPath = document.getElementById('downloadPath2').cloneNode();
                                     newSVG.appendChild(newPath);
-                                    let newPath2 = document.getElementById('download').childNodes[1].cloneNode();
+                                    let newPath2 = document.getElementById('downloadPath').cloneNode();
                                     newSVG.appendChild(newPath2);
                                     newTd.appendChild(newSVG);
                                 }
