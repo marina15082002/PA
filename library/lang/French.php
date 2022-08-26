@@ -99,7 +99,7 @@ class Fr
             "TITLE_PRINT_COLLECT" => "Votre demande de collect à été annulée",
             "LINK_ADD_PRODUCT" => "Refaire une demande de collect",
             "LINK_HOME" => "Retour à la page d'accueil",
-            "SUBSCRIBE" => "S'abonner",
+            "SUBSCRIBE" => "S\'abonner",
             "UNSUBSCRIBE" => "Se désabonner",
             "YOUR_SUBSCRIPTION_ENDS_THE" => "Votre abonnement se termine le",
             "9AM" => "09h00",
