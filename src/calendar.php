@@ -17,12 +17,12 @@
 
     #confirm {
         width: 10rem;
-        background-color: #37c256 !important;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
     }
 
     #confirm:hover {
         width: 10rem;
-        background-color: #113b1a !important;
         border-color: #113b1a!important;
         margin-bottom: 3rem;
     }
@@ -62,6 +62,19 @@
     #formAddress svg {
         width: 1.2rem;
         vertical-align: text-top;
+    }
+
+    .btn {
+        margin-top: 2.5%;
+        background-color: #6EB784FF;
+    }
+
+    .btn:hover{
+        background-color: #518863;
+    }
+
+    .btn:focus{
+        box-shadow: 0 0 0 0.2rem rgb(97, 159, 114);
     }
 </style>
 <div id="slider">
@@ -190,7 +203,7 @@
 </div>
 
 <div class="center-flex">
-    <button id="confirm" type="button" class="btn btn-block btn-primary" onclick="validate()"><?php echo $lang['CONTINUE']; ?></button>
+    <button id="confirm" type="button" class="btn btn-block" onclick="validate()"><?php echo $lang['CONTINUE']; ?></button>
 </div>
 
 <script>
