@@ -9,6 +9,14 @@
 
 <header id="header">
     <style>
+        a{
+            color: black;
+        }
+
+        a:hover{
+            color: #113b1a;
+        }
+
 		body {
 			margin: unset;
 		}
@@ -17,7 +25,7 @@
 			display: flex;
 			flex-direction: row;
 			height: 4rem;
-			background-color: #d4ffe3;
+			background-color: #6eb784;
 		}
 
 		#sitename>svg {
@@ -73,7 +81,7 @@
 			position: absolute;
 			right: 1rem;
 			top: 1.5rem;
-			background-color: #bdffd4;
+			background-color: #67c487;
 			transition: height .4s ease-out;
 			overflow: hidden;
 		}
