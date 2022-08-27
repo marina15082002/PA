@@ -166,10 +166,11 @@ class ProfileController
 
         $connect = getDatabaseConnection();
         $modifyModel = new Models\ModifyModel();
+        session_start();
 
-        $modifyModel->deleteColumn($connect, "USERS", $_SESSION['id']);
+        $res = $modifyModel->deleteColumn($connect, "USERS", $_SESSION['id']);
 
-        header("Location: /PA/" . $language . "/modifyUsers");
+        header("Location: /PA/" . $language . "/signout");
         header("Connection: close");
         exit;
     }

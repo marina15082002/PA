@@ -47,6 +47,28 @@
         position: absolute;
         bottom: 2rem;
     }
+
+    /* Buttons */
+    #btn-modify {
+        margin-top: 2.5%;
+        background-color: #6EB784FF;
+        width: 10rem;
+        border: none;
+    }
+
+    #btn-modify:hover{
+        background-color: #518863;
+        border-color: #113b1a!important;
+    }
+
+    #btn-modify:focus{
+        box-shadow: 0 0 0 0.2rem rgb(97, 159, 114);
+    }
+
+    #btn-modify:active {
+        background-color: #518863;
+        border-color: #113b1a!important;
+    }
 </style>
 <main>
     <h1>Profil</h1>
@@ -132,7 +154,7 @@
                         </div>
                     </div>
                     
-                    <input type='submit' value='" . $lang["BTN_MODIFY"] . "' class='btn btn-block btn-primary'>";
+                    <input type='submit' value='" . $lang["BTN_MODIFY"] . "' class='btn btn-block btn-primary' id='btn-modify'>";
 
                     if (isset($_GET["fieldEmptyError"])) {
                         echo '<div class="alert alert-danger" role="alert">' . $lang["FIELDS_EMPTY"] . '</div>';
@@ -181,8 +203,6 @@
                 let formatted_date = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
                 return formatted_date;
             }
-            console.log(formatDate(date));
-            console.log(formatDate(date_end));
             if (formatDate(date) >= formatDate(date_end)) {
                 alert("Votre abonnement a expiré");
                 document.getElementById('formUnsub').submit();

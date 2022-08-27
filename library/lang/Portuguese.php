@@ -140,6 +140,8 @@ class Pt
             "TITLE_COLLECT" => "Coleções",
             "TITLE_USERS" => "Gerenciamento&nbspde&nbspusuários",
             "TITLE_ADD_DISTRIB" => "Crie um elenco",
+            "DOWNLOAD" => "Baixar",
+            "TITLE_BARCODE" => "Recuperação de código de barras"
         );
         return $lang;
     }

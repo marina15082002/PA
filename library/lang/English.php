@@ -139,6 +139,8 @@ class En
             "TITLE_COLLECT" => "Collect",
             "TITLE_USERS" => "User&nbspManagement",
             "TITLE_ADD_DISTRIB" => "Create a cast",
+            "DOWNLOAD" => "Download",
+            "TITLE_BARCODE" => "Barcode recovery"
         );
         return $lang;
     }

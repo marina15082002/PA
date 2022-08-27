@@ -408,55 +408,8 @@
                             document.getElementById("month").value = month+1;
                             document.getElementById("year").value = year;
 
-                            let monthTmp = (document.getElementById('month').value < 10 ? '0' + document.getElementById('month').value : document.getElementById('month').value);
                             let table = document.getElementById('table-date');
                             table.innerHTML = "";
-                            let newTr, newTd, newButton, newSVG, newPath;
-
-                            const req = new XMLHttpRequest();
-                            req.onreadystatechange = function () {
-                                if (req.readyState === 4) {
-                                    let response = JSON.parse(req.responseText);
-
-                                    for (let i = 0; i < response['tableDistrib'].length; ++i) {
-                                        if (year + '-' + monthTmp + '-' + day === response['tableDistrib'][i]['date']) {
-                                            newTr = document.createElement('tr');
-                                            newTr.id = "tr" + i;
-
-                                            newTd = document.createElement('td');
-                                            newTd.innerHTML = response['tableDistrib'][i]['address'];
-                                            newTr.appendChild(newTd);
-
-                                            newButton = document.createElement('button');
-                                            newButton.innerHTML = '<?php echo $lang['BTN_PRODUCTS']; ?>';
-                                            newButton.id = "button" + i;
-                                            newButton.className = "btn btn-block";
-                                            newButton.setAttribute('onclick', 'showProducts("' + response['tableDistrib'][i]['id'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
-                                            newTr.appendChild(newButton);
-
-                                            newTd = document.createElement('td');
-                                            newSVG = document.getElementById('checkFalse').cloneNode();
-                                            newSVG.style.visibility = 'visible';
-                                            newSVG.style.position = 'relative';
-                                            newSVG.id = "svg" + i;
-                                            newPath = document.getElementById('pathFalse').cloneNode();
-                                            if (response['tableDistrib'][i]['status'] == 1) {
-                                                newPath.setAttribute("d", "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z");
-                                                newSVG.setAttribute("fill", "green");
-                                                newSVG.setAttribute('onclick', 'changeStatus(true, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
-                                            } else {
-                                                newSVG.setAttribute('onclick', 'changeStatus(false, ' + i + ', "' + response['tableDistrib'][i]['id'] + '")');
-                                            }
-                                            newPath.id = "path" + i;
-                                            newSVG.appendChild(newPath);
-                                            newTd.appendChild(newSVG);
-                                            newTr.appendChild(newTd);
-
-                                            table.appendChild(newTr);
-                                        }
-                                    }
-                                }
-                            };
                         }
 
                         curr_date.attr('id', day);
@@ -489,6 +442,14 @@
                             curr_date.addClass("event-date");
                         }
                         curr_date.click({events: events, month: months[month], day:day}, date_click);
+
+                        if(i < first_day || day > day_count) {
+                        } else {
+                            if(today===day && $(".active-date").length===0) {
+                                curr_date.trigger("click");
+                            }
+                        }
+
                         row.append(curr_date);
                     }
                 }

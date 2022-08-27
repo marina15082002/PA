@@ -140,6 +140,8 @@ class It
             "TITLE_COLLECT" => "Collezione",
             "TITLE_USERS" => "Gestione&nbsputenti",
             "TITLE_ADD_DISTRIB" => "Crea un cast",
+            "DOWNLOAD" => "Scarica",
+            "TITLE_BARCODE" => "Recupero codici a barre"
         );
         return $lang;
     }

@@ -143,6 +143,8 @@ class Fr
             "TITLE_COLLECT" => "Collecte",
             "TITLE_USERS" => "Gestion&nbspdes&nbsputilisateurs",
             "TITLE_ADD_DISTRIB" => "Créer une distribution",
+            "DOWNLOAD" => "Télécharger",
+            "TITLE_BARCODE" => "Récupération des codes barres"
         );
         return $lang;
     }

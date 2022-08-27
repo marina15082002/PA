@@ -1,7 +1,5 @@
 <?php include __DIR__ . "\header.php";?>
 
-<h1 id = "h1"><?php echo $lang["TITLE_ADD_PRODUCT"]; ?></h1>
-
 <style type="text/css">
     main {
         padding-top: 3rem;
@@ -68,6 +66,27 @@
     }
 
     /* Buttons */
+    .btn {
+        margin-top: 2.5%;
+        background-color: #6EB784FF;
+        width: 10rem;
+        border: none;
+    }
+
+    .btn:hover{
+        background-color: #518863;
+        border-color: #113b1a!important;
+    }
+
+    .btn:focus{
+        box-shadow: 0 0 0 0.2rem rgb(97, 159, 114);
+    }
+
+    .btn:active {
+        background-color: #518863;
+        border-color: #113b1a!important;
+    }
+
     .delete-button, #buttonAdd>svg {
         cursor: pointer;
         height: 1.2rem;
@@ -166,7 +185,7 @@
                             <td><input type='text' value='" . htmlspecialchars($value["product_code"], ENT_QUOTES) . "' id='barcode' name='barcode' size='35'/></td>
                             <td><input type='number' value='" . htmlspecialchars($value["quantity"], ENT_QUOTES) . "' id='quantity' name='quantity' min='1'/></td>
                             <td>
-                                <button type='button'>
+                                <button type='button' class='btn btn-block'>
                                     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='delete-button bi bi-x-square' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg>
                                 </button>
                             </td>
@@ -248,7 +267,6 @@
         }
 
         if (error === false) {
-            console.log("submit");
             document.getElementById("form").submit();
         }
     }
