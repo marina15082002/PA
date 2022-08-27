@@ -148,7 +148,8 @@
         let form = document.getElementById('users-form');
 
         let children = form.firstElementChild.firstElementChild.children;
-        for (let i = 0; i < children.length; i++) {
+        let length = children.length;
+        for (let i = 0; i < length; i++) {
             let child = children[i];
             if (i != child) {
                 child.remove();
