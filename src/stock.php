@@ -100,9 +100,9 @@
         }
     </style>
 
-    <h1>Stock</h1>
+    <h1><?php echo $lang["TITLE_STOCK"] ;?></h1>
 
-    <input style="width:60vw" type="text" value="" name="search" id="search" placeholder="Rechercher un code barre ...">
+    <input style="width:60vw" type="text" value="" name="search" id="search" placeholder="<?php echo $lang['SEARCH']; ?>">
 
     <div id="products">
 
@@ -118,7 +118,7 @@
         </table>
     </form>
 
-    <button onclick="createDistrib()" class="btn">Créer une nouvelle distribution</button>
+    <button onclick="createDistrib()" class="btn"><?php echo $lang['BTN_DISTRIB']; ?></button>
 
     <script>
         var products = [];
@@ -160,6 +160,10 @@
             req.onreadystatechange = function () {
                 if (req.readyState === 4) {
                     let response = JSON.parse(req.responseText);
+
+                    response['stock'].sort(function (a, b) {
+                        return a.product_code - b.product_code;
+                    });
 
                     for (let i = 0; i < response['stock'].length; ++i) {
 

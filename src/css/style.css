@@ -103,11 +103,11 @@ h2 {
   background: #ccc; }
 
 .control input:checked ~ .control__indicator {
-  background: #fb771a; }
+  background: #6eb784; }
 
 .control:hover input:not([disabled]):checked ~ .control__indicator,
 .control input:checked:focus ~ .control__indicator {
-  background: #fb8633; }
+  background: #6eb784; }
 
 .control input:disabled ~ .control__indicator {
   background: #e6e6e6;
@@ -142,3 +142,12 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+
+#btn_login, #next-button {
+  background-color: #6EB784FF;
+  border: #113B1AFF;
+}
+
+#btn_login:hover, #next-button:hover {
+  background-color: #518863FF;
+}

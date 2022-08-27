@@ -127,6 +127,8 @@
         }
     </style>
 
+    <h1><?php echo $lang["TITLE_COLLECT"] ; ?></h1>
+
     <section id="calendar" class="ftco-section">
         <div class="row">
             <div class="col-md-12">
@@ -405,7 +407,7 @@
                                             newTr.appendChild(newTd);
 
                                             newButton = document.createElement('button');
-                                            newButton.innerHTML = 'Voir produits';
+                                            newButton.innerHTML = '<?php echo $lang["BTN_PRODUCTS"]; ?>';
                                             newButton.id = "button" + i;
                                             newButton.className = "btn btn-block";
                                             newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
@@ -515,7 +517,16 @@
                                 newTr.id = "tr" + i;
 
                                 newTd = document.createElement('td');
-                                newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                                if ("<?php echo $language; ?>" == "en") {
+                                    if (response['tableCollect'][i]['hours'] < 12) {
+                                        newTd.innerHTML = response['tableCollect'][i]['hours'] + ":00 AM";
+                                    } else {
+                                        newTd.innerHTML = (response['tableCollect'][i]['hours'] - 12) + ":00 PM";
+                                    }
+                                } else {
+                                    newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                                }
+
                                 newTr.appendChild(newTd);
 
                                 newTd = document.createElement('td');

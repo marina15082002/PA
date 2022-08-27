@@ -127,7 +127,7 @@
         }
     </style>
 
-    <h1>Liste des Distributions</h1>
+    <h1><?php echo $lang["TITLE_DELIVERED"] ; ?></h1>
 
     <section id="calendar" class="ftco-section">
         <div class="row">
@@ -189,7 +189,7 @@
                 <th scope="col"><?php echo $lang["ADDRESS"]; ?></th>
                 <th scope="col"><?php echo $lang["LABEL_PRODUCTS"]; ?></th>
                 <th scope="col"><?php echo $lang["LABEL_STATUS"]; ?></th>
-                <th scope="col">Récapitulatif</th>
+                <th scope="col"><?php echo $lang["SUMMARY"]; ?></th>
             </tr>
             </thead>
             <tbody id="table-date">
@@ -232,24 +232,35 @@
                     let response = JSON.parse(req.responseText);
 
                     const doc = new jsPDF();
-                    doc.text("Récapitulatif de la livraison", 10, 10);
+                    doc.text("<?php echo $lang['PDF_TITLE']; ?>", 10, 10);
 
                     for (let i = 0; i < response['tableDistrib'].length; ++i) {
-                        doc.text("Date : " + response['tableDistrib'][i]['date'], 10, index);
-                        doc.text("Adresse de livraison : " + response['tableDistrib'][i]['address'], 10, index + 10);
+                        let date = new Date(response['tableDistrib'][i]['date']);
+                        console.log("<?php echo $language; ?>");
+                        console.log("<?php echo $language; ?>" == "en");
+                        if ("<?php echo $language; ?>" == "en") {
+                            doc.text("<?php echo $lang['LABEL_DATE']; ?> : " + date.toLocaleDateString('en-EN'), 10, index);
+                        } else if ("<?php echo $language; ?>" == "it") {
+                            doc.text("<?php echo $lang['LABEL_DATE']; ?> : " + date.toLocaleDateString('it-IT'), 10, index);
+                        } else if ("<?php echo $language; ?>" == "pt") {
+                            doc.text("<?php echo $lang['LABEL_DATE']; ?> : " + date.toLocaleDateString('pt-PT'), 10, index);
+                        } else {
+                            doc.text("<?php echo $lang['LABEL_DATE']; ?> : " + date.toLocaleDateString('fr-FR'), 10, index);
+                        }
+                        doc.text("<?php echo $lang['PDF_ADDRESS']; ?> : " + response['tableDistrib'][i]['address'], 10, index + 10);
                         index += 30;
                     }
 
-                    doc.text("Liste des produits livrés : ", 10, index);
+                    doc.text("<?php echo $lang['LIST_DELIVERED']; ?> : ", 10, index);
                     index += 10;
 
                     for (let i = 0; i < response['tableProducts'].length; ++i) {
                         console.log(response['tableProducts'][i]);
-                        doc.text("Code barre : " + response['tableProducts'][i]['product_code'], 10, index);
-                        doc.text("Quantité : " + response['tableProducts'][i]['quantity'], 10, index + 10);
+                        doc.text("<?php echo $lang['FIELD_BARCODE']; ?>  : " + response['tableProducts'][i]['product_code'], 10, index);
+                        doc.text("<?php echo $lang['FIELD_QUANTITY']; ?>  : " + response['tableProducts'][i]['quantity'], 10, index + 10);
                         index += 25;
                     }
-                    doc.save('recap' + response["tableDistrib"][0]["id"] + '.pdf');
+                    doc.save('<?php echo $lang['SUMMARY']; ?>' + response["tableDistrib"][0]["id"] + '.pdf');
                 }
             };
             req.open('GET', '/PA/controllers/CalendarDistrib.php');
@@ -417,7 +428,7 @@
                                             newTr.appendChild(newTd);
 
                                             newButton = document.createElement('button');
-                                            newButton.innerHTML = 'Voir produits';
+                                            newButton.innerHTML = '<?php echo $lang['BTN_PRODUCTS']; ?>';
                                             newButton.id = "button" + i;
                                             newButton.className = "btn btn-block";
                                             newButton.setAttribute('onclick', 'showProducts("' + response['tableDistrib'][i]['id'] + '", "' + newTr.id  + '", "' + newButton.id + '")');
@@ -527,7 +538,7 @@
                                 newTr.appendChild(newTd);
 
                                 newButton = document.createElement('button');
-                                newButton.innerHTML = 'Voir produits';
+                                newButton.innerHTML = '<?php echo $lang['BTN_PRODUCTS']; ?>';
                                 newButton.id = "button" + i;
                                 newButton.className = "btn btn-block";
                                 newButton.setAttribute('onclick', 'showProducts("' + response['tableDistrib'][i]['id'] + '", "' + newTr.id  + '", "' + newButton.id + '")');

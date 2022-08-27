@@ -85,7 +85,9 @@
     }
 </style>
 <main>
-    <form class='formulaire' id="users-form" method='POST' action='modifyUsers' enctype='multipart/form-data'>
+    <h1><?php echo $lang["TITLE_USERS"] ; ?></h1>
+
+    <form style="margin-top:20px" class='formulaire' id="users-form" method='POST' action='modifyUsers' enctype='multipart/form-data'>
         <table class="table table-striped table-hover" id="users">
             <tr>
                 <th><?php echo $lang["EMAIL"]; ?></th>

@@ -60,7 +60,7 @@ class CalendarController
             $lang = $GLOBALS["site_lang"]->getArray();
         }
 
-        $title = $lang["TITLE_CALENDAR"];
+        $title = $lang["TITLE_COLLECT"];
         include __DIR__ . "\..\src\calendarAdmin.php";
     }
 
