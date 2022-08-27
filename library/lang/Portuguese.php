@@ -71,6 +71,7 @@ class Pt
             "UNSUBSCRIBE" => "Cancelar assinatura",
             "YOUR_SUBSCRIPTION_ENDS_THE" => "Sua assinatura termina em",
             "ADD_ADMIN" => "Adicionar administrador",
+            "POSITION" => "Posição",
             "JAN" => "Jan",
             "FEB" => "Fev",
             "MAR" => "Mars",
