@@ -134,6 +134,14 @@
                 </td>
             </tr>
         </table>
+
+        <?php
+            if (isset($_GET["fieldEmptyError"])) {
+                echo '<div class="alert alert-danger" role="alert">' . $lang["FIELDS_EMPTY"] . '</div>';
+            } else if (isset($_GET["phoneSyntaxError"])) {
+                echo '<div class="alert alert-danger" role="alert">' . $lang["FIELD_PHONE_SYNTAX"] . '</div>';
+            }
+        ?>
     </form>
     
     <form id="delete-form" class='formulaire' method='POST' action='deleteAdmin' enctype='multipart/form-data'>
