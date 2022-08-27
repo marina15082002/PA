@@ -26,9 +26,6 @@ class LoginController
         } else if (preg_match("/^pt/", $route)) {
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();
@@ -45,7 +42,6 @@ class LoginController
 
         $res = $userModel->checkEmailPassword($body['email'], hash("sha256", $body["password"]));
 
-        echo $res;
         if (empty($res)) {
             header("Location: /PA/" . $language . "/login?passwordEmailError=true");
             header("Connection: close");
@@ -88,9 +84,21 @@ class LoginController
             exit;
         }
 
+        $res = $userModel->getUser($body['email']);
+
         header("Location: /PA/" . $language . "/");
         session_start();
         $_SESSION["id"] = $res[0]["id"];
+        $_SESSION["email"] = $body["email"];
+        $_SESSION["name"] = $res[0]["name"];
+        $_SESSION["type"] = $res[0]["type"];
+        $_SESSION["siren"] = $res[0]["siren"];
+        $_SESSION["phone"] = $res[0]["phone"];
+        $_SESSION["country"] = $res[0]["country"];
+        $_SESSION["city"] = $res[0]["city"];
+        $_SESSION["address"] = $res[0]["address"];
+        $_SESSION["poste"] = $res[0]["poste"];
+        $_SESSION["role"] = $res[0]["role"];
         header("Connection: close");
         exit;
     }

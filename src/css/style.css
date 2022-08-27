@@ -24,7 +24,7 @@ h2 {
   font-size: 20px; }
 
 .half, .half .container > .row {
-  height: 100vh;
+  height: calc(100vh - 4rem); /* Full page height minus header height */
   min-height: 700px; }
 
 @media (max-width: 991.98px) {

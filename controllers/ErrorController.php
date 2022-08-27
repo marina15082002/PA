@@ -24,9 +24,6 @@ class ErrorController
         } else if (preg_match("/^pt/", $route)) {
             $GLOBALS["site_lang"] = new Lang\Pt();
             $lang = $GLOBALS["site_lang"]->getArray();
-        } else if (preg_match("/^ie/", $route)) {
-            $GLOBALS["site_lang"] = new Lang\Ie();
-            $lang = $GLOBALS["site_lang"]->getArray();
         } else {
             $GLOBALS["site_lang"] = new Lang\Fr();
             $lang = $GLOBALS["site_lang"]->getArray();

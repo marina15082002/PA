@@ -19,4 +19,26 @@ class GetColumnsModel
 
         return $prep->fetchAll();
     }
+
+    public function getUser($connect, $table, $id)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT * FROM " . $table . " WHERE id = :id");
+        $prep->execute([
+            "id" => $id
+        ]);
+
+        return $prep->fetchAll();
+    }
+
+    public function getDate($connect, $table, $email)
+    {
+        $connect = getDatabaseConnection();
+        $prep = $connect->prepare("SELECT date FROM " . $table . " WHERE email = :email");
+        $prep->execute([
+            "email" => $email
+        ]);
+
+        return $prep->fetchAll();
+    }
 }
