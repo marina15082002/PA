@@ -117,7 +117,7 @@ class En
             "TITLE_DISTRIB" => "Distribution",
             "TITLE_COLLECT" => "Collect",
             "TITLE_EMPLOYEES" => "Employees",
-            "TITLE_USERS" => "Utilisateurs",
+            "USERS" => "Utilisateurs",
             "SIGNOUT" => "Sign out",
             "LINK_GIVE" => "Give",
             "TITLE_HISTORICAl" => "Historic",
@@ -128,7 +128,15 @@ class En
             "LABEL_PRODUCTS" => "Products",
             "LABEL_STATUS" => "Status",
             "LABEL_TAB_HOURS" => "Hours",
-            "BTN_PRODUCTS" => "See products"
+            "BTN_PRODUCTS" => "See products",
+            "SUMMARY" => "Summary",
+            "PDF_TITLE" => "Delivery summary",
+            "PDF_ADDRESS" => "Delivery address",
+            "LIST_DELIVERED" => "List of delivered products",
+            "TITLE_DELIVERED" => "List of tours",
+            "TITLE_COLLECT" => "Collect",
+            "TITLE_USERS" => "User&nbspManagement",
+            "TITLE_ADD_DISTRIB" => "Create a cast",
         );
         return $lang;
     }

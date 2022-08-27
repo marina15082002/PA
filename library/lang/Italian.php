@@ -118,7 +118,7 @@ class It
             "TITLE_DISTRIB" => "Distribuzione",
             "TITLE_COLLECT" => "Raccolta",
             "TITLE_EMPLOYEES" => "Dipendenti",
-            "TITLE_USERS" => "Utenti",
+            "USERS" => "Utenti",
             "SIGNOUT" => "Esci",
             "LINK_GIVE" => "Dai un'occhiata",
             "TITLE_HISTORICAl" => "Storico",
@@ -129,7 +129,15 @@ class It
             "LABEL_PRODUCTS" => "Produtos",
             "LABEL_STATUS" => "Stato",
             "LABEL_TAB_HOURS" => "Orari",
-            "BTN_PRODUCTS" => "Vedi prodotti"
+            "BTN_PRODUCTS" => "Vedi prodotti",
+            "SUMMARY" => "Riepilogo",
+            "PDF_TITLE" => "Riepilogo consegna",
+            "PDF_ADDRESS" => "Indirizzo di consegna",
+            "LIST_DELIVERED" => "Elenco dei prodotti consegnati",
+            "TITLE_DELIVERED" => "Elenco dei tour",
+            "TITLE_COLLECT" => "Collezione",
+            "TITLE_USERS" => "Gestione&nbsputenti",
+            "TITLE_ADD_DISTRIB" => "Crea un cast",
         );
         return $lang;
     }

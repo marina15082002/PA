@@ -124,7 +124,7 @@ class Fr
             "TITLE_DISTRIB" => "Distribution",
             "TITLE_COLLECT" => "Collecte",
             "TITLE_EMPLOYEES" => "Employés",
-            "TITLE_USERS" => "Utilisateurs",
+            "USERS" => "Utilisateurs",
             "SIGNOUT" => "Déconnexion",
             "LINK_GIVE" => "Donner",
             "TITLE_HISTORICAl" => "Historique",
@@ -132,7 +132,15 @@ class Fr
             "LINK_DONATION" => "Mes&nbsp;donations",
             "LINK_INFORMATIONS" => "Mes&nbsp;informations",
             "LINK_SIGNOUT" => "Se&nbsp;déconnecter",
-            "BTN_PRODUCTS" => "Voir produits"
+            "BTN_PRODUCTS" => "Voir produits",
+            "SUMMARY" => "Récapitulatif",
+            "PDF_TITLE" => "Récapitulatif de la livraison",
+            "PDF_ADDRESS" => "Adresse de la livraison",
+            "LIST_DELIVERED" => "Liste des produits livrés",
+            "TITLE_DELIVERED" => "Liste des tournées",
+            "TITLE_COLLECT" => "Collecte",
+            "TITLE_USERS" => "Gestion&nbspdes&nbsputilisateurs",
+            "TITLE_ADD_DISTRIB" => "Créer une distribution",
         );
         return $lang;
     }

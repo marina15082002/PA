@@ -35,14 +35,14 @@ class DistributionController
         $i = 0;
         $tabName = [];
         $tabQuantity = [];
-        while ($_POST["product" . $i]) {
+        while (isset($_POST["product" . $i])) {
             $quantity = $productModel->getQuantity($_POST["product" . $i]);
             $tabName[$i] = $_POST["product" . $i];
             $tabQuantity[$i] = $quantity[0]["quantity"];
             $i += 1;
         }
 
-        $title = $lang["TITLE_ERROR"];
+        $title = $lang["TITLE_DELIVERED"];
         include __DIR__ . "\..\src\distribution.php";
     }
 
@@ -69,7 +69,7 @@ class DistributionController
         $tableCollect = $calendarModel->getAllDistrib();
         $tableProducts = $calendarModel->getAllProductsDistrib();
 
-        $title = $lang["TITLE_ERROR"];
+        $title = $lang["TITLE_DELIVERED"];
         include __DIR__ . "\..\src\calendarDistrib.php";
     }
 

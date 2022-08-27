@@ -127,6 +127,8 @@
         }
     </style>
 
+    <h1><?php echo $lang["TITLE_COLLECT"] ; ?></h1>
+
     <section id="calendar" class="ftco-section">
         <div class="row">
             <div class="col-md-12">

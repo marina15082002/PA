@@ -161,6 +161,10 @@
                 if (req.readyState === 4) {
                     let response = JSON.parse(req.responseText);
 
+                    response['stock'].sort(function (a, b) {
+                        return a.product_code - b.product_code;
+                    });
+
                     for (let i = 0; i < response['stock'].length; ++i) {
 
                         let product_code = response['stock'][i]['product_code'];

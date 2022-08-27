@@ -185,7 +185,16 @@
                 <a href='/PA/". $language . "/calendarAdmin'>" . $lang['TITLE_COLLECT'] . "</a>
                 <a href='/PA/". $language . "/calendarDistrib'>" . $lang['TITLE_DISTRIB'] . "</a>
                 <a href='/PA/". $language . "/modifyAdmin'>" . $lang['TITLE_EMPLOYEES'] . "</a>
-                <a href='/PA/". $language . "/modifyUsers'>" . $lang['TITLE_USERS'] . "</a>
+                <a href='/PA/". $language . "/modifyUsers'>" . $lang['USERS'] . "</a>
+                <a href='/PA/". $language . "/stock'>" . $lang['TITLE_STOCK'] . "</a>
+                <a href='/PA/". $language . "/getBarCode'>" . $lang['LABEL_PRODUCTS'] . "</a>
+                <a href='/PA/" . $language . "/signout'>" . $lang['SIGNOUT'] . "</a>
+                ";
+        } else if (isset($_SESSION['poste'])) {
+            echo "
+                <a href='/PA/". $language . "/calendarAdmin'>" . $lang['TITLE_COLLECT'] . "</a>
+                <a href='/PA/". $language . "/calendarDistrib'>" . $lang['TITLE_DISTRIB'] . "</a>
+                <a href='/PA/". $language . "/modifyUsers'>" . $lang['USERS'] . "</a>
                 <a href='/PA/". $language . "/stock'>" . $lang['TITLE_STOCK'] . "</a>
                 <a href='/PA/". $language . "/getBarCode'>" . $lang['LABEL_PRODUCTS'] . "</a>
                 <a href='/PA/" . $language . "/signout'>" . $lang['SIGNOUT'] . "</a>
