@@ -27,8 +27,7 @@
                                 echo '<div class="alert alert-danger" role="alert">' . $lang["FIELD_LOGIN_ERROR"] . '</div>';
                             }
                             ?>
-
-                            <input type="submit" value="Log In" class="btn btn-block btn-primary" id="btn_login">
+                            <input type="submit" value="<?php echo $lang["TITLE_LOGIN"]; ?>" class="btn btn-block btn-primary" id="btn_login">
 
                         </form>
                     </div>
