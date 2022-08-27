@@ -113,7 +113,22 @@ class En
             "6PM" => "6 PM",
             "SEARCH" => "Find a barcode ...",
             "BTN_DISTRIB" => "Create a new distribution",
-            "TITLE_STOCK" => "Stock"
+            "TITLE_STOCK" => "Stock",
+            "TITLE_DISTRIB" => "Distribution",
+            "TITLE_COLLECT" => "Collect",
+            "TITLE_EMPLOYEES" => "Employees",
+            "TITLE_USERS" => "Utilisateurs",
+            "SIGNOUT" => "Sign out",
+            "LINK_GIVE" => "Give",
+            "TITLE_HISTORICAl" => "Historic",
+            "TITLE_HELP" => "Help",
+            "LINK_DONATION" => "My&nbsp;donations",
+            "LINK_INFORMATIONS" => "My&nbsp;information",
+            "LINK_SIGNOUT" => "Sign&nbsp;out",
+            "LABEL_PRODUCTS" => "Products",
+            "LABEL_STATUS" => "Status",
+            "LABEL_TAB_HOURS" => "Hours",
+            "BTN_PRODUCTS" => "See products"
         );
         return $lang;
     }

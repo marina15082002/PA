@@ -114,7 +114,22 @@ class Pt
             "6PM" => "18h00",
             "SEARCH" => "Encontrar um código de barras ...",
             "BTN_DISTRIB" => "Criar uma nova distribuição",
-            "TITLE_STOCK" => "Ações"
+            "TITLE_STOCK" => "Ações",
+            "TITLE_DISTRIB" => "Distribuições",
+            "TITLE_COLLECT" => "Coleções",
+            "TITLE_EMPLOYEES" => "Funcionários",
+            "TITLE_USERS" => "Usuários",
+            "SIGNOUT" => "Sair",
+            "LINK_GIVE" => "Dar",
+            "TITLE_HISTORICAl" => "Histórico",
+            "TITLE_HELP" => "Ajuda",
+            "LINK_DONATION" => "Doações",
+            "LINK_INFORMATIONS" => "Informações",
+            "LINK_SIGNOUT" => "Sair",
+            "LABEL_PRODUCTS" => "Produtos",
+            "LABEL_STATUS" => "Status",
+            "LABEL_TAB_HOURS" => "Horários",
+            "BTN_PRODUCTS" => "Ver produtos"
         );
         return $lang;
     }

@@ -254,7 +254,7 @@
                         ?>
 
                         <!-- Submit -->
-                        <input type="submit" value="<?php echo $lang["LINK_SIGNUP"] ?>" class="btn btn-block btn-primary">
+                        <input type="submit" value="<?php echo $lang["LINK_SIGNUP"] ?>" class="btn btn-block btn-primary" id="btn_login">
                     </div>
                 </div>
             </div>

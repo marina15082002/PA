@@ -187,6 +187,7 @@
                 <a href='/PA/". $language . "/modifyAdmin'>" . $lang['TITLE_EMPLOYEES'] . "</a>
                 <a href='/PA/". $language . "/modifyUsers'>" . $lang['TITLE_USERS'] . "</a>
                 <a href='/PA/". $language . "/stock'>" . $lang['TITLE_STOCK'] . "</a>
+                <a href='/PA/". $language . "/getBarCode'>" . $lang['LABEL_PRODUCTS'] . "</a>
                 <a href='/PA/" . $language . "/signout'>" . $lang['SIGNOUT'] . "</a>
                 ";
         }

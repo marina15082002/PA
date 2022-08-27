@@ -405,7 +405,7 @@
                                             newTr.appendChild(newTd);
 
                                             newButton = document.createElement('button');
-                                            newButton.innerHTML = 'Voir produits';
+                                            newButton.innerHTML = '<?php echo $lang["BTN_PRODUCTS"]; ?>';
                                             newButton.id = "button" + i;
                                             newButton.className = "btn btn-block";
                                             newButton.setAttribute('onclick', 'showProducts("' + response['tableCollect'][i]['email'] + '", "' + newTr.id  + '", "' + newButton.id + '")');

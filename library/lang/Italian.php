@@ -114,7 +114,22 @@ class It
             "6PM" => "18h00",
             "SEARCH" => "Trova un codice a barre ...",
             "BTN_DISTRIB" => "Crea una nuova distribuzione",
-            "TITLE_STOCK" => "Azione"
+            "TITLE_STOCK" => "Azione",
+            "TITLE_DISTRIB" => "Distribuzione",
+            "TITLE_COLLECT" => "Raccolta",
+            "TITLE_EMPLOYEES" => "Dipendenti",
+            "TITLE_USERS" => "Utenti",
+            "SIGNOUT" => "Esci",
+            "LINK_GIVE" => "Dai un'occhiata",
+            "TITLE_HISTORICAl" => "Storico",
+            "TITLE_HELP" => "Aiuto",
+            "LINK_DONATION" => "Le&nbsp;mie&nbsp;donazioni",
+            "LINK_INFORMATIONS" => "Le&nbsp;mie&nbsp;informazioni",
+            "LINK_SIGNOUT" => "Esci",
+            "LABEL_PRODUCTS" => "Produtos",
+            "LABEL_STATUS" => "Stato",
+            "LABEL_TAB_HOURS" => "Orari",
+            "BTN_PRODUCTS" => "Vedi prodotti"
         );
         return $lang;
     }

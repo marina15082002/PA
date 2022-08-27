@@ -132,6 +132,7 @@ class Fr
             "LINK_DONATION" => "Mes&nbsp;donations",
             "LINK_INFORMATIONS" => "Mes&nbsp;informations",
             "LINK_SIGNOUT" => "Se&nbsp;déconnecter",
+            "BTN_PRODUCTS" => "Voir produits"
         );
         return $lang;
     }

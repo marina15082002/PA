@@ -28,15 +28,7 @@
                             }
                             ?>
 
-                            <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption"><?php echo $lang["LINK_REMEMBER"]; ?></span>
-                                    <input type="checkbox" checked="checked"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass"><?php echo $lang["LINK_PASSWORD_FORGOT"]; ?></a></span>
-                            </div>
-
-                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                            <input type="submit" value="Log In" class="btn btn-block btn-primary" id="btn_login">
 
                         </form>
                     </div>
