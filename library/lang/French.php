@@ -85,6 +85,7 @@ class Fr
             "THU" => "Jeu",
             "FRI" => "Ven",
             "SAT" => "Sam",
+            "ADD_ADMIN" => "Ajouter un administrateur",
             "TITLE_CALENDAR_PAGE" => "Choisissez une date",
             "LABEL_HOURS" => "Choisissez un horaire",
             "LABEL_DATE" => "Date",
