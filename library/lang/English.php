@@ -110,7 +110,10 @@ class En
             "3PM" => "3 PM",
             "4PM" => "4 PM",
             "5PM" => "5 PM",
-            "6PM" => "6 PM"
+            "6PM" => "6 PM",
+            "SEARCH" => "Find a barcode ...",
+            "BTN_DISTRIB" => "Create a new distribution",
+            "TITLE_STOCK" => "Stock"
         );
         return $lang;
     }

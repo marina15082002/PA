@@ -117,7 +117,21 @@ class Fr
             "LABEL_STATUS" => "Statut",
             "LABEL_TAB_HOURS" => "Horaires",
             "LABEL_COLLECT" => "Modifier la collecte",
-            "FIELD_QUANTITY_SYNTAX" => "La quantité doit être supérieur à 1"
+            "FIELD_QUANTITY_SYNTAX" => "La quantité doit être supérieur à 1",
+            "SEARCH" => "Rechercher un code barre ...",
+            "BTN_DISTRIB" => "Créer une nouvelle distribution",
+            "TITLE_STOCK" => "Stock",
+            "TITLE_DISTRIB" => "Distribution",
+            "TITLE_COLLECT" => "Collecte",
+            "TITLE_EMPLOYEES" => "Employés",
+            "TITLE_USERS" => "Utilisateurs",
+            "SIGNOUT" => "Déconnexion",
+            "LINK_GIVE" => "Donner",
+            "TITLE_HISTORICAl" => "Historique",
+            "TITLE_HELP" => "Aide",
+            "LINK_DONATION" => "Mes&nbsp;donations",
+            "LINK_INFORMATIONS" => "Mes&nbsp;informations",
+            "LINK_SIGNOUT" => "Se&nbsp;déconnecter",
         );
         return $lang;
     }

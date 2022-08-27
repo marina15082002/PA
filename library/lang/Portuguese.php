@@ -111,7 +111,10 @@ class Pt
             "3PM" => "15h00",
             "4PM" => "16h00",
             "5PM" => "17h00",
-            "6PM" => "18h00"
+            "6PM" => "18h00",
+            "SEARCH" => "Encontrar um código de barras ...",
+            "BTN_DISTRIB" => "Criar uma nova distribuição",
+            "TITLE_STOCK" => "Ações"
         );
         return $lang;
     }

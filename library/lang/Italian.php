@@ -111,7 +111,10 @@ class It
             "3PM" => "15h00",
             "4PM" => "16h00",
             "5PM" => "17h00",
-            "6PM" => "18h00"
+            "6PM" => "18h00",
+            "SEARCH" => "Trova un codice a barre ...",
+            "BTN_DISTRIB" => "Crea una nuova distribuzione",
+            "TITLE_STOCK" => "Azione"
         );
         return $lang;
     }
