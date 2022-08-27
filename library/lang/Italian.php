@@ -103,6 +103,8 @@ class It
             "SUBSCRIBE" => "Iscriviti",
             "UNSUBSCRIBE" => "Disiscriviti",
             "YOUR_SUBSCRIPTION_ENDS_THE" => "La tua iscrizione scade il",
+            "ADD_ADMIN" => "Aggiungi un amministratore",
+            "POSITION" => "Posizione",
             "9AM" => "09h00",
             "10AM" => "10h00",
             "11AM" => "11h00",

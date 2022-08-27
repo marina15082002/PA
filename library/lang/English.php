@@ -64,6 +64,8 @@ class En
             "NO_INCOMING_COLLECT_MSG" => "No incoming collection, create one!",
             "INCOMING_COLLECT_MSG" => "A collection is incoming!",
             "STILL_SOME_INFORMATION_TO_CHECK" => "Still some information to check...",
+            "ADD_ADMIN" => "Add an admin",
+            "POSITION" => "Position",
             "NEXT" => "Next",
             "BACK" => "Back",
             "JAN" => "Jan",
