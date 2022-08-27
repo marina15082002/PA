@@ -109,8 +109,8 @@
                             <input type='email' value='" . $value['email'] . "' name='email'/>
                         </td>
                         <td><input type='text' value='" . $value['name'] . "' name='name'/></td>
-                        <td><input type='text' value='" . $value['phone'] . "' name='phone'/></td>
                         <td><input type='text' value='" . $value['poste'] . "' name='poste'/></td>
+                        <td><input type='text' value='" . $value['phone'] . "' name='phone'/></td>
                         <td><input type='password' disabled='true' placeholder='N/A'/></td>
                         <td>
                             <button type='button' onclick='submit_user(" . $i . ", false)' title='" . $lang["BTN_MODIFY"] . "'>
