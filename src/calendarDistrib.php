@@ -317,7 +317,7 @@
                 document.getElementById("svg" + index).setAttribute("fill", "green");
                 document.getElementById("svg" + index).setAttribute("onclick", "changeStatus(true, " + index + ", '" + id + "')");
 
-                let td = document.getElementById("td" + index);
+                let td = documentfvoit .getElementById("td" + index);
                 let newSVG = document.getElementById('download').cloneNode();
                 newSVG.style.visibility = 'visible';
                 newSVG.style.position = 'relative';

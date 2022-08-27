@@ -515,7 +515,16 @@
                                 newTr.id = "tr" + i;
 
                                 newTd = document.createElement('td');
-                                newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                                if ("<?php echo $language; ?>" == "en") {
+                                    if (response['tableCollect'][i]['hours'] < 12) {
+                                        newTd.innerHTML = response['tableCollect'][i]['hours'] + ":00 AM";
+                                    } else {
+                                        newTd.innerHTML = (response['tableCollect'][i]['hours'] - 12) + ":00 PM";
+                                    }
+                                } else {
+                                    newTd.innerHTML = response['tableCollect'][i]['hours'] + "H00";
+                                }
+
                                 newTr.appendChild(newTd);
 
                                 newTd = document.createElement('td');
