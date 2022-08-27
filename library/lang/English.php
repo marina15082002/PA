@@ -140,7 +140,8 @@ class En
             "TITLE_USERS" => "User&nbspManagement",
             "TITLE_ADD_DISTRIB" => "Create a cast",
             "DOWNLOAD" => "Download",
-            "TITLE_BARCODE" => "Barcode recovery"
+            "TITLE_BARCODE" => "Barcode recovery",
+            "SEARCH_USERS" => "Find an email or phone number ..."
         );
         return $lang;
     }

@@ -144,7 +144,8 @@ class Fr
             "TITLE_USERS" => "Gestion&nbspdes&nbsputilisateurs",
             "TITLE_ADD_DISTRIB" => "Créer une distribution",
             "DOWNLOAD" => "Télécharger",
-            "TITLE_BARCODE" => "Récupération des codes barres"
+            "TITLE_BARCODE" => "Récupération des codes barres",
+            "SEARCH_USERS" => "Rechercher un email ou un numéro de téléphone ..."
         );
         return $lang;
     }

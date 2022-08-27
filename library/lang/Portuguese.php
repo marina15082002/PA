@@ -141,7 +141,8 @@ class Pt
             "TITLE_USERS" => "Gerenciamento&nbspde&nbspusuários",
             "TITLE_ADD_DISTRIB" => "Crie um elenco",
             "DOWNLOAD" => "Baixar",
-            "TITLE_BARCODE" => "Recuperação de código de barras"
+            "TITLE_BARCODE" => "Recuperação de código de barras",
+            "SEARCH_USERS" => "Encontrar um e-mail ou número de telefone ..."
         );
         return $lang;
     }

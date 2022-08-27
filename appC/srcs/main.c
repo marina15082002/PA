@@ -22,6 +22,7 @@ struct Infos {
 
 int createFile(char *);
 int writeFile(char* fileName, struct Infos *infos);
+static char *request(const char*);
 
 static size_t write_response(void *buffer, size_t size, size_t nmemb, void *stream) {
     struct write_result *result = (struct write_result *)stream;
@@ -60,24 +61,35 @@ static char *request(const char *url) {
 }
 
 int createFile(char * fileName){
-  char * path = "barcodeInfos";
-  strcat((char*)path, fileName);
-  FILE * fp = fopen(path, "wt");
+  char * path = "./";
+
+  int length = strlen(path) + strlen(fileName) + 1;
+  char* final_path = malloc(length);
+  strcpy(final_path, path);
+  strcat(final_path, fileName);
+
+  FILE * fp = fopen(final_path, "wt");
 
   if (fp == NULL)
         return -1;
 
-  printf("Le fichier a été créé");
+  printf("Le fichier a été créé\n");
 
   fclose(fp);
   return 0;
 }
 
 int writeFile(char* fileName, struct Infos *infos) {
-    char * path = "barcodeInfos";
-    strcat((char*)path, fileName);
+    char * path = "./";
     struct json_object  *object_array;
-    FILE* fp = fopen(path, "at");
+
+    int length = strlen(path) + strlen(fileName) + 1;
+    char* final_path = malloc(length);
+    strcpy(final_path, path);
+    strcat(final_path, fileName);
+
+    FILE* fp = fopen(final_path, "at");
+
 
     if (fp == NULL) {
         printf("Erreur de création");
@@ -162,6 +174,8 @@ int main(int argc, char *argv[])
     json_object_object_get_ex(json, "code", &sys);
     const char *file = json_object_get_string(sys);
     char code_product[13];
+    char *file2 = malloc(50);
+    strcpy(file2, file);
     strcpy((char*)code_product, (char*)file);
 
     json_object_object_get_ex(json, "product", &sys);
@@ -169,8 +183,8 @@ int main(int argc, char *argv[])
     const char *name_product = json_object_get_string(object);
     if (name_product != NULL) {
       char * extension = ".json";
-      strcat((char*)file, extension);
-      createFile((char*)file);
+      strcat((char*)file2, extension);
+      createFile((char*)file2);
 
       infos.code = code_product;
 
@@ -201,7 +215,7 @@ int main(int argc, char *argv[])
 
       infos.ingredients = (char *)ingredients;
 
-      writeFile((char*)file, &infos);
+      writeFile((char*)file2, &infos);
     } else {
       printf("Le code barre saisie n'existe pas dans la base de données");
     }

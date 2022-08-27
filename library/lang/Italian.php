@@ -141,7 +141,8 @@ class It
             "TITLE_USERS" => "Gestione&nbsputenti",
             "TITLE_ADD_DISTRIB" => "Crea un cast",
             "DOWNLOAD" => "Scarica",
-            "TITLE_BARCODE" => "Recupero codici a barre"
+            "TITLE_BARCODE" => "Recupero codici a barre",
+            "SEARCH_USERS" => "Trova un'e-mail o un numero di telefono ..."
         );
         return $lang;
     }
