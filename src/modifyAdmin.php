@@ -2,6 +2,7 @@
 
 <style>
     main {
+        padding-top: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
