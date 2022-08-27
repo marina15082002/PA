@@ -110,9 +110,9 @@
                                 <input type='email' value='" . $value['email'] . "' name='email'/></td>
                             <td>
                                 <select name='type' class='form-control'>
-                                    <option name='type' value=" . $lang['A_COMPANY']; if (strtoupper($value['type']) == strtoupper($lang['A_COMPANY'])){echo " selected";}; echo ">" . $lang['A_COMPANY'] . "</option>
-                                    <option name='type' value=" . $lang['AN_ASSOCIATION']; if (strtoupper($value['type']) == strtoupper($lang['AN_ASSOCIATION'])){echo " selected";}; echo ">" . $lang['AN_ASSOCIATION'] . "</option>
-                                    <option name='type' value=" . $lang['A_PARTICULAR']; if (strtoupper($value['type']) == strtoupper($lang['A_PARTICULAR'])){echo " selected";}; echo ">" . $lang['A_PARTICULAR'] . "</option>
+                                    <option name='type' value='" . $lang['A_COMPANY'] . "'"; if (strtoupper($value['type']) == strtoupper($lang['A_COMPANY'])){echo " selected";}; echo ">" . $lang['A_COMPANY'] . "</option>
+                                    <option name='type' value=" . $lang['AN_ASSOCIATION'] . "'"; if (strtoupper($value['type']) == strtoupper($lang['AN_ASSOCIATION'])){echo " selected";}; echo ">" . $lang['AN_ASSOCIATION'] . "</option>
+                                    <option name='type' value=" . $lang['A_PARTICULAR'] . "'"; if (strtoupper($value['type']) == strtoupper($lang['A_PARTICULAR'])){echo " selected";}; echo ">" . $lang['A_PARTICULAR'] . "</option>
                                 </select>
                             </td>
                             <td><input type='text' value='" . $value['name'] . "' name='name'/></td>
